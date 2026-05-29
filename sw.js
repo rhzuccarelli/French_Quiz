@@ -1,4 +1,4 @@
-const CACHE = 'fr-quiz-v4';
+const CACHE = 'fr-quiz-v5';
 const BASE = new URL('.', self.location).href;
 const ASSETS = [
   BASE,
