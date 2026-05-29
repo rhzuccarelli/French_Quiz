@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>participes passés — quiz</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #f5f5f0;
+  --surface:   #ffffff;
+  --rule:      #000000;
+  --rule-lt:   #d0d0c8;
+  --text:      #000000;
+  --muted:     #666666;
+  --faint:     #aaaaaa;
+  --ok-bg:     #e8f5e8;
+  --err-bg:    #fce8e8;
+  --etre-dot:  #0369A1;
+  --avoir-dot: #9D174D;
+  --mono:      'Courier New', 'Lucida Console', monospace;
+}
+
+html, body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px;
+}
+
+/* ── HEADER ── */
+.te-header {
+  width: 100%;
+  max-width: 640px;
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 32px;
+}
+
+.te-title {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+
+.te-subtitle {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+}
+
+/* ── FILTERS ── */
+.te-filters {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.te-tag {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  padding: 3px 8px;
+  border: 1px solid var(--rule-lt);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.1s;
+  white-space: nowrap;
+}
+.te-tag:hover  { border-color: var(--rule); color: var(--text); }
+.te-tag.active { border-color: var(--rule); background: var(--rule); color: #fff; }
+
+/* ── SCOREBAR ── */
+.te-scorebar {
+  width: 100%;
+  max-width: 640px;
+  display: grid;
+  grid-template-columns: 56px 1fr 48px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.te-score-num { font-family: var(--mono); font-size: 11px; white-space: nowrap; }
+.te-bar-track { height: 1px; background: var(--rule-lt); position: relative; }
+.te-bar-fill  { position: absolute; left:0; top:0; height:1px; background: var(--rule); transition: width 0.35s; width:0%; }
+.te-q-num     { font-family: var(--mono); font-size: 10px; color: var(--muted); text-align: right; }
+
+/* ── CARD ── */
+.te-card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.te-card-head {
+  border-bottom: 1px solid var(--rule-lt);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.te-group-tag { font-size: 9px; letter-spacing: 0.14em; text-transform: lowercase; color: var(--muted); }
+.te-group-dot { width:6px; height:6px; border-radius:50%; background: var(--dot-color,#ccc); display:inline-block; margin-right:6px; vertical-align:middle; }
+
+.te-card-body { padding: 28px 20px 0; }
+
+.te-prompt-verb {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.te-prompt-meta {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.te-prompt-en { font-size: 11px; color: var(--faint); font-family: var(--mono); margin-left: auto; }
+
+/* step labels */
+.te-step-label {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.te-step-num {
+  font-family: var(--mono);
+  font-size: 9px;
+  border: 1px solid var(--rule-lt);
+  width: 16px; height: 16px;
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  color: var(--muted);
+}
+
+/* input */
+.te-input-row {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 8px;
+}
+
+.te-input {
+  flex: 1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  background: transparent;
+  color: var(--text);
+  min-width: 0;
+}
+.te-input::placeholder { color: var(--faint); font-size: 14px; }
+.te-input.ok  { background: var(--ok-bg); }
+.te-input.err { background: var(--err-bg); }
+
+.te-verify-btn {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  padding: 0 16px;
+  border: none;
+  border-left: 1px solid var(--rule);
+  background: var(--rule);
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.1s;
+}
+.te-verify-btn:hover    { opacity: 0.8; }
+.te-verify-btn:disabled { background: var(--rule-lt); cursor: default; }
+
+/* chars */
+.te-chars { display:flex; flex-wrap:wrap; gap:3px; margin-bottom:12px; }
+.te-char {
+  font-family: var(--mono); font-size:12px;
+  width:24px; height:24px;
+  border:1px solid var(--rule-lt); background:var(--bg);
+  color:var(--muted); cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  transition: all 0.1s;
+}
+.te-char:hover { border-color:var(--rule); color:var(--text); background:var(--surface); }
+
+/* feedback */
+.te-feedback {
+  min-height: 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 12px;
+  margin-bottom: 0;
+  padding-bottom: 16px;
+}
+.fb-ok  { font-weight: 700; }
+.fb-err { font-weight: 700; }
+.fb-correct-form { font-size:18px; font-weight:700; letter-spacing:-0.01em; }
+.fb-ipa  { font-family: var(--mono); font-size:10px; color:var(--muted); }
+.fb-note { font-family: var(--mono); font-size:10px; color:var(--faint); }
+
+/* ── STEP 2: AUXILIARY ── */
+.te-aux-section {
+  display: none;
+  border-top: 1px solid var(--rule-lt);
+  padding: 16px 20px;
+}
+
+.te-aux-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.te-aux-btn {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 8px 28px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.te-aux-btn:hover:not(:disabled) { background: var(--bg); }
+.te-aux-btn:disabled { cursor: default; }
+.te-aux-btn.ok-pick  { background: var(--ok-bg);  border-color: #3a8c3a; }
+.te-aux-btn.err-pick { background: var(--err-bg);  border-color: #c03030; }
+.te-aux-btn.reveal   { background: var(--ok-bg);  border-color: #3a8c3a; }
+
+.te-aux-feedback {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  min-height: 16px;
+}
+
+/* ── FOOTER ── */
+.te-card-foot {
+  border-top: 1px solid var(--rule-lt);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.te-next-btn {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  padding: 5px 14px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  display: none;
+  transition: background 0.1s;
+}
+.te-next-btn:hover { background: var(--rule); color: #fff; }
+
+.te-remaining { font-family: var(--mono); font-size: 10px; color: var(--faint); }
+
+/* ── RESULTS ── */
+.te-results {
+  display: none;
+  width: 100%;
+  max-width: 640px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  flex-direction: column;
+}
+
+.te-results-head {
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 20px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.te-results-body {
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.te-big-score { font-size:64px; font-weight:700; letter-spacing:-0.03em; line-height:1; }
+.te-grade     { font-size:11px; color:var(--muted); letter-spacing:0.08em; font-family:var(--mono); margin-top:2px; }
+
+.te-restart-btn {
+  margin-top: 20px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  padding: 7px 18px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.1s;
+}
+.te-restart-btn:hover { opacity: 0.75; }
+
+/* missed */
+.te-missed { width:100%; border-top:1px solid var(--rule-lt); margin-top:24px; padding-top:16px; }
+.te-missed-header { font-size:9px; letter-spacing:0.14em; color:var(--muted); margin-bottom:10px; }
+
+.te-missed-row {
+  display: grid;
+  grid-template-columns: 120px 70px 80px 60px;
+  gap: 8px;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--rule-lt);
+  font-size: 12px;
+}
+
+.mi-inf  { color:var(--muted); font-style:italic; }
+.mi-pp   { font-weight:700; font-size:14px; }
+.mi-ipa  { font-family:var(--mono); font-size:10px; color:var(--faint); }
+.mi-aux  { font-family:var(--mono); font-size:9px; letter-spacing:0.1em; padding:1px 5px; border:1px solid; }
+.mi-aux.etre  { color: var(--etre-dot);  border-color: var(--etre-dot); }
+.mi-aux.avoir { color: var(--avoir-dot); border-color: var(--avoir-dot); }
+.te-hint-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--muted);
+  cursor: pointer;
+  letter-spacing: 0.06em;
+}
+.te-hint-toggle input { cursor: pointer; accent-color: var(--rule); }
+</style>
+</head>
+<body>
+
+<header class="te-header">
+  <span class="te-title">participes passés — quiz</span>
+  <span class="te-subtitle">passé composé</span>
+</header>
+
+<div class="te-filters" id="filters">
+  <button class="te-tag active" id="filter-all" onclick="setFilter('all')">tous</button>
+</div>
+
+<div class="te-scorebar">
+  <span class="te-score-num" id="score-label">0 / 0</span>
+  <div class="te-bar-track"><div class="te-bar-fill" id="score-fill"></div></div>
+  <span class="te-q-num" id="q-counter"></span>
+</div>
+
+<div id="quiz-area">
+  <div class="te-card" id="main-card">
+    <div class="te-card-head">
+      <span><span class="te-group-dot" id="card-dot"></span><span class="te-group-tag" id="card-group"></span></span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-prompt-verb" id="prompt-inf"></div>
+      <div class="te-prompt-meta">
+        <span class="te-prompt-en" id="prompt-en"></span>
+      </div>
+
+      <!-- step 1 -->
+      <div class="te-step-label">
+        <span class="te-step-num">1</span> participe passé
+      </div>
+      <div class="te-input-row">
+        <input class="te-input" id="answer-input" type="text" placeholder="participe passé…"
+               autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        <button class="te-verify-btn" id="submit-btn" onclick="checkPP()">vérifier</button>
+      </div>
+      <div class="te-chars" id="char-bar"></div>
+      <div class="te-feedback" id="feedback-pp"></div>
+    </div>
+
+    <!-- step 2 -->
+    <div class="te-aux-section" id="step-aux">
+      <div class="te-step-label">
+        <span class="te-step-num">2</span> quel auxiliaire ?
+      </div>
+      <div class="te-aux-row">
+        <button class="te-aux-btn" id="btn-etre"  onclick="checkAux('être')">être</button>
+        <button class="te-aux-btn" id="btn-avoir" onclick="checkAux('avoir')">avoir</button>
+      </div>
+      <div class="te-aux-feedback" id="feedback-aux"></div>
+    </div>
+
+    <div class="te-card-foot">
+      <button class="te-next-btn" id="next-btn" onclick="nextQuestion()">suivant →</button>
+      <span class="te-remaining" id="remaining"></span>
+      <label class="te-hint-toggle">
+        <input type="checkbox" id="hint-check" onchange="toggleHint()"> ipa hints
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="te-results" id="results-screen">
+  <div class="te-results-head">résultats</div>
+  <div class="te-results-body">
+    <div class="te-big-score" id="final-pct"></div>
+    <div class="te-grade" id="final-tally"></div>
+    <div class="te-grade" id="final-breakdown"></div>
+    <div class="te-grade" id="final-grade"></div>
+    <button class="te-restart-btn" onclick="restart()">recommencer</button>
+    <div class="te-missed" id="missed-list"></div>
+  </div>
+</div>
+
+<script>
+const groups = [
+  { id:"dict", label:"groupe 1 — dictionnaire (-é)", dot:"#0369A1",
+    verbs:[
+      {inf:"aider",      pp:"aidé",      ipa:"/ede/",       en:"to help",             aux:"avoir"},
+      {inf:"aller",      pp:"allé",      ipa:"/ale/",       en:"to go",               aux:"être"},
+      {inf:"rencontrer", pp:"rencontré", ipa:"/ʁɑ̃kɔ̃tʁe/",  en:"to meet",             aux:"avoir"},
+      {inf:"parler",     pp:"parlé",     ipa:"/paʁle/",     en:"to speak",            aux:"avoir"},
+      {inf:"habiter",    pp:"habité",    ipa:"/abite/",     en:"to live (somewhere)", aux:"avoir"},
+      {inf:"manger",     pp:"mangé",     ipa:"/mɑ̃ʒe/",     en:"to eat",              aux:"avoir"},
+      {inf:"travailler", pp:"travaillé", ipa:"/tʁavaje/",   en:"to work",             aux:"avoir"},
+      {inf:"préférer",   pp:"préféré",   ipa:"/pʁefeʁe/",   en:"to prefer",           aux:"avoir"},
+      {inf:"chanter",    pp:"chanté",    ipa:"/ʃɑ̃te/",     en:"to sing",             aux:"avoir"},
+      {inf:"aimer",      pp:"aimé",      ipa:"/eme/",       en:"to like / love",      aux:"avoir"},
+    ]},
+  { id:"ir_i", label:"groupe 2 — -ir → -i", dot:"#B45309",
+    verbs:[
+      {inf:"finir",   pp:"fini",  ipa:"/fini/",   en:"to finish",  aux:"avoir"},
+      {inf:"choisir", pp:"choisi",ipa:"/ʃwazi/",  en:"to choose",  aux:"avoir"},
+      {inf:"dormir",  pp:"dormi", ipa:"/dɔʁmi/",  en:"to sleep",   aux:"avoir"},
+      {inf:"partir",  pp:"parti", ipa:"/paʁti/",  en:"to leave",   aux:"être"},
+      {inf:"sortir",  pp:"sorti", ipa:"/sɔʁti/",  en:"to go out",  aux:"être"},
+      {inf:"suivre",  pp:"suivi", ipa:"/sɥivi/",  en:"to follow",  aux:"avoir"},
+    ]},
+  { id:"it", label:"groupe 3 — -it", dot:"#6D28D9",
+    verbs:[
+      {inf:"écrire",   pp:"écrit",   ipa:"/ekʁi/",   en:"to write", aux:"avoir"},
+      {inf:"dire",     pp:"dit",     ipa:"/di/",     en:"to say",   aux:"avoir"},
+      {inf:"conduire", pp:"conduit", ipa:"/kɔ̃dɥi/", en:"to drive", aux:"avoir"},
+    ]},
+  { id:"is", label:"groupe 4 — -is", dot:"#BE123C",
+    verbs:[
+      {inf:"mettre",     pp:"mis",     ipa:"/mi/",     en:"to put",        aux:"avoir"},
+      {inf:"admettre",   pp:"admis",   ipa:"/admi/",   en:"to admit",      aux:"avoir"},
+      {inf:"prendre",    pp:"pris",    ipa:"/pʁi/",    en:"to take",       aux:"avoir"},
+      {inf:"apprendre",  pp:"appris",  ipa:"/apʁi/",   en:"to learn",      aux:"avoir"},
+      {inf:"comprendre", pp:"compris", ipa:"/kɔ̃pʁi/", en:"to understand", aux:"avoir"},
+    ]},
+  { id:"ert", label:"groupe 5 — -ert", dot:"#0D9488",
+    verbs:[
+      {inf:"ouvrir",    pp:"ouvert",    ipa:"/uvɛʁ/",    en:"to open",     aux:"avoir"},
+      {inf:"couvrir",   pp:"couvert",   ipa:"/kuvɛʁ/",   en:"to cover",    aux:"avoir"},
+      {inf:"découvrir", pp:"découvert", ipa:"/dekuvɛʁ/", en:"to discover", aux:"avoir"},
+      {inf:"offrir",    pp:"offert",    ipa:"/ɔfɛʁ/",    en:"to offer",    aux:"avoir"},
+    ]},
+  { id:"u", label:"groupe 6 — -u", dot:"#15803D",
+    verbs:[
+      {inf:"attendre",  pp:"attendu",  ipa:"/atɑ̃dy/",   en:"to wait",           aux:"avoir"},
+      {inf:"entendre",  pp:"entendu",  ipa:"/ɑ̃tɑ̃dy/",   en:"to hear",           aux:"avoir"},
+      {inf:"perdre",    pp:"perdu",    ipa:"/pɛʁdy/",    en:"to lose",           aux:"avoir"},
+      {inf:"répondre",  pp:"répondu",  ipa:"/ʁepɔ̃dy/",  en:"to answer",         aux:"avoir"},
+      {inf:"connaître", pp:"connu",    ipa:"/kɔny/",     en:"to know (people)",  aux:"avoir"},
+      {inf:"venir",     pp:"venu",     ipa:"/vəny/",     en:"to come",           aux:"être"},
+      {inf:"devenir",   pp:"devenu",   ipa:"/dəvny/",    en:"to become",         aux:"être"},
+      {inf:"tenir",     pp:"tenu",     ipa:"/təny/",     en:"to hold",           aux:"avoir"},
+      {inf:"obtenir",   pp:"obtenu",   ipa:"/ɔbtəny/",   en:"to obtain",         aux:"avoir"},
+      {inf:"courir",    pp:"couru",    ipa:"/kuʁy/",     en:"to run",            aux:"avoir"},
+      {inf:"lire",      pp:"lu",       ipa:"/ly/",       en:"to read",           aux:"avoir"},
+      {inf:"vivre",     pp:"vécu",     ipa:"/veky/",     en:"to live",           aux:"avoir"},
+      {inf:"vouloir",   pp:"voulu",    ipa:"/vuly/",     en:"to want",           aux:"avoir"},
+      {inf:"falloir",   pp:"fallu",    ipa:"/faly/",     en:"must (impersonal)", aux:"avoir", note:"il faut — impersonnel"},
+      {inf:"recevoir",  pp:"reçu",     ipa:"/ʁəsy/",     en:"to receive",        aux:"avoir"},
+      {inf:"décevoir",  pp:"déçu",     ipa:"/desy/",     en:"to disappoint",     aux:"avoir"},
+      {inf:"voir",      pp:"vu",       ipa:"/vy/",       en:"to see",            aux:"avoir"},
+      {inf:"boire",     pp:"bu",       ipa:"/by/",       en:"to drink",          aux:"avoir"},
+      {inf:"savoir",    pp:"su",       ipa:"/sy/",       en:"to know (facts)",   aux:"avoir"},
+      {inf:"pouvoir",   pp:"pu",       ipa:"/py/",       en:"to be able to",     aux:"avoir"},
+      {inf:"devoir",    pp:"dû",       ipa:"/dy/",       en:"to have to",        aux:"avoir", note:"accent masc. sg. seulement"},
+      {inf:"pleuvoir",  pp:"plu",      ipa:"/ply/",      en:"to rain",           aux:"avoir", note:"impersonnel"},
+      {inf:"plaire",    pp:"plu",      ipa:"/ply/",      en:"to please",         aux:"avoir"},
+    ]},
+  { id:"eint", label:"groupe 7 — -eint / -aint", dot:"#9D174D",
+    verbs:[
+      {inf:"peindre",  pp:"peint",  ipa:"/pɛ̃/",  en:"to paint",         aux:"avoir"},
+      {inf:"plaindre", pp:"plaint", ipa:"/plɛ̃/", en:"to pity/complain", aux:"avoir"},
+    ]},
+  { id:"irr", label:"groupe 8 — irréguliers", dot:"#7E22CE",
+    verbs:[
+      {inf:"être",   pp:"été",  ipa:"/ete/", en:"to be",      aux:"avoir"},
+      {inf:"avoir",  pp:"eu",   ipa:"/y/",   en:"to have",    aux:"avoir"},
+      {inf:"faire",  pp:"fait", ipa:"/fɛ/",  en:"to do/make", aux:"avoir"},
+      {inf:"naître", pp:"né",   ipa:"/ne/",  en:"to be born", aux:"être"},
+      {inf:"mourir", pp:"mort", ipa:"/mɔʁ/", en:"to die",     aux:"être"},
+    ]},
+];
+
+// filters
+const filtersEl=document.getElementById('filters');
+groups.forEach(g=>{
+  const b=document.createElement('button');
+  b.className='te-tag'; b.id='filter-'+g.id;
+  b.textContent=g.label.replace(/groupe \d+ — /,'');
+  b.onclick=()=>setFilter(g.id);
+  filtersEl.appendChild(b);
+});
+
+// chars
+['à','â','é','è','ê','î','ï','ô','ù','û','ü','ç','œ'].forEach(ch=>{
+  const b=document.createElement('button');
+  b.className='te-char'; b.textContent=ch; b.type='button';
+  b.onclick=()=>insertChar(ch);
+  document.getElementById('char-bar').appendChild(b);
+});
+
+let pool=[],queue=[],current=null;
+let scorePP=0,scoreAux=0,total=0,missed=[];
+let ppDone=false,auxDone=false,activeFilter='all',showHints=false;
+
+function norm(s){ return s.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a; }
+
+function buildPool(fid){
+  pool=[];
+  groups.forEach(g=>{
+    if(fid!=='all'&&g.id!==fid)return;
+    g.verbs.forEach(v=>pool.push({group:g,verb:v}));
+  });
+}
+
+function setFilter(id){
+  activeFilter=id;
+  document.querySelectorAll('.te-tag').forEach(b=>b.classList.remove('active'));
+  document.getElementById('filter-'+id).classList.add('active');
+  restart();
+}
+
+function restart(){
+  scorePP=0; scoreAux=0; total=0; missed=[];
+  buildPool(activeFilter);
+  queue=shuffle([...pool]);
+  document.getElementById('quiz-area').style.display='block';
+  document.getElementById('results-screen').style.display='none';
+  updateScore();
+  nextQuestion(true);
+}
+
+function nextQuestion(first){
+  if(!queue.length){showResults();return;}
+  current=queue.pop(); ppDone=false; auxDone=false;
+  const inp=document.getElementById('answer-input');
+  inp.value=''; inp.className='te-input'; inp.disabled=false;
+  document.getElementById('prompt-inf').textContent=current.verb.inf;
+  document.getElementById('prompt-en').textContent=current.verb.en;
+  document.getElementById('card-group').textContent=current.group.label;
+  document.getElementById('card-dot').style.background=current.group.dot;
+  document.getElementById('feedback-pp').innerHTML=showHints?`<span class="fb-ipa">${current.verb.ipa}</span>`:'';
+  document.getElementById('feedback-aux').textContent='';
+  document.getElementById('step-aux').style.display='none';
+  document.getElementById('next-btn').style.display='none';
+  document.getElementById('submit-btn').disabled=false;
+  ['btn-etre','btn-avoir'].forEach(id=>{
+    const b=document.getElementById(id);
+    b.className='te-aux-btn'; b.disabled=false;
+  });
+  document.getElementById('q-counter').textContent=`${total+1}/${pool.length}`;
+  document.getElementById('remaining').textContent=`${queue.length} left`;
+  if(!first) inp.focus();
+}
+
+function checkPP(){
+  if(ppDone||!current)return;
+  const inp=document.getElementById('answer-input');
+  if(!inp.value.trim()){inp.focus();return;}
+  ppDone=true; total++;
+  const ok=norm(inp.value)===norm(current.verb.pp);
+  inp.disabled=true;
+  document.getElementById('submit-btn').disabled=true;
+  const note=current.verb.note||'';
+  if(ok){
+    scorePP++;
+    inp.className='te-input ok';
+    document.getElementById('feedback-pp').innerHTML=
+      `<span class="fb-ok">✓</span> <span class="fb-ipa">${current.verb.ipa}</span>`
+      +(note?` <span class="fb-note">${note}</span>`:'');
+  } else {
+    inp.className='te-input err';
+    document.getElementById('feedback-pp').innerHTML=
+      `<span class="fb-err">✗</span> <span class="fb-correct-form">${current.verb.pp}</span> <span class="fb-ipa">${current.verb.ipa}</span>`
+      +(note?` <span class="fb-note">${note}</span>`:'');
+    missed.push(current);
+  }
+  updateScore();
+  document.getElementById('step-aux').style.display='block';
+}
+
+function checkAux(choice){
+  if(auxDone||!current)return;
+  auxDone=true;
+  const correct=current.verb.aux;
+  const ok=(choice===correct);
+  ['btn-etre','btn-avoir'].forEach(id=>document.getElementById(id).disabled=true);
+  const choiceId=choice==='être'?'btn-etre':'btn-avoir';
+  const correctId=correct==='être'?'btn-etre':'btn-avoir';
+  document.getElementById(choiceId).classList.add(ok?'ok-pick':'err-pick');
+  if(!ok) document.getElementById(correctId).classList.add('reveal');
+  if(ok){
+    scoreAux++;
+    document.getElementById('feedback-aux').textContent='✓ correct';
+  } else {
+    document.getElementById('feedback-aux').textContent=`✗  auxiliaire correct: ${correct}`;
+  }
+  updateScore();
+  document.getElementById('next-btn').style.display='block';
+}
+
+function updateScore(){
+  const t2=total*2, c=scorePP+scoreAux, pct=t2>0?(c/t2)*100:0;
+  document.getElementById('score-label').textContent=`${c} / ${t2}`;
+  document.getElementById('score-fill').style.width=pct+'%';
+}
+
+function insertChar(ch){
+  const inp=document.getElementById('answer-input');
+  if(inp.disabled)return;
+  const s=inp.selectionStart,e=inp.selectionEnd;
+  inp.value=inp.value.slice(0,s)+ch+inp.value.slice(e);
+  inp.selectionStart=inp.selectionEnd=s+1;
+  inp.focus();
+}
+
+function showResults(){
+  document.getElementById('quiz-area').style.display='none';
+  document.getElementById('results-screen').style.display='flex';
+  const t2=total*2, c=scorePP+scoreAux;
+  const pct=t2>0?Math.round((c/t2)*100):0;
+  document.getElementById('final-pct').textContent=pct+'%';
+  document.getElementById('final-tally').textContent=`${c} / ${t2} points`;
+  document.getElementById('final-breakdown').textContent=`participes: ${scorePP}/${total}  ·  auxiliaires: ${scoreAux}/${total}`;
+  const grades=[[90,'excellent'],[75,'très bien'],[60,'bien'],[40,'passable'],[0,'à revoir']];
+  document.getElementById('final-grade').textContent=grades.find(([t])=>pct>=t)[1];
+  const ml=document.getElementById('missed-list');
+  ml.innerHTML='';
+  if(missed.length){
+    const h=document.createElement('div'); h.className='te-missed-header';
+    h.textContent=`à revoir — ${missed.length}`; ml.appendChild(h);
+    missed.forEach(m=>{
+      const r=document.createElement('div'); r.className='te-missed-row';
+      r.innerHTML=`<span class="mi-inf">${m.verb.inf}</span><span class="mi-pp">${m.verb.pp}</span><span class="mi-ipa">${m.verb.ipa}</span><span class="mi-aux ${m.verb.aux}">${m.verb.aux}</span>`;
+      ml.appendChild(r);
+    });
+  }
+}
+
+function toggleHint(){
+  showHints=document.getElementById('hint-check').checked;
+  if(!ppDone) document.getElementById('feedback-pp').innerHTML=
+    showHints&&current?`<span class="fb-ipa">${current.verb.ipa}</span>`:'';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
+    if(!ppDone) checkPP();
+    else if(auxDone) nextQuestion();
+  }
+});
+
+restart();
+</script>
+</body>
+</html>

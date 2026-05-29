@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>français — quiz</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f5f5f0;
+  --surface: #ffffff;
+  --rule:    #000000;
+  --rule-lt: #d0d0c8;
+  --text:    #000000;
+  --muted:   #666666;
+  --faint:   #aaaaaa;
+  --mono:    'Courier New', 'Lucida Console', monospace;
+}
+
+html, body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px;
+}
+
+/* ── HEADER ── */
+.te-header {
+  width: 100%;
+  max-width: 640px;
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 48px;
+}
+
+.te-title {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+
+.te-subtitle {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+}
+
+/* ── INTRO ── */
+.te-intro {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.te-intro-label {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+  color: var(--faint);
+  font-family: var(--mono);
+  margin-bottom: 8px;
+}
+
+.te-intro-heading {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ── GRID ── */
+.te-grid {
+  width: 100%;
+  max-width: 640px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 420px) {
+  .te-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CARD ── */
+.te-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.1s;
+  cursor: pointer;
+}
+
+.te-card:hover {
+  background: var(--rule);
+  color: #fff;
+}
+
+.te-card:hover .te-card-meta,
+.te-card:hover .te-card-count,
+.te-card:hover .te-card-arrow {
+  color: rgba(255,255,255,0.6);
+}
+
+.te-card:hover .te-card-dot {
+  border-color: rgba(255,255,255,0.3);
+}
+
+.te-card-head {
+  border-bottom: 1px solid var(--rule-lt);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.te-card:hover .te-card-head {
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+
+.te-card-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.te-card-tag {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.te-card-body {
+  padding: 20px 16px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.te-card-name {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.te-card-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.te-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.te-card-count {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.te-card-arrow {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1;
+}
+
+/* ── FOOTER ── */
+.te-footer {
+  width: 100%;
+  max-width: 640px;
+  margin-top: 48px;
+  border-top: 1px solid var(--rule-lt);
+  padding-top: 12px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--faint);
+  letter-spacing: 0.08em;
+}
+</style>
+</head>
+<body>
+
+<header class="te-header">
+  <span class="te-title">français — quiz</span>
+  <span class="te-subtitle">conjugaison</span>
+</header>
+
+<div class="te-intro">
+  <div class="te-intro-label">choisir un exercice</div>
+  <div class="te-intro-heading">de quoi<br>s'agit-il ?</div>
+</div>
+
+<div class="te-grid">
+
+  <a class="te-card" href="french-verbs-quiz.html">
+    <div class="te-card-head">
+      <span class="te-card-dot" style="background:#2563EB;"></span>
+      <span class="te-card-tag">présent de l'indicatif</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-card-name">verbes<br>au présent</div>
+      <div class="te-card-desc">Conjuguez les verbes réguliers et irréguliers au présent.</div>
+      <div class="te-card-footer">
+        <span class="te-card-count">30 verbes · 180 formes</span>
+        <span class="te-card-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="te-card" href="french-participes-quiz.html">
+    <div class="te-card-head">
+      <span class="te-card-dot" style="background:#0369A1;"></span>
+      <span class="te-card-tag">participe passé</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-card-name">participes<br>passés</div>
+      <div class="te-card-desc">Entraînez-vous sur les participes passés avec avoir et être.</div>
+      <div class="te-card-footer">
+        <span class="te-card-count">verbes courants</span>
+        <span class="te-card-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<footer class="te-footer">français · quiz de conjugaison</footer>
+
+</body>
+</html>
