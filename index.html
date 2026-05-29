@@ -10,6 +10,7 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>français — quiz</title>
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -23,6 +24,29 @@
   --faint:   #aaaaaa;
   --mono:    'Courier New', 'Lucida Console', monospace;
 }
+
+:root[data-theme="dark"] {
+  --bg:      #1a1a18;
+  --surface: #242420;
+  --rule:    #d0d0c8;
+  --rule-lt: #3a3a36;
+  --text:    #e0e0d8;
+  --muted:   #888880;
+  --faint:   #555550;
+}
+
+.te-theme-btn {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  padding: 3px 8px;
+  border: 1px solid var(--rule-lt);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.1s;
+}
+.te-theme-btn:hover { border-color: var(--rule); color: var(--text); }
 
 html, body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -216,6 +240,7 @@ body {
 <header class="te-header">
   <span class="te-title">français — quiz</span>
   <span class="te-subtitle">conjugaison</span>
+  <button class="te-theme-btn" id="theme-btn" onclick="toggleTheme()">dark</button>
 </header>
 
 <div class="te-intro">
@@ -234,7 +259,7 @@ body {
       <div class="te-card-name">verbes<br>au présent</div>
       <div class="te-card-desc">Conjuguez les verbes réguliers et irréguliers au présent.</div>
       <div class="te-card-footer">
-        <span class="te-card-count">30 verbes · 180 formes</span>
+        <span class="te-card-count">60 verbes · 360 formes</span>
         <span class="te-card-arrow">→</span>
       </div>
     </div>
@@ -260,9 +285,18 @@ body {
 <footer class="te-footer">français · quiz de conjugaison</footer>
 
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('theme-btn').textContent = dark ? 'dark' : 'light';
 }
+(function(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.getElementById('theme-btn').textContent = dark ? 'light' : 'dark';
+})();
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 </script>
 </body>
 </html>

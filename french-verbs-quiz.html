@@ -10,20 +10,33 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>conjugaison — quiz</title>
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #f5f5f0;
-  --surface:   #ffffff;
-  --rule:      #000000;
-  --rule-lt:   #d0d0c8;
-  --text:      #000000;
-  --muted:     #666666;
-  --faint:     #aaaaaa;
-  --ok-bg:     #e8f5e8;
-  --err-bg:    #fce8e8;
-  --mono:      'Courier New', 'Lucida Console', monospace;
+  --bg:      #f5f5f0;
+  --surface: #ffffff;
+  --rule:    #000000;
+  --rule-lt: #d0d0c8;
+  --text:    #000000;
+  --muted:   #666666;
+  --faint:   #aaaaaa;
+  --ok-bg:   #e8f5e8;
+  --err-bg:  #fce8e8;
+  --mono:    'Courier New', 'Lucida Console', monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg:      #1a1a18;
+  --surface: #242420;
+  --rule:    #d0d0c8;
+  --rule-lt: #3a3a36;
+  --text:    #e0e0d8;
+  --muted:   #888880;
+  --faint:   #555550;
+  --ok-bg:   #1a2e1a;
+  --err-bg:  #2e1a1a;
 }
 
 html, body {
@@ -52,6 +65,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  gap: 12px;
   margin-bottom: 32px;
 }
 
@@ -75,6 +89,7 @@ body {
   letter-spacing: 0.08em;
   font-family: var(--mono);
   text-decoration: none;
+  white-space: nowrap;
 }
 .te-back:hover { color: var(--text); }
 
@@ -102,14 +117,14 @@ body {
   white-space: nowrap;
 }
 .te-tag:hover  { border-color: var(--rule); color: var(--text); }
-.te-tag.active { border-color: var(--rule); background: var(--rule); color: #fff; }
+.te-tag.active { border-color: var(--rule); background: var(--rule); color: var(--bg); }
 
 /* ── SCORE BAR ── */
 .te-scorebar {
   width: 100%;
   max-width: 640px;
   display: grid;
-  grid-template-columns: 56px 1fr 48px;
+  grid-template-columns: 56px 1fr auto auto;
   align-items: center;
   gap: 12px;
   margin-bottom: 28px;
@@ -143,6 +158,19 @@ body {
   text-align: right;
   white-space: nowrap;
 }
+
+.te-streak {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+  text-align: right;
+  white-space: nowrap;
+  transition: color 0.2s, font-weight 0.2s;
+  min-width: 28px;
+}
+.te-streak.s5  { color: var(--muted); }
+.te-streak.s10 { color: var(--text); font-weight: 700; }
+.te-streak.s20 { color: var(--text); font-weight: 700; letter-spacing: 0.06em; }
 
 /* ── CARD ── */
 .te-card {
@@ -179,7 +207,6 @@ body {
   padding: 28px 20px 20px;
 }
 
-/* verb + pronoun display */
 .te-prompt-verb {
   font-size: 42px;
   font-weight: 700;
@@ -208,7 +235,6 @@ body {
   margin-left: auto;
 }
 
-/* input row */
 .te-input-row {
   display: flex;
   gap: 0;
@@ -241,7 +267,7 @@ body {
   border: none;
   border-left: 1px solid var(--rule);
   background: var(--rule);
-  color: #fff;
+  color: var(--bg);
   cursor: pointer;
   white-space: nowrap;
   transition: opacity 0.1s;
@@ -249,7 +275,6 @@ body {
 .te-verify-btn:hover   { opacity: 0.8; }
 .te-verify-btn:disabled { background: var(--rule-lt); cursor: default; }
 
-/* accented chars */
 .te-chars {
   display: flex;
   flex-wrap: wrap;
@@ -270,7 +295,6 @@ body {
 }
 .te-char:hover { border-color: var(--rule); color: var(--text); background: var(--surface); }
 
-/* feedback */
 .te-feedback {
   min-height: 28px;
   display: flex;
@@ -313,7 +337,7 @@ body {
   display: none;
   transition: background 0.1s;
 }
-.te-next-btn:hover { background: var(--rule); color: #fff; }
+.te-next-btn:hover { background: var(--rule); color: var(--bg); }
 
 .te-hint-toggle {
   display: flex;
@@ -374,6 +398,13 @@ body {
   font-family: var(--mono);
 }
 
+.te-stats-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--rule-lt);
+  margin: 8px 0 4px;
+}
+
 .te-restart-btn {
   margin-top: 20px;
   font-size: 9px;
@@ -382,13 +413,12 @@ body {
   padding: 7px 18px;
   border: 1px solid var(--rule);
   background: var(--rule);
-  color: #fff;
+  color: var(--bg);
   cursor: pointer;
   transition: opacity 0.1s;
 }
 .te-restart-btn:hover { opacity: 0.75; }
 
-/* missed list */
 .te-missed {
   width: 100%;
   border-top: 1px solid var(--rule-lt);
@@ -425,6 +455,7 @@ body {
   <a class="te-back" href="index.html">← menu</a>
   <span class="te-title">conjugaison &mdash; quiz</span>
   <span class="te-subtitle">présent de l'indicatif</span>
+  <button class="te-tag" id="theme-btn" onclick="toggleTheme()">dark</button>
 </header>
 
 <div class="te-filters" id="filters">
@@ -435,6 +466,7 @@ body {
   <span class="te-score-num" id="score-label">0 / 0</span>
   <div class="te-bar-track"><div class="te-bar-fill" id="score-fill"></div></div>
   <span class="te-q-num" id="q-counter"></span>
+  <span class="te-streak" id="streak-label">×0</span>
 </div>
 
 <div id="quiz-area">
@@ -472,258 +504,263 @@ body {
     <div class="te-big-score" id="final-pct"></div>
     <div class="te-grade" id="final-tally"></div>
     <div class="te-grade" id="final-grade"></div>
+    <div class="te-stats-divider"></div>
+    <div class="te-grade" id="stats-session"></div>
+    <div class="te-grade" id="stats-cumulative"></div>
     <button class="te-restart-btn" onclick="restart()">recommencer</button>
     <div class="te-missed" id="missed-list"></div>
   </div>
 </div>
 
 <script>
-const families = [
-  { id:"aux", label:"auxiliaires", dot:"#1D4ED8",
-    verbs:[
-      {inf:"être",en:"to be",conj:[["je","suis","/sɥi/"],["tu","es","/e/"],["il/elle/on","est","/ɛ/"],["nous","sommes","/sɔm/"],["vous","êtes","/ɛt/"],["ils/elles","sont","/sɔ̃/"]]},
-      {inf:"avoir",en:"to have",conj:[["j'","ai","/e/"],["tu","as","/a/"],["il/elle/on","a","/a/"],["nous","avons","/avɔ̃/"],["vous","avez","/ave/"],["ils/elles","ont","/ɔ̃/"]]},
-      {inf:"aller",en:"to go",conj:[["je","vais","/vɛ/"],["tu","vas","/va/"],["il/elle/on","va","/va/"],["nous","allons","/alɔ̃/"],["vous","allez","/ale/"],["ils/elles","vont","/vɔ̃/"]]}
-    ]},
-  { id:"er", label:"réguliers -er", dot:"#059669",
-    verbs:[
-      {inf:"aimer",en:"to like/love",conj:[["j'","aime","/ɛm/"],["tu","aimes","/ɛm/"],["il/elle/on","aime","/ɛm/"],["nous","aimons","/ɛmɔ̃/"],["vous","aimez","/eme/"],["ils/elles","aiment","/ɛm/"]]},
-      {inf:"chanter",en:"to sing",conj:[["je","chante","/ʃɑ̃t/"],["tu","chantes","/ʃɑ̃t/"],["il/elle/on","chante","/ʃɑ̃t/"],["nous","chantons","/ʃɑ̃tɔ̃/"],["vous","chantez","/ʃɑ̃te/"],["ils/elles","chantent","/ʃɑ̃t/"]]},
-      {inf:"se laver",en:"to wash oneself",conj:[["je me","lave","/lav/"],["tu te","laves","/lav/"],["il/elle se","lave","/lav/"],["nous nous","lavons","/lavɔ̃/"],["vous vous","lavez","/lave/"],["ils/elles se","lavent","/lav/"]]}
-    ]},
-  { id:"ir_iss", label:"-ir type finir", dot:"#B45309",
-    verbs:[
-      {inf:"finir",en:"to finish",conj:[["je","finis","/fini/"],["tu","finis","/fini/"],["il/elle/on","finit","/fini/"],["nous","finissons","/finisɔ̃/"],["vous","finissez","/finise/"],["ils/elles","finissent","/finis/"]]},
-      {inf:"réfléchir",en:"to think/reflect",conj:[["je","réfléchis","/ʁefleʃi/"],["tu","réfléchis","/ʁefleʃi/"],["il/elle/on","réfléchit","/ʁefleʃi/"],["nous","réfléchissons","/ʁefleʃisɔ̃/"],["vous","réfléchissez","/ʁefleʃise/"],["ils/elles","réfléchissent","/ʁefleʃis/"]]},
-      {inf:"grandir",en:"to grow up",conj:[["je","grandis","/ɡʁɑ̃di/"],["tu","grandis","/ɡʁɑ̃di/"],["il/elle/on","grandit","/ɡʁɑ̃di/"],["nous","grandissons","/ɡʁɑ̃disɔ̃/"],["vous","grandissez","/ɡʁɑ̃dise/"],["ils/elles","grandissent","/ɡʁɑ̃dis/"]]},
-      {inf:"maigrir",en:"to lose weight",conj:[["je","maigris","/mɛɡʁi/"],["tu","maigris","/mɛɡʁi/"],["il/elle/on","maigrit","/mɛɡʁi/"],["nous","maigrissons","/mɛɡʁisɔ̃/"],["vous","maigrissez","/mɛɡʁise/"],["ils/elles","maigrissent","/mɛɡʁis/"]]},
-      {inf:"obéir",en:"to obey",conj:[["j'","obéis","/ɔbei/"],["tu","obéis","/ɔbei/"],["il/elle/on","obéit","/ɔbei/"],["nous","obéissons","/ɔbeisɔ̃/"],["vous","obéissez","/ɔbeise/"],["ils/elles","obéissent","/ɔbeis/"]]},
-      {inf:"vieillir",en:"to grow old",conj:[["je","vieillis","/vjɛji/"],["tu","vieillis","/vjɛji/"],["il/elle/on","vieillit","/vjɛji/"],["nous","vieillissons","/vjɛjisɔ̃/"],["vous","vieillissez","/vjɛjise/"],["ils/elles","vieillissent","/vjɛjis/"]]},
-      {inf:"grossir",en:"to gain weight",conj:[["je","grossis","/ɡʁosi/"],["tu","grossis","/ɡʁosi/"],["il/elle/on","grossit","/ɡʁosi/"],["nous","grossissons","/ɡʁosisɔ̃/"],["vous","grossissez","/ɡʁosise/"],["ils/elles","grossissent","/ɡʁosis/"]]},
-      {inf:"rougir",en:"to blush",conj:[["je","rougis","/ʁuʒi/"],["tu","rougis","/ʁuʒi/"],["il/elle/on","rougit","/ʁuʒi/"],["nous","rougissons","/ʁuʒisɔ̃/"],["vous","rougissez","/ʁuʒise/"],["ils/elles","rougissent","/ʁuʒis/"]]},
-      {inf:"applaudir",en:"to applaud",conj:[["j'","applaudis","/aplodi/"],["tu","applaudis","/aplodi/"],["il/elle/on","applaudit","/aplodi/"],["nous","applaudissons","/aplodisɔ̃/"],["vous","applaudissez","/aplodise/"],["ils/elles","applaudissent","/aplodis/"]]}
-    ]},
-  { id:"ir_irr", label:"-ir irréguliers (offrir)", dot:"#6D28D9",
-    verbs:[
-      {inf:"offrir",en:"to offer",conj:[["j'","offre","/ɔfʁ/"],["tu","offres","/ɔfʁ/"],["il/elle/on","offre","/ɔfʁ/"],["nous","offrons","/ɔfʁɔ̃/"],["vous","offrez","/ɔfʁe/"],["ils/elles","offrent","/ɔfʁ/"]]},
-      {inf:"ouvrir",en:"to open",conj:[["j'","ouvre","/uvʁ/"],["tu","ouvres","/uvʁ/"],["il/elle/on","ouvre","/uvʁ/"],["nous","ouvrons","/uvʁɔ̃/"],["vous","ouvrez","/uvʁe/"],["ils/elles","ouvrent","/uvʁ/"]]},
-      {inf:"accueillir",en:"to welcome",conj:[["j'","accueille","/akœj/"],["tu","accueilles","/akœj/"],["il/elle/on","accueille","/akœj/"],["nous","accueillons","/akœjɔ̃/"],["vous","accueillez","/akœje/"],["ils/elles","accueillent","/akœj/"]]},
-      {inf:"souffrir",en:"to suffer",conj:[["je","souffre","/sufʁ/"],["tu","souffres","/sufʁ/"],["il/elle/on","souffre","/sufʁ/"],["nous","souffrons","/sufʁɔ̃/"],["vous","souffrez","/sufʁe/"],["ils/elles","souffrent","/sufʁ/"]]},
-      {inf:"cueillir",en:"to pick/gather",conj:[["je","cueille","/kœj/"],["tu","cueilles","/kœj/"],["il/elle/on","cueille","/kœj/"],["nous","cueillons","/kœjɔ̃/"],["vous","cueillez","/kœje/"],["ils/elles","cueillent","/kœj/"]]}
-    ]},
-  { id:"venir", label:"famille venir", dot:"#BE123C",
-    verbs:[
-      {inf:"venir",en:"to come",conj:[["je","viens","/vjɛ̃/"],["tu","viens","/vjɛ̃/"],["il/elle/on","vient","/vjɛ̃/"],["nous","venons","/vənɔ̃/"],["vous","venez","/vəne/"],["ils/elles","viennent","/vjɛn/"]]},
-      {inf:"devenir",en:"to become",conj:[["je","deviens","/dəvjɛ̃/"],["tu","deviens","/dəvjɛ̃/"],["il/elle/on","devient","/dəvjɛ̃/"],["nous","devenons","/dəvnɔ̃/"],["vous","devenez","/dəvne/"],["ils/elles","deviennent","/dəvjɛn/"]]},
-      {inf:"revenir",en:"to come back",conj:[["je","reviens","/ʁəvjɛ̃/"],["tu","reviens","/ʁəvjɛ̃/"],["il/elle/on","revient","/ʁəvjɛ̃/"],["nous","revenons","/ʁəvnɔ̃/"],["vous","revenez","/ʁəvne/"],["ils/elles","reviennent","/ʁəvjɛn/"]]},
-      {inf:"prévenir",en:"to warn/notify",conj:[["je","préviens","/pʁevjɛ̃/"],["tu","préviens","/pʁevjɛ̃/"],["il/elle/on","prévient","/pʁevjɛ̃/"],["nous","prévenons","/pʁevnɔ̃/"],["vous","prévenez","/pʁevne/"],["ils/elles","préviennent","/pʁevjɛn/"]]},
-      {inf:"se souvenir",en:"to remember",conj:[["je me","souviens","/suvjɛ̃/"],["tu te","souviens","/suvjɛ̃/"],["il/on se","souvient","/suvjɛ̃/"],["nous nous","souvenons","/suvnɔ̃/"],["vous vous","souvenez","/suvne/"],["ils/elles se","souviennent","/suvjɛn/"]]}
-    ]},
-  { id:"ir_sans", label:"-ir sans -issons (dormir)", dot:"#0D9488",
-    verbs:[
-      {inf:"dormir",en:"to sleep",conj:[["je","dors","/dɔʁ/"],["tu","dors","/dɔʁ/"],["il/elle/on","dort","/dɔʁ/"],["nous","dormons","/dɔʁmɔ̃/"],["vous","dormez","/dɔʁme/"],["ils/elles","dorment","/dɔʁm/"]]},
-      {inf:"partir",en:"to leave",conj:[["je","pars","/paʁ/"],["tu","pars","/paʁ/"],["il/elle/on","part","/paʁ/"],["nous","partons","/paʁtɔ̃/"],["vous","partez","/paʁte/"],["ils/elles","partent","/paʁt/"]]},
-      {inf:"sortir",en:"to go out",conj:[["je","sors","/sɔʁ/"],["tu","sors","/sɔʁ/"],["il/elle/on","sort","/sɔʁ/"],["nous","sortons","/sɔʁtɔ̃/"],["vous","sortez","/sɔʁte/"],["ils/elles","sortent","/sɔʁt/"]]}
-    ]},
-  { id:"uire", label:"-uire / -ivre / -ire", dot:"#4338CA",
-    verbs:[
-      {inf:"vivre",en:"to live",conj:[["je","vis","/vi/"],["tu","vis","/vi/"],["il/elle/on","vit","/vi/"],["nous","vivons","/vivɔ̃/"],["vous","vivez","/vive/"],["ils/elles","vivent","/viv/"]]},
-      {inf:"suivre",en:"to follow",conj:[["je","suis","/sɥi/"],["tu","suis","/sɥi/"],["il/elle/on","suit","/sɥi/"],["nous","suivons","/sɥivɔ̃/"],["vous","suivez","/sɥive/"],["ils/elles","suivent","/sɥiv/"]]},
-      {inf:"écrire",en:"to write",conj:[["j'","écris","/ekʁi/"],["tu","écris","/ekʁi/"],["il/elle/on","écrit","/ekʁi/"],["nous","écrivons","/ekʁivɔ̃/"],["vous","écrivez","/ekʁive/"],["ils/elles","écrivent","/ekʁiv/"]]},
-      {inf:"lire",en:"to read",conj:[["je","lis","/li/"],["tu","lis","/li/"],["il/elle/on","lit","/li/"],["nous","lisons","/lizɔ̃/"],["vous","lisez","/lize/"],["ils/elles","lisent","/liz/"]]},
-      {inf:"conduire",en:"to drive",conj:[["je","conduis","/kɔ̃dɥi/"],["tu","conduis","/kɔ̃dɥi/"],["il/elle/on","conduit","/kɔ̃dɥi/"],["nous","conduisons","/kɔ̃dɥizɔ̃/"],["vous","conduisez","/kɔ̃dɥize/"],["ils/elles","conduisent","/kɔ̃dɥiz/"]]},
-      {inf:"construire",en:"to build",conj:[["je","construis","/kɔ̃stʁɥi/"],["tu","construis","/kɔ̃stʁɥi/"],["il/elle/on","construit","/kɔ̃stʁɥi/"],["nous","construisons","/kɔ̃stʁɥizɔ̃/"],["vous","construisez","/kɔ̃stʁɥize/"],["ils/elles","construisent","/kɔ̃stʁɥiz/"]]},
-      {inf:"détruire",en:"to destroy",conj:[["je","détruis","/detʁɥi/"],["tu","détruis","/detʁɥi/"],["il/elle/on","détruit","/detʁɥi/"],["nous","détruisons","/detʁɥizɔ̃/"],["vous","détruisez","/detʁɥize/"],["ils/elles","détruisent","/detʁɥiz/"]]}
-    ]},
-  { id:"dire_faire", label:"dire & faire", dot:"#15803D",
-    verbs:[
-      {inf:"dire",en:"to say/tell",conj:[["je","dis","/di/"],["tu","dis","/di/"],["il/elle/on","dit","/di/"],["nous","disons","/dizɔ̃/"],["vous","dites","/dit/"],["ils/elles","disent","/diz/"]]},
-      {inf:"faire",en:"to do/make",conj:[["je","fais","/fɛ/"],["tu","fais","/fɛ/"],["il/elle/on","fait","/fɛ/"],["nous","faisons","/fəzɔ̃/"],["vous","faites","/fɛt/"],["ils/elles","font","/fɔ̃/"]]}
-    ]},
-  { id:"modal", label:"modaux", dot:"#C2410C",
-    verbs:[
-      {inf:"pouvoir",en:"to be able to",conj:[["je","peux","/pø/"],["tu","peux","/pø/"],["il/elle/on","peut","/pø/"],["nous","pouvons","/puvɔ̃/"],["vous","pouvez","/puve/"],["ils/elles","peuvent","/pœv/"]]},
-      {inf:"vouloir",en:"to want",conj:[["je","veux","/vø/"],["tu","veux","/vø/"],["il/elle/on","veut","/vø/"],["nous","voulons","/vulɔ̃/"],["vous","voulez","/vule/"],["ils/elles","veulent","/vœl/"]]}
-    ]},
-  { id:"dre", label:"réguliers -dre", dot:"#4D7C0F",
-    verbs:[
-      {inf:"répondre",en:"to answer",conj:[["je","réponds","/ʁepɔ̃/"],["tu","réponds","/ʁepɔ̃/"],["il/elle/on","répond","/ʁepɔ̃/"],["nous","répondons","/ʁepɔ̃dɔ̃/"],["vous","répondez","/ʁepɔ̃de/"],["ils/elles","répondent","/ʁepɔ̃d/"]]},
-      {inf:"attendre",en:"to wait",conj:[["j'","attends","/atɑ̃/"],["tu","attends","/atɑ̃/"],["il/elle/on","attend","/atɑ̃/"],["nous","attendons","/atɑ̃dɔ̃/"],["vous","attendez","/atɑ̃de/"],["ils/elles","attendent","/atɑ̃d/"]]},
-      {inf:"entendre",en:"to hear",conj:[["j'","entends","/ɑ̃tɑ̃/"],["tu","entends","/ɑ̃tɑ̃/"],["il/elle/on","entend","/ɑ̃tɑ̃/"],["nous","entendons","/ɑ̃tɑ̃dɔ̃/"],["vous","entendez","/ɑ̃tɑ̃de/"],["ils/elles","entendent","/ɑ̃tɑ̃d/"]]},
-      {inf:"vendre",en:"to sell",conj:[["je","vends","/vɑ̃/"],["tu","vends","/vɑ̃/"],["il/elle/on","vend","/vɑ̃/"],["nous","vendons","/vɑ̃dɔ̃/"],["vous","vendez","/vɑ̃de/"],["ils/elles","vendent","/vɑ̃d/"]]},
-      {inf:"rendre",en:"to give back",conj:[["je","rends","/ʁɑ̃/"],["tu","rends","/ʁɑ̃/"],["il/elle/on","rend","/ʁɑ̃/"],["nous","rendons","/ʁɑ̃dɔ̃/"],["vous","rendez","/ʁɑ̃de/"],["ils/elles","rendent","/ʁɑ̃d/"]]},
-      {inf:"perdre",en:"to lose",conj:[["je","perds","/pɛʁ/"],["tu","perds","/pɛʁ/"],["il/elle/on","perd","/pɛʁ/"],["nous","perdons","/pɛʁdɔ̃/"],["vous","perdez","/pɛʁde/"],["ils/elles","perdent","/pɛʁd/"]]}
-    ]},
-  { id:"prendre", label:"famille prendre", dot:"#0E7490",
-    verbs:[
-      {inf:"prendre",en:"to take",conj:[["je","prends","/pʁɑ̃/"],["tu","prends","/pʁɑ̃/"],["il/elle/on","prend","/pʁɑ̃/"],["nous","prenons","/pʁənɔ̃/"],["vous","prenez","/pʁəne/"],["ils/elles","prennent","/pʁɛn/"]]},
-      {inf:"apprendre",en:"to learn",conj:[["j'","apprends","/apʁɑ̃/"],["tu","apprends","/apʁɑ̃/"],["il/elle/on","apprend","/apʁɑ̃/"],["nous","apprenons","/apʁənɔ̃/"],["vous","apprenez","/apʁəne/"],["ils/elles","apprennent","/apʁɛn/"]]},
-      {inf:"comprendre",en:"to understand",conj:[["je","comprends","/kɔ̃pʁɑ̃/"],["tu","comprends","/kɔ̃pʁɑ̃/"],["il/elle/on","comprend","/kɔ̃pʁɑ̃/"],["nous","comprenons","/kɔ̃pʁənɔ̃/"],["vous","comprenez","/kɔ̃pʁəne/"],["ils/elles","comprennent","/kɔ̃pʁɛn/"]]}
-    ]},
-  { id:"mettre", label:"famille mettre", dot:"#9D174D",
-    verbs:[
-      {inf:"mettre",en:"to put",conj:[["je","mets","/mɛ/"],["tu","mets","/mɛ/"],["il/elle/on","met","/mɛ/"],["nous","mettons","/mɛtɔ̃/"],["vous","mettez","/mɛte/"],["ils/elles","mettent","/mɛt/"]]},
-      {inf:"permettre",en:"to allow",conj:[["je","permets","/pɛʁmɛ/"],["tu","permets","/pɛʁmɛ/"],["il/elle/on","permet","/pɛʁmɛ/"],["nous","permettons","/pɛʁmɛtɔ̃/"],["vous","permettez","/pɛʁmɛte/"],["ils/elles","permettent","/pɛʁmɛt/"]]},
-      {inf:"admettre",en:"to admit",conj:[["j'","admets","/admɛ/"],["tu","admets","/admɛ/"],["il/elle/on","admet","/admɛ/"],["nous","admettons","/admɛtɔ̃/"],["vous","admettez","/admɛte/"],["ils/elles","admettent","/admɛt/"]]}
-    ]},
-  { id:"cevoir", label:"devoir & -cevoir", dot:"#475569",
-    verbs:[
-      {inf:"devoir",en:"must/to have to",conj:[["je","dois","/dwa/"],["tu","dois","/dwa/"],["il/elle/on","doit","/dwa/"],["nous","devons","/dəvɔ̃/"],["vous","devez","/dəve/"],["ils/elles","doivent","/dwav/"]]},
-      {inf:"recevoir",en:"to receive",conj:[["je","reçois","/ʁəswa/"],["tu","reçois","/ʁəswa/"],["il/elle/on","reçoit","/ʁəswa/"],["nous","recevons","/ʁəsvɔ̃/"],["vous","recevez","/ʁəsve/"],["ils/elles","reçoivent","/ʁəswav/"]]},
-      {inf:"apercevoir",en:"to notice",conj:[["j'","aperçois","/apɛʁswa/"],["tu","aperçois","/apɛʁswa/"],["il/elle/on","aperçoit","/apɛʁswa/"],["nous","apercevons","/apɛʁsvɔ̃/"],["vous","apercevez","/apɛʁsve/"],["ils/elles","aperçoivent","/apɛʁswav/"]]},
-      {inf:"décevoir",en:"to disappoint",conj:[["je","déçois","/deswa/"],["tu","déçois","/deswa/"],["il/elle/on","déçoit","/deswa/"],["nous","décevons","/desvɔ̃/"],["vous","décevez","/desve/"],["ils/elles","déçoivent","/deswav/"]]}
-    ]},
-  { id:"irr", label:"irréguliers divers", dot:"#7E22CE",
-    verbs:[
-      {inf:"croire",en:"to believe",conj:[["je","crois","/kʁwa/"],["tu","crois","/kʁwa/"],["il/elle/on","croit","/kʁwa/"],["nous","croyons","/kʁwajɔ̃/"],["vous","croyez","/kʁwaje/"],["ils/elles","croient","/kʁwa/"]]},
-      {inf:"voir",en:"to see",conj:[["je","vois","/vwa/"],["tu","vois","/vwa/"],["il/elle/on","voit","/vwa/"],["nous","voyons","/vwajɔ̃/"],["vous","voyez","/vwaje/"],["ils/elles","voient","/vwa/"]]},
-      {inf:"boire",en:"to drink",conj:[["je","bois","/bwa/"],["tu","bois","/bwa/"],["il/elle/on","boit","/bwa/"],["nous","buvons","/byvɔ̃/"],["vous","buvez","/byve/"],["ils/elles","boivent","/bwav/"]]},
-      {inf:"savoir",en:"to know (facts)",conj:[["je","sais","/sɛ/"],["tu","sais","/sɛ/"],["il/elle/on","sait","/sɛ/"],["nous","savons","/savɔ̃/"],["vous","savez","/save/"],["ils/elles","savent","/sav/"]]},
-      {inf:"connaître",en:"to know (people)",conj:[["je","connais","/kɔnɛ/"],["tu","connais","/kɔnɛ/"],["il/elle/on","connaît","/kɔnɛ/"],["nous","connaissons","/kɔnɛsɔ̃/"],["vous","connaissez","/kɔnɛse/"],["ils/elles","connaissent","/kɔnɛs/"]]}
-    ]}
-];
+// ── constants ────────────────────────────────────────────────
+const ROUND_N  = 20;
+const LS_ITEMS = 'vq_items';
+const LS_CUM   = 'vq_cum';
 
-// build filters
-const filtersEl=document.getElementById('filters');
-families.forEach(f=>{
-  const b=document.createElement('button');
-  b.className='te-tag'; b.id='filter-'+f.id; b.textContent=f.label;
-  b.onclick=()=>setFilter(f.id);
-  filtersEl.appendChild(b);
-});
+// ── state ────────────────────────────────────────────────────
+let families = [], pool = [], queue = [], current = null;
+let score = 0, total = 0, missed = [];
+let answered = false, activeFilter = 'all', showHints = false;
+let streak = 0, roundNum = 0, questionStart = 0;
+let sessionCorrect = 0, sessionTimes = [];
 
-// chars
-['à','â','é','è','ê','î','ï','ô','ù','û','ü','ç','œ'].forEach(ch=>{
-  const b=document.createElement('button');
-  b.className='te-char'; b.textContent=ch; b.type='button';
-  b.onclick=()=>insertChar(ch);
-  document.getElementById('char-bar').appendChild(b);
-});
+// ── persistence ──────────────────────────────────────────────
+let itemStats = JSON.parse(localStorage.getItem(LS_ITEMS) || '{}');
+let cumStats  = JSON.parse(localStorage.getItem(LS_CUM)   || '{"total":0,"correct":0,"timeSum":0}');
 
-let pool=[],queue=[],current=null;
-let score=0,total=0,missed=[];
-let answered=false,activeFilter='all',showHints=false;
+function saveItems() { localStorage.setItem(LS_ITEMS, JSON.stringify(itemStats)); }
+function saveCum()   { localStorage.setItem(LS_CUM,   JSON.stringify(cumStats)); }
 
-function norm(s){ return s.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/['']/g,"'"); }
-function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a; }
+function itemKey(it) { return it.verb.inf + '\x1f' + it.pro; }
 
-function buildPool(fid){
-  pool=[];
-  families.forEach(f=>{
-    if(fid!=='all'&&f.id!==fid)return;
-    f.verbs.forEach(v=>v.conj.forEach(([pro,form,ipa])=>pool.push({family:f,verb:v,pro,form,ipa})));
+function maxAvgTime() {
+  let m = 5000;
+  for (const s of Object.values(itemStats))
+    if (s.n > 0) m = Math.max(m, s.t / s.n);
+  return m;
+}
+
+function itemWeight(it) {
+  const s = itemStats[itemKey(it)];
+  if (!s || s.n === 0) return 1.5;
+  const acc = s.c / s.n;
+  const avg = s.t / s.n;
+  return Math.max(0.05, (1 - acc) + avg / maxAvgTime());
+}
+
+// ── helpers ──────────────────────────────────────────────────
+function norm(s){ return s.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/['']/g,"'"); }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=0|Math.random()*(i+1);[a[i],a[j]]=[a[j],a[i]];}return a; }
+
+// ── pool / weighted round ────────────────────────────────────
+function buildPool(fid) {
+  pool = [];
+  families.forEach(f => {
+    if (fid !== 'all' && f.id !== fid) return;
+    f.verbs.forEach(v => v.conj.forEach(([pro,form,ipa]) =>
+      pool.push({family:f, verb:v, pro, form, ipa})
+    ));
   });
 }
 
-function setFilter(id){
-  activeFilter=id;
-  document.querySelectorAll('.te-tag').forEach(b=>b.classList.remove('active'));
+function buildRound() {
+  buildPool(activeFilter);
+  if (!pool.length) { queue = []; return; }
+  const w = pool.map(it => itemWeight(it));
+  const wt = w.reduce((a,b) => a+b, 0);
+  queue = [];
+  for (let i = 0; i < ROUND_N; i++) {
+    let r = Math.random() * wt, cum = 0;
+    for (let j = 0; j < pool.length; j++) {
+      cum += w[j];
+      if (r < cum) { queue.push(pool[j]); break; }
+    }
+    if (queue.length < i+1) queue.push(pool[pool.length-1]);
+  }
+}
+
+// ── filters ──────────────────────────────────────────────────
+function setFilter(id) {
+  activeFilter = id;
+  document.querySelectorAll('.te-tag').forEach(b => b.classList.remove('active'));
   document.getElementById('filter-'+id).classList.add('active');
   restart();
 }
 
-function restart(){
-  score=0;total=0;missed=[];
-  buildPool(activeFilter);
-  queue=shuffle([...pool]);
-  document.getElementById('quiz-area').style.display='block';
-  document.getElementById('results-screen').style.display='none';
-  updateScore();
-  nextQuestion(true);
-}
-
-function nextQuestion(first){
-  if(!queue.length){showResults();return;}
-  current=queue.pop(); answered=false;
-  const inp=document.getElementById('answer-input');
-  inp.value=''; inp.className='te-input'; inp.disabled=false;
-  document.getElementById('prompt-inf').textContent=current.verb.inf;
-  document.getElementById('prompt-pro').textContent=current.pro;
-  document.getElementById('prompt-en').textContent=current.verb.en;
-  document.getElementById('card-group').textContent=current.family.label;
-  document.getElementById('card-dot').style.background=current.family.dot;
-  document.getElementById('feedback').innerHTML=showHints?`<span class="fb-ipa">${current.ipa}</span>`:'';
-  document.getElementById('next-btn').style.display='none';
-  document.getElementById('submit-btn').disabled=false;
-  document.getElementById('q-counter').textContent=`${total+1}/${pool.length}`;
-  document.getElementById('remaining').textContent=`${queue.length} left`;
-  if(!first) inp.focus();
-}
-
-function checkAnswer(){
-  if(answered||!current)return;
-  const inp=document.getElementById('answer-input');
-  if(!inp.value.trim()){inp.focus();return;}
-  answered=true; total++;
-  const ok=norm(inp.value)===norm(current.form);
-  inp.disabled=true;
-  document.getElementById('submit-btn').disabled=true;
-  if(ok){
-    score++;
-    inp.className='te-input ok';
-    document.getElementById('feedback').innerHTML=
-      `<span class="fb-ok">✓</span> <span class="fb-ipa">${current.ipa}</span>`;
-  } else {
-    inp.className='te-input err';
-    document.getElementById('feedback').innerHTML=
-      `<span class="fb-err">✗</span> <span class="fb-correct-form">${current.form}</span> <span class="fb-ipa">${current.ipa}</span>`;
-    missed.push(current);
-  }
-  updateScore();
-  document.getElementById('next-btn').style.display='block';
-}
-
-function updateScore(){
-  const pct=total>0?(score/total)*100:0;
-  document.getElementById('score-label').textContent=`${score} / ${total}`;
-  document.getElementById('score-fill').style.width=pct+'%';
-}
-
-function toggleHint(){
-  showHints=document.getElementById('hint-check').checked;
-  if(!answered) document.getElementById('feedback').innerHTML=
-    showHints&&current?`<span class="fb-ipa">${current.ipa}</span>`:'';
-}
-
-function insertChar(ch){
-  const inp=document.getElementById('answer-input');
-  if(inp.disabled)return;
-  const s=inp.selectionStart,e=inp.selectionEnd;
-  inp.value=inp.value.slice(0,s)+ch+inp.value.slice(e);
-  inp.selectionStart=inp.selectionEnd=s+1;
+// ── chars ────────────────────────────────────────────────────
+function insertChar(ch) {
+  const inp = document.getElementById('answer-input');
+  if (inp.disabled) return;
+  const s = inp.selectionStart, e = inp.selectionEnd;
+  inp.value = inp.value.slice(0,s)+ch+inp.value.slice(e);
+  inp.selectionStart = inp.selectionEnd = s+1;
   inp.focus();
 }
 
-function showResults(){
-  document.getElementById('quiz-area').style.display='none';
-  document.getElementById('results-screen').style.display='flex';
-  const pct=total>0?Math.round((score/total)*100):0;
-  document.getElementById('final-pct').textContent=pct+'%';
-  document.getElementById('final-tally').textContent=`${score} / ${total} correct`;
-  const grades=[[90,'excellent'],[75,'très bien'],[60,'bien'],[40,'passable'],[0,'à revoir']];
-  document.getElementById('final-grade').textContent=grades.find(([t])=>pct>=t)[1];
-  const ml=document.getElementById('missed-list');
-  ml.innerHTML='';
-  if(missed.length){
-    const h=document.createElement('div'); h.className='te-missed-header';
-    h.textContent=`à revoir — ${missed.length}`; ml.appendChild(h);
-    missed.forEach(m=>{
-      const r=document.createElement('div'); r.className='te-missed-row';
-      r.innerHTML=`<span class="mi-pro">${m.pro} — ${m.verb.inf}</span><span class="mi-form">${m.form}</span><span class="mi-ipa">${m.ipa}</span>`;
+// ── dark mode ────────────────────────────────────────────────
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('theme-btn').textContent = dark ? 'dark' : 'light';
+}
+
+// ── score / streak UI ────────────────────────────────────────
+function updateScore() {
+  const pct = total > 0 ? (score/total)*100 : 0;
+  document.getElementById('score-label').textContent = score+' / '+total;
+  document.getElementById('score-fill').style.width  = pct+'%';
+}
+
+function updateStreak() {
+  const el = document.getElementById('streak-label');
+  el.textContent = '×'+streak;
+  el.className = 'te-streak'+(streak>=20?' s20':streak>=10?' s10':streak>=5?' s5':'');
+}
+
+function updateRound() {
+  const pos = ROUND_N - queue.length;
+  document.getElementById('q-counter').textContent  = 'round '+roundNum+' — '+pos+'/'+ROUND_N;
+  document.getElementById('remaining').textContent  = queue.length+' left';
+}
+
+// ── quiz flow ────────────────────────────────────────────────
+function restart() {
+  roundNum++;
+  score = 0; total = 0; missed = [];
+  sessionCorrect = 0; sessionTimes = [];
+  streak = 0;
+  buildRound();
+  document.getElementById('quiz-area').style.display     = 'block';
+  document.getElementById('results-screen').style.display = 'none';
+  updateScore(); updateStreak();
+  nextQuestion(true);
+}
+
+function nextQuestion(first) {
+  if (!queue.length) { showResults(); return; }
+  current = queue.pop(); answered = false;
+  questionStart = Date.now();
+  const inp = document.getElementById('answer-input');
+  inp.value = ''; inp.className = 'te-input'; inp.disabled = false;
+  document.getElementById('prompt-inf').textContent  = current.verb.inf;
+  document.getElementById('prompt-pro').textContent  = current.pro;
+  document.getElementById('prompt-en').textContent   = current.verb.en;
+  document.getElementById('card-group').textContent  = current.family.label;
+  document.getElementById('card-dot').style.background = current.family.dot;
+  document.getElementById('feedback').innerHTML = showHints ? '<span class="fb-ipa">'+current.ipa+'</span>' : '';
+  document.getElementById('next-btn').style.display  = 'none';
+  document.getElementById('submit-btn').disabled     = false;
+  updateRound();
+  if (!first) inp.focus();
+}
+
+function checkAnswer() {
+  if (answered || !current) return;
+  const inp = document.getElementById('answer-input');
+  if (!inp.value.trim()) { inp.focus(); return; }
+  const elapsed = Date.now() - questionStart;
+  answered = true; total++;
+
+  const ok = norm(inp.value) === norm(current.form);
+  inp.disabled = true;
+  document.getElementById('submit-btn').disabled = true;
+
+  // item stats
+  const k = itemKey(current);
+  if (!itemStats[k]) itemStats[k] = {n:0, c:0, t:0};
+  itemStats[k].n++;
+  itemStats[k].t += elapsed;
+  if (ok) itemStats[k].c++;
+  saveItems();
+
+  // cumulative
+  cumStats.total++;
+  cumStats.timeSum += elapsed;
+  if (ok) { cumStats.correct++; sessionCorrect++; }
+  saveCum();
+
+  sessionTimes.push(elapsed);
+
+  if (ok) {
+    score++; streak++;
+    inp.className = 'te-input ok';
+    document.getElementById('feedback').innerHTML = '<span class="fb-ok">✓</span> <span class="fb-ipa">'+current.ipa+'</span>';
+  } else {
+    streak = 0;
+    inp.className = 'te-input err';
+    document.getElementById('feedback').innerHTML = '<span class="fb-err">✗</span> <span class="fb-correct-form">'+current.form+'</span> <span class="fb-ipa">'+current.ipa+'</span>';
+    missed.push(current);
+  }
+  updateScore(); updateStreak();
+  document.getElementById('next-btn').style.display = 'block';
+}
+
+function toggleHint() {
+  showHints = document.getElementById('hint-check').checked;
+  if (!answered) document.getElementById('feedback').innerHTML =
+    showHints && current ? '<span class="fb-ipa">'+current.ipa+'</span>' : '';
+}
+
+function showResults() {
+  document.getElementById('quiz-area').style.display       = 'none';
+  document.getElementById('results-screen').style.display  = 'flex';
+  const pct = total > 0 ? Math.round(score/total*100) : 0;
+  document.getElementById('final-pct').textContent   = pct+'%';
+  document.getElementById('final-tally').textContent = score+' / '+total+' correct';
+  const grades = [[90,'excellent'],[75,'très bien'],[60,'bien'],[40,'passable'],[0,'à revoir']];
+  document.getElementById('final-grade').textContent = grades.find(([t])=>pct>=t)[1];
+
+  const avgMs  = sessionTimes.length ? sessionTimes.reduce((a,b)=>a+b,0)/sessionTimes.length : 0;
+  const cumPct = cumStats.total > 0 ? Math.round(cumStats.correct/cumStats.total*100) : 0;
+  const cumAvg = cumStats.total > 0 ? (cumStats.timeSum/cumStats.total/1000).toFixed(1) : '—';
+  document.getElementById('stats-session').textContent    = 'session · '+pct+'% · avg '+(avgMs/1000).toFixed(1)+'s';
+  document.getElementById('stats-cumulative').textContent = 'all time · '+cumPct+'% · avg '+cumAvg+'s · '+cumStats.total+' questions';
+
+  const ml = document.getElementById('missed-list');
+  ml.innerHTML = '';
+  if (missed.length) {
+    const h = document.createElement('div'); h.className = 'te-missed-header';
+    h.textContent = 'à revoir — '+missed.length; ml.appendChild(h);
+    missed.forEach(m => {
+      const r = document.createElement('div'); r.className = 'te-missed-row';
+      r.innerHTML = '<span class="mi-pro">'+m.pro+' — '+m.verb.inf+'</span><span class="mi-form">'+m.form+'</span><span class="mi-ipa">'+m.ipa+'</span>';
       ml.appendChild(r);
     });
   }
 }
 
-document.addEventListener('keydown',e=>{
-  if(e.key==='Enter'){if(!answered)checkAnswer();else nextQuestion();}
+// ── keyboard ─────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { if (!answered) checkAnswer(); else nextQuestion(); }
 });
 
-restart();
+// ── init ─────────────────────────────────────────────────────
+fetch('verbs.json')
+  .then(r => r.json())
+  .then(data => {
+    families = data;
+    const fe = document.getElementById('filters');
+    families.forEach(f => {
+      const b = document.createElement('button');
+      b.className = 'te-tag'; b.id = 'filter-'+f.id; b.textContent = f.label;
+      b.onclick = () => setFilter(f.id);
+      fe.appendChild(b);
+    });
+    ['à','â','é','è','ê','î','ï','ô','ù','û','ü','ç','œ'].forEach(ch => {
+      const b = document.createElement('button');
+      b.className = 'te-char'; b.textContent = ch; b.type = 'button';
+      b.onclick = () => insertChar(ch);
+      document.getElementById('char-bar').appendChild(b);
+    });
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.getElementById('theme-btn').textContent = dark ? 'light' : 'dark';
+    restart();
+  });
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 </script>
 </body>
 </html>
