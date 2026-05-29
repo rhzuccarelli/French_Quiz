@@ -1,5 +1,42 @@
+* Analog mode: Generate an exam, answer on a paper. take a picture of the paper and evaluate the answers
+* Text to speech
+* IPA testing mode, multiple choices request.
 
-* Put verbs on .jason files for a better update
-* Include the back to menu
-* Introduce estadistics: correct answers, average time to answer
-* Make it smarter: when you make tests made them as rounds of 20 questions and keep tracking of which ones have a shorter time to response and if they are correct or not to make the app ask you more those ones that you falied or you are more slow to answer.
+I need the following improvements applied across all relevant files:
+
+1. JSON DATA FILES
+- Extract all verb/participe data from both HTML files into separate JSON files (verbs.json and participes.json)
+- Load them via fetch() on page init
+- No change to the quiz logic or UI, just the data source
+
+2. BACK TO MENU
+- Add a "← menu" link in the header of both quiz files, pointing to index.html
+- Style consistent with existing header: small, lowercase, letter-spaced, no heavy decoration
+
+3. STATISTICS
+- Track per session: correct answers %, average response time per question (time between question appearing and answer submitted)
+- Show them on the results screen (already exists) alongside the current score
+- Persist cumulative stats across sessions using localStorage (total questions answered, total correct, all response times) so the user can see improvement over time
+
+4. SMART ROUNDS WITH WEIGHTED REPETITION
+- Rounds of 20 questions drawn from the full pool
+- Track per item: attempts, correct count, average response time
+- Weight the selection so items the user fails or answers slowly appear more often
+- Simple weight formula: weight = (1 - accuracy) + (avgTime / maxTime)
+- Persist item-level stats in localStorage so weights survive across sessions
+- Show round number and progress within the round (e.g. "round 2 — 7/20")
+
+5. STREAK COUNTER
+- Track consecutive correct answers in the current session
+- Display it in the score bar area (already has: score label, progress bar, question counter)
+- Reset to 0 on any wrong answer
+- Show a small visual emphasis when streak hits 5, 10, 20 (e.g. number changes color or weight, using existing CSS variables)
+- Use existing typographic style: monospace font, lowercase labels, minimal
+
+6. DARK MODE
+- The files already use CSS custom properties on :root (--bg, --surface, --rule, --text, --muted, --faint, --ok-bg, --err-bg)
+- Add a dark theme by overriding those variables (dark background ~#1a1a18, surface ~#242420, adjusted rule and text colors)
+- Add a toggle button in the header, consistent with the existing te-tag button style (small, lowercase, letter-spaced, bordered)
+- Persist the user's preference in localStorage so it survives page refresh
+
+Keep all changes consistent with the existing design language throughout: no emojis, no heavy UI, lowercase labels, monospace for numbers and labels. No external libraries, pure CSS + vanilla JS.
