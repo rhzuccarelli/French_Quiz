@@ -500,7 +500,6 @@ body {
 <script>
 // ── constants ────────────────────────────────────────────────
 const ROUND_N  = 20;
-const LS_ITEMS = 'pq_items';
 const LS_CUM   = 'pq_cum';
 
 // ── state ────────────────────────────────────────────────────
@@ -508,30 +507,13 @@ let groups = [], pool = [], queue = [], current = null;
 let scorePP = 0, scoreAux = 0, total = 0, missed = [];
 let ppDone = false, auxDone = false;
 let activeFilter = 'all', showHints = false;
-let streak = 0, roundNum = 0, questionStart = 0;
+let streak = 0, roundNum = 0, questionStart = 0, roundSize = 0;
 let sessionCorrect = 0, sessionTimes = [];
 
 // ── persistence ──────────────────────────────────────────────
-let itemStats = JSON.parse(localStorage.getItem(LS_ITEMS) || '{}');
 let cumStats  = JSON.parse(localStorage.getItem(LS_CUM)   || '{"total":0,"correct":0,"timeSum":0}');
 
-function saveItems() { localStorage.setItem(LS_ITEMS, JSON.stringify(itemStats)); }
 function saveCum()   { localStorage.setItem(LS_CUM,   JSON.stringify(cumStats)); }
-
-function maxAvgTime() {
-  let m = 5000;
-  for (const s of Object.values(itemStats))
-    if (s.n > 0) m = Math.max(m, s.t / s.n);
-  return m;
-}
-
-function itemWeight(it) {
-  const s = itemStats[it.verb.inf];
-  if (!s || s.n === 0) return 1.5;
-  const acc = s.c / s.n;
-  const avg = s.t / s.n;
-  return Math.max(0.05, (1 - acc) + avg / maxAvgTime());
-}
 
 // ── helpers ──────────────────────────────────────────────────
 function norm(s){ return s.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
@@ -548,18 +530,15 @@ function buildPool(fid) {
 
 function buildRound() {
   buildPool(activeFilter);
-  if (!pool.length) { queue = []; return; }
-  const w = pool.map(it => itemWeight(it));
-  const wt = w.reduce((a,b) => a+b, 0);
-  queue = [];
-  for (let i = 0; i < ROUND_N; i++) {
-    let r = Math.random() * wt, cum = 0;
-    for (let j = 0; j < pool.length; j++) {
-      cum += w[j];
-      if (r < cum) { queue.push(pool[j]); break; }
-    }
-    if (queue.length < i+1) queue.push(pool[pool.length-1]);
+  if (!pool.length) { queue = []; roundSize = 0; return; }
+  if (activeFilter === 'all') {
+    queue = [];
+    for (let i = 0; i < ROUND_N; i++)
+      queue.push(pool[Math.floor(Math.random() * pool.length)]);
+  } else {
+    queue = shuffle([...pool]);
   }
+  roundSize = queue.length;
 }
 
 // ── filters ──────────────────────────────────────────────────
@@ -603,8 +582,8 @@ function updateStreak() {
 }
 
 function updateRound() {
-  const pos = ROUND_N - queue.length;
-  document.getElementById('q-counter').textContent = 'round '+roundNum+' — '+pos+'/'+ROUND_N;
+  const pos = roundSize - queue.length;
+  document.getElementById('q-counter').textContent = 'round '+roundNum+' — '+pos+'/'+roundSize;
   document.getElementById('remaining').textContent = queue.length+' left';
 }
 
@@ -653,14 +632,6 @@ function checkPP() {
   const ok = norm(inp.value) === norm(current.verb.pp);
   inp.disabled = true;
   document.getElementById('submit-btn').disabled = true;
-
-  // item stats (PP timing)
-  const k = current.verb.inf;
-  if (!itemStats[k]) itemStats[k] = {n:0, c:0, t:0};
-  itemStats[k].n++;
-  itemStats[k].t += elapsed;
-  if (ok) itemStats[k].c++;
-  saveItems();
 
   // cumulative
   cumStats.total++;
