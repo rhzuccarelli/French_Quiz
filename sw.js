@@ -1,12 +1,13 @@
-const CACHE = 'fr-quiz-v1';
+const CACHE = 'fr-quiz-v2';
+const BASE = new URL('.', self.location).href;
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/french-verbs-quiz.html',
-  '/french-participes-quiz.html',
-  '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
+  BASE,
+  BASE + 'index.html',
+  BASE + 'french-verbs-quiz.html',
+  BASE + 'french-participes-quiz.html',
+  BASE + 'manifest.json',
+  BASE + 'icons/icon-192.png',
+  BASE + 'icons/icon-512.png',
 ];
 
 self.addEventListener('install', e => {
