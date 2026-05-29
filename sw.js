@@ -1,10 +1,12 @@
-const CACHE = 'fr-quiz-v2';
+const CACHE = 'fr-quiz-v4';
 const BASE = new URL('.', self.location).href;
 const ASSETS = [
   BASE,
   BASE + 'index.html',
   BASE + 'french-verbs-quiz.html',
   BASE + 'french-participes-quiz.html',
+  BASE + 'verbs.json',
+  BASE + 'participes.json',
   BASE + 'manifest.json',
   BASE + 'icons/icon-192.png',
   BASE + 'icons/icon-512.png',

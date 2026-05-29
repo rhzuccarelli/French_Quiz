@@ -1,0 +1,90 @@
+[
+  {"id":"aux","label":"auxiliaires","dot":"#1D4ED8","verbs":[
+    {"inf":"être","en":"to be","conj":[["je","suis","/sɥi/"],["tu","es","/e/"],["il/elle/on","est","/ɛ/"],["nous","sommes","/sɔm/"],["vous","êtes","/ɛt/"],["ils/elles","sont","/sɔ̃/"]]},
+    {"inf":"avoir","en":"to have","conj":[["j'","ai","/e/"],["tu","as","/a/"],["il/elle/on","a","/a/"],["nous","avons","/avɔ̃/"],["vous","avez","/ave/"],["ils/elles","ont","/ɔ̃/"]]},
+    {"inf":"aller","en":"to go","conj":[["je","vais","/vɛ/"],["tu","vas","/va/"],["il/elle/on","va","/va/"],["nous","allons","/alɔ̃/"],["vous","allez","/ale/"],["ils/elles","vont","/vɔ̃/"]]}
+  ]},
+  {"id":"er","label":"réguliers -er","dot":"#059669","verbs":[
+    {"inf":"aimer","en":"to like/love","conj":[["j'","aime","/ɛm/"],["tu","aimes","/ɛm/"],["il/elle/on","aime","/ɛm/"],["nous","aimons","/ɛmɔ̃/"],["vous","aimez","/eme/"],["ils/elles","aiment","/ɛm/"]]},
+    {"inf":"chanter","en":"to sing","conj":[["je","chante","/ʃɑ̃t/"],["tu","chantes","/ʃɑ̃t/"],["il/elle/on","chante","/ʃɑ̃t/"],["nous","chantons","/ʃɑ̃tɔ̃/"],["vous","chantez","/ʃɑ̃te/"],["ils/elles","chantent","/ʃɑ̃t/"]]},
+    {"inf":"se laver","en":"to wash oneself","conj":[["je me","lave","/lav/"],["tu te","laves","/lav/"],["il/elle se","lave","/lav/"],["nous nous","lavons","/lavɔ̃/"],["vous vous","lavez","/lave/"],["ils/elles se","lavent","/lav/"]]}
+  ]},
+  {"id":"ir_iss","label":"-ir type finir","dot":"#B45309","verbs":[
+    {"inf":"finir","en":"to finish","conj":[["je","finis","/fini/"],["tu","finis","/fini/"],["il/elle/on","finit","/fini/"],["nous","finissons","/finisɔ̃/"],["vous","finissez","/finise/"],["ils/elles","finissent","/finis/"]]},
+    {"inf":"réfléchir","en":"to think/reflect","conj":[["je","réfléchis","/ʁefleʃi/"],["tu","réfléchis","/ʁefleʃi/"],["il/elle/on","réfléchit","/ʁefleʃi/"],["nous","réfléchissons","/ʁefleʃisɔ̃/"],["vous","réfléchissez","/ʁefleʃise/"],["ils/elles","réfléchissent","/ʁefleʃis/"]]},
+    {"inf":"grandir","en":"to grow up","conj":[["je","grandis","/ɡʁɑ̃di/"],["tu","grandis","/ɡʁɑ̃di/"],["il/elle/on","grandit","/ɡʁɑ̃di/"],["nous","grandissons","/ɡʁɑ̃disɔ̃/"],["vous","grandissez","/ɡʁɑ̃dise/"],["ils/elles","grandissent","/ɡʁɑ̃dis/"]]},
+    {"inf":"maigrir","en":"to lose weight","conj":[["je","maigris","/mɛɡʁi/"],["tu","maigris","/mɛɡʁi/"],["il/elle/on","maigrit","/mɛɡʁi/"],["nous","maigrissons","/mɛɡʁisɔ̃/"],["vous","maigrissez","/mɛɡʁise/"],["ils/elles","maigrissent","/mɛɡʁis/"]]},
+    {"inf":"obéir","en":"to obey","conj":[["j'","obéis","/ɔbei/"],["tu","obéis","/ɔbei/"],["il/elle/on","obéit","/ɔbei/"],["nous","obéissons","/ɔbeisɔ̃/"],["vous","obéissez","/ɔbeise/"],["ils/elles","obéissent","/ɔbeis/"]]},
+    {"inf":"vieillir","en":"to grow old","conj":[["je","vieillis","/vjɛji/"],["tu","vieillis","/vjɛji/"],["il/elle/on","vieillit","/vjɛji/"],["nous","vieillissons","/vjɛjisɔ̃/"],["vous","vieillissez","/vjɛjise/"],["ils/elles","vieillissent","/vjɛjis/"]]},
+    {"inf":"grossir","en":"to gain weight","conj":[["je","grossis","/ɡʁosi/"],["tu","grossis","/ɡʁosi/"],["il/elle/on","grossit","/ɡʁosi/"],["nous","grossissons","/ɡʁosisɔ̃/"],["vous","grossissez","/ɡʁosise/"],["ils/elles","grossissent","/ɡʁosis/"]]},
+    {"inf":"rougir","en":"to blush","conj":[["je","rougis","/ʁuʒi/"],["tu","rougis","/ʁuʒi/"],["il/elle/on","rougit","/ʁuʒi/"],["nous","rougissons","/ʁuʒisɔ̃/"],["vous","rougissez","/ʁuʒise/"],["ils/elles","rougissent","/ʁuʒis/"]]},
+    {"inf":"applaudir","en":"to applaud","conj":[["j'","applaudis","/aplodi/"],["tu","applaudis","/aplodi/"],["il/elle/on","applaudit","/aplodi/"],["nous","applaudissons","/aplodisɔ̃/"],["vous","applaudissez","/aplodise/"],["ils/elles","applaudissent","/aplodis/"]]}
+  ]},
+  {"id":"ir_irr","label":"-ir irréguliers (offrir)","dot":"#6D28D9","verbs":[
+    {"inf":"offrir","en":"to offer","conj":[["j'","offre","/ɔfʁ/"],["tu","offres","/ɔfʁ/"],["il/elle/on","offre","/ɔfʁ/"],["nous","offrons","/ɔfʁɔ̃/"],["vous","offrez","/ɔfʁe/"],["ils/elles","offrent","/ɔfʁ/"]]},
+    {"inf":"ouvrir","en":"to open","conj":[["j'","ouvre","/uvʁ/"],["tu","ouvres","/uvʁ/"],["il/elle/on","ouvre","/uvʁ/"],["nous","ouvrons","/uvʁɔ̃/"],["vous","ouvrez","/uvʁe/"],["ils/elles","ouvrent","/uvʁ/"]]},
+    {"inf":"accueillir","en":"to welcome","conj":[["j'","accueille","/akœj/"],["tu","accueilles","/akœj/"],["il/elle/on","accueille","/akœj/"],["nous","accueillons","/akœjɔ̃/"],["vous","accueillez","/akœje/"],["ils/elles","accueillent","/akœj/"]]},
+    {"inf":"souffrir","en":"to suffer","conj":[["je","souffre","/sufʁ/"],["tu","souffres","/sufʁ/"],["il/elle/on","souffre","/sufʁ/"],["nous","souffrons","/sufʁɔ̃/"],["vous","souffrez","/sufʁe/"],["ils/elles","souffrent","/sufʁ/"]]},
+    {"inf":"cueillir","en":"to pick/gather","conj":[["je","cueille","/kœj/"],["tu","cueilles","/kœj/"],["il/elle/on","cueille","/kœj/"],["nous","cueillons","/kœjɔ̃/"],["vous","cueillez","/kœje/"],["ils/elles","cueillent","/kœj/"]]}
+  ]},
+  {"id":"venir","label":"famille venir","dot":"#BE123C","verbs":[
+    {"inf":"venir","en":"to come","conj":[["je","viens","/vjɛ̃/"],["tu","viens","/vjɛ̃/"],["il/elle/on","vient","/vjɛ̃/"],["nous","venons","/vənɔ̃/"],["vous","venez","/vəne/"],["ils/elles","viennent","/vjɛn/"]]},
+    {"inf":"devenir","en":"to become","conj":[["je","deviens","/dəvjɛ̃/"],["tu","deviens","/dəvjɛ̃/"],["il/elle/on","devient","/dəvjɛ̃/"],["nous","devenons","/dəvnɔ̃/"],["vous","devenez","/dəvne/"],["ils/elles","deviennent","/dəvjɛn/"]]},
+    {"inf":"revenir","en":"to come back","conj":[["je","reviens","/ʁəvjɛ̃/"],["tu","reviens","/ʁəvjɛ̃/"],["il/elle/on","revient","/ʁəvjɛ̃/"],["nous","revenons","/ʁəvnɔ̃/"],["vous","revenez","/ʁəvne/"],["ils/elles","reviennent","/ʁəvjɛn/"]]},
+    {"inf":"prévenir","en":"to warn/notify","conj":[["je","préviens","/pʁevjɛ̃/"],["tu","préviens","/pʁevjɛ̃/"],["il/elle/on","prévient","/pʁevjɛ̃/"],["nous","prévenons","/pʁevnɔ̃/"],["vous","prévenez","/pʁevne/"],["ils/elles","préviennent","/pʁevjɛn/"]]},
+    {"inf":"se souvenir","en":"to remember","conj":[["je me","souviens","/suvjɛ̃/"],["tu te","souviens","/suvjɛ̃/"],["il/on se","souvient","/suvjɛ̃/"],["nous nous","souvenons","/suvnɔ̃/"],["vous vous","souvenez","/suvne/"],["ils/elles se","souviennent","/suvjɛn/"]]}
+  ]},
+  {"id":"ir_sans","label":"-ir sans -issons (dormir)","dot":"#0D9488","verbs":[
+    {"inf":"dormir","en":"to sleep","conj":[["je","dors","/dɔʁ/"],["tu","dors","/dɔʁ/"],["il/elle/on","dort","/dɔʁ/"],["nous","dormons","/dɔʁmɔ̃/"],["vous","dormez","/dɔʁme/"],["ils/elles","dorment","/dɔʁm/"]]},
+    {"inf":"partir","en":"to leave","conj":[["je","pars","/paʁ/"],["tu","pars","/paʁ/"],["il/elle/on","part","/paʁ/"],["nous","partons","/paʁtɔ̃/"],["vous","partez","/paʁte/"],["ils/elles","partent","/paʁt/"]]},
+    {"inf":"sortir","en":"to go out","conj":[["je","sors","/sɔʁ/"],["tu","sors","/sɔʁ/"],["il/elle/on","sort","/sɔʁ/"],["nous","sortons","/sɔʁtɔ̃/"],["vous","sortez","/sɔʁte/"],["ils/elles","sortent","/sɔʁt/"]]}
+  ]},
+  {"id":"uire","label":"-uire / -ivre / -ire","dot":"#4338CA","verbs":[
+    {"inf":"vivre","en":"to live","conj":[["je","vis","/vi/"],["tu","vis","/vi/"],["il/elle/on","vit","/vi/"],["nous","vivons","/vivɔ̃/"],["vous","vivez","/vive/"],["ils/elles","vivent","/viv/"]]},
+    {"inf":"suivre","en":"to follow","conj":[["je","suis","/sɥi/"],["tu","suis","/sɥi/"],["il/elle/on","suit","/sɥi/"],["nous","suivons","/sɥivɔ̃/"],["vous","suivez","/sɥive/"],["ils/elles","suivent","/sɥiv/"]]},
+    {"inf":"écrire","en":"to write","conj":[["j'","écris","/ekʁi/"],["tu","écris","/ekʁi/"],["il/elle/on","écrit","/ekʁi/"],["nous","écrivons","/ekʁivɔ̃/"],["vous","écrivez","/ekʁive/"],["ils/elles","écrivent","/ekʁiv/"]]},
+    {"inf":"lire","en":"to read","conj":[["je","lis","/li/"],["tu","lis","/li/"],["il/elle/on","lit","/li/"],["nous","lisons","/lizɔ̃/"],["vous","lisez","/lize/"],["ils/elles","lisent","/liz/"]]},
+    {"inf":"conduire","en":"to drive","conj":[["je","conduis","/kɔ̃dɥi/"],["tu","conduis","/kɔ̃dɥi/"],["il/elle/on","conduit","/kɔ̃dɥi/"],["nous","conduisons","/kɔ̃dɥizɔ̃/"],["vous","conduisez","/kɔ̃dɥize/"],["ils/elles","conduisent","/kɔ̃dɥiz/"]]},
+    {"inf":"construire","en":"to build","conj":[["je","construis","/kɔ̃stʁɥi/"],["tu","construis","/kɔ̃stʁɥi/"],["il/elle/on","construit","/kɔ̃stʁɥi/"],["nous","construisons","/kɔ̃stʁɥizɔ̃/"],["vous","construisez","/kɔ̃stʁɥize/"],["ils/elles","construisent","/kɔ̃stʁɥiz/"]]},
+    {"inf":"détruire","en":"to destroy","conj":[["je","détruis","/detʁɥi/"],["tu","détruis","/detʁɥi/"],["il/elle/on","détruit","/detʁɥi/"],["nous","détruisons","/detʁɥizɔ̃/"],["vous","détruisez","/detʁɥize/"],["ils/elles","détruisent","/detʁɥiz/"]]}
+  ]},
+  {"id":"dire_faire","label":"dire & faire","dot":"#15803D","verbs":[
+    {"inf":"dire","en":"to say/tell","conj":[["je","dis","/di/"],["tu","dis","/di/"],["il/elle/on","dit","/di/"],["nous","disons","/dizɔ̃/"],["vous","dites","/dit/"],["ils/elles","disent","/diz/"]]},
+    {"inf":"faire","en":"to do/make","conj":[["je","fais","/fɛ/"],["tu","fais","/fɛ/"],["il/elle/on","fait","/fɛ/"],["nous","faisons","/fəzɔ̃/"],["vous","faites","/fɛt/"],["ils/elles","font","/fɔ̃/"]]}
+  ]},
+  {"id":"modal","label":"modaux","dot":"#C2410C","verbs":[
+    {"inf":"pouvoir","en":"to be able to","conj":[["je","peux","/pø/"],["tu","peux","/pø/"],["il/elle/on","peut","/pø/"],["nous","pouvons","/puvɔ̃/"],["vous","pouvez","/puve/"],["ils/elles","peuvent","/pœv/"]]},
+    {"inf":"vouloir","en":"to want","conj":[["je","veux","/vø/"],["tu","veux","/vø/"],["il/elle/on","veut","/vø/"],["nous","voulons","/vulɔ̃/"],["vous","voulez","/vule/"],["ils/elles","veulent","/vœl/"]]}
+  ]},
+  {"id":"dre","label":"réguliers -dre","dot":"#4D7C0F","verbs":[
+    {"inf":"répondre","en":"to answer","conj":[["je","réponds","/ʁepɔ̃/"],["tu","réponds","/ʁepɔ̃/"],["il/elle/on","répond","/ʁepɔ̃/"],["nous","répondons","/ʁepɔ̃dɔ̃/"],["vous","répondez","/ʁepɔ̃de/"],["ils/elles","répondent","/ʁepɔ̃d/"]]},
+    {"inf":"attendre","en":"to wait","conj":[["j'","attends","/atɑ̃/"],["tu","attends","/atɑ̃/"],["il/elle/on","attend","/atɑ̃/"],["nous","attendons","/atɑ̃dɔ̃/"],["vous","attendez","/atɑ̃de/"],["ils/elles","attendent","/atɑ̃d/"]]},
+    {"inf":"entendre","en":"to hear","conj":[["j'","entends","/ɑ̃tɑ̃/"],["tu","entends","/ɑ̃tɑ̃/"],["il/elle/on","entend","/ɑ̃tɑ̃/"],["nous","entendons","/ɑ̃tɑ̃dɔ̃/"],["vous","entendez","/ɑ̃tɑ̃de/"],["ils/elles","entendent","/ɑ̃tɑ̃d/"]]},
+    {"inf":"vendre","en":"to sell","conj":[["je","vends","/vɑ̃/"],["tu","vends","/vɑ̃/"],["il/elle/on","vend","/vɑ̃/"],["nous","vendons","/vɑ̃dɔ̃/"],["vous","vendez","/vɑ̃de/"],["ils/elles","vendent","/vɑ̃d/"]]},
+    {"inf":"rendre","en":"to give back","conj":[["je","rends","/ʁɑ̃/"],["tu","rends","/ʁɑ̃/"],["il/elle/on","rend","/ʁɑ̃/"],["nous","rendons","/ʁɑ̃dɔ̃/"],["vous","rendez","/ʁɑ̃de/"],["ils/elles","rendent","/ʁɑ̃d/"]]},
+    {"inf":"perdre","en":"to lose","conj":[["je","perds","/pɛʁ/"],["tu","perds","/pɛʁ/"],["il/elle/on","perd","/pɛʁ/"],["nous","perdons","/pɛʁdɔ̃/"],["vous","perdez","/pɛʁde/"],["ils/elles","perdent","/pɛʁd/"]]}
+  ]},
+  {"id":"prendre","label":"famille prendre","dot":"#0E7490","verbs":[
+    {"inf":"prendre","en":"to take","conj":[["je","prends","/pʁɑ̃/"],["tu","prends","/pʁɑ̃/"],["il/elle/on","prend","/pʁɑ̃/"],["nous","prenons","/pʁənɔ̃/"],["vous","prenez","/pʁəne/"],["ils/elles","prennent","/pʁɛn/"]]},
+    {"inf":"apprendre","en":"to learn","conj":[["j'","apprends","/apʁɑ̃/"],["tu","apprends","/apʁɑ̃/"],["il/elle/on","apprend","/apʁɑ̃/"],["nous","apprenons","/apʁənɔ̃/"],["vous","apprenez","/apʁəne/"],["ils/elles","apprennent","/apʁɛn/"]]},
+    {"inf":"comprendre","en":"to understand","conj":[["je","comprends","/kɔ̃pʁɑ̃/"],["tu","comprends","/kɔ̃pʁɑ̃/"],["il/elle/on","comprend","/kɔ̃pʁɑ̃/"],["nous","comprenons","/kɔ̃pʁənɔ̃/"],["vous","comprenez","/kɔ̃pʁəne/"],["ils/elles","comprennent","/kɔ̃pʁɛn/"]]}
+  ]},
+  {"id":"mettre","label":"famille mettre","dot":"#9D174D","verbs":[
+    {"inf":"mettre","en":"to put","conj":[["je","mets","/mɛ/"],["tu","mets","/mɛ/"],["il/elle/on","met","/mɛ/"],["nous","mettons","/mɛtɔ̃/"],["vous","mettez","/mɛte/"],["ils/elles","mettent","/mɛt/"]]},
+    {"inf":"permettre","en":"to allow","conj":[["je","permets","/pɛʁmɛ/"],["tu","permets","/pɛʁmɛ/"],["il/elle/on","permet","/pɛʁmɛ/"],["nous","permettons","/pɛʁmɛtɔ̃/"],["vous","permettez","/pɛʁmɛte/"],["ils/elles","permettent","/pɛʁmɛt/"]]},
+    {"inf":"admettre","en":"to admit","conj":[["j'","admets","/admɛ/"],["tu","admets","/admɛ/"],["il/elle/on","admet","/admɛ/"],["nous","admettons","/admɛtɔ̃/"],["vous","admettez","/admɛte/"],["ils/elles","admettent","/admɛt/"]]}
+  ]},
+  {"id":"cevoir","label":"devoir & -cevoir","dot":"#475569","verbs":[
+    {"inf":"devoir","en":"must/to have to","conj":[["je","dois","/dwa/"],["tu","dois","/dwa/"],["il/elle/on","doit","/dwa/"],["nous","devons","/dəvɔ̃/"],["vous","devez","/dəve/"],["ils/elles","doivent","/dwav/"]]},
+    {"inf":"recevoir","en":"to receive","conj":[["je","reçois","/ʁəswa/"],["tu","reçois","/ʁəswa/"],["il/elle/on","reçoit","/ʁəswa/"],["nous","recevons","/ʁəsvɔ̃/"],["vous","recevez","/ʁəsve/"],["ils/elles","reçoivent","/ʁəswav/"]]},
+    {"inf":"apercevoir","en":"to notice","conj":[["j'","aperçois","/apɛʁswa/"],["tu","aperçois","/apɛʁswa/"],["il/elle/on","aperçoit","/apɛʁswa/"],["nous","apercevons","/apɛʁsvɔ̃/"],["vous","apercevez","/apɛʁsve/"],["ils/elles","aperçoivent","/apɛʁswav/"]]},
+    {"inf":"décevoir","en":"to disappoint","conj":[["je","déçois","/deswa/"],["tu","déçois","/deswa/"],["il/elle/on","déçoit","/deswa/"],["nous","décevons","/desvɔ̃/"],["vous","décevez","/desve/"],["ils/elles","déçoivent","/deswav/"]]}
+  ]},
+  {"id":"irr","label":"irréguliers divers","dot":"#7E22CE","verbs":[
+    {"inf":"croire","en":"to believe","conj":[["je","crois","/kʁwa/"],["tu","crois","/kʁwa/"],["il/elle/on","croit","/kʁwa/"],["nous","croyons","/kʁwajɔ̃/"],["vous","croyez","/kʁwaje/"],["ils/elles","croient","/kʁwa/"]]},
+    {"inf":"voir","en":"to see","conj":[["je","vois","/vwa/"],["tu","vois","/vwa/"],["il/elle/on","voit","/vwa/"],["nous","voyons","/vwajɔ̃/"],["vous","voyez","/vwaje/"],["ils/elles","voient","/vwa/"]]},
+    {"inf":"boire","en":"to drink","conj":[["je","bois","/bwa/"],["tu","bois","/bwa/"],["il/elle/on","boit","/bwa/"],["nous","buvons","/byvɔ̃/"],["vous","buvez","/byve/"],["ils/elles","boivent","/bwav/"]]},
+    {"inf":"savoir","en":"to know (facts)","conj":[["je","sais","/sɛ/"],["tu","sais","/sɛ/"],["il/elle/on","sait","/sɛ/"],["nous","savons","/savɔ̃/"],["vous","savez","/save/"],["ils/elles","savent","/sav/"]]},
+    {"inf":"connaître","en":"to know (people)","conj":[["je","connais","/kɔnɛ/"],["tu","connais","/kɔnɛ/"],["il/elle/on","connaît","/kɔnɛ/"],["nous","connaissons","/kɔnɛsɔ̃/"],["vous","connaissez","/kɔnɛse/"],["ils/elles","connaissent","/kɔnɛs/"]]}
+  ]}
+]

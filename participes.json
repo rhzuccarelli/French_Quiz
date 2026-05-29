@@ -1,0 +1,76 @@
+[
+  {"id":"dict","label":"groupe 1 — dictionnaire (-é)","dot":"#0369A1","verbs":[
+    {"inf":"aider","pp":"aidé","ipa":"/ede/","en":"to help","aux":"avoir"},
+    {"inf":"aller","pp":"allé","ipa":"/ale/","en":"to go","aux":"être"},
+    {"inf":"rencontrer","pp":"rencontré","ipa":"/ʁɑ̃kɔ̃tʁe/","en":"to meet","aux":"avoir"},
+    {"inf":"parler","pp":"parlé","ipa":"/paʁle/","en":"to speak","aux":"avoir"},
+    {"inf":"habiter","pp":"habité","ipa":"/abite/","en":"to live (somewhere)","aux":"avoir"},
+    {"inf":"manger","pp":"mangé","ipa":"/mɑ̃ʒe/","en":"to eat","aux":"avoir"},
+    {"inf":"travailler","pp":"travaillé","ipa":"/tʁavaje/","en":"to work","aux":"avoir"},
+    {"inf":"préférer","pp":"préféré","ipa":"/pʁefeʁe/","en":"to prefer","aux":"avoir"},
+    {"inf":"chanter","pp":"chanté","ipa":"/ʃɑ̃te/","en":"to sing","aux":"avoir"},
+    {"inf":"aimer","pp":"aimé","ipa":"/eme/","en":"to like / love","aux":"avoir"}
+  ]},
+  {"id":"ir_i","label":"groupe 2 — -ir → -i","dot":"#B45309","verbs":[
+    {"inf":"finir","pp":"fini","ipa":"/fini/","en":"to finish","aux":"avoir"},
+    {"inf":"choisir","pp":"choisi","ipa":"/ʃwazi/","en":"to choose","aux":"avoir"},
+    {"inf":"dormir","pp":"dormi","ipa":"/dɔʁmi/","en":"to sleep","aux":"avoir"},
+    {"inf":"partir","pp":"parti","ipa":"/paʁti/","en":"to leave","aux":"être"},
+    {"inf":"sortir","pp":"sorti","ipa":"/sɔʁti/","en":"to go out","aux":"être"},
+    {"inf":"suivre","pp":"suivi","ipa":"/sɥivi/","en":"to follow","aux":"avoir"}
+  ]},
+  {"id":"it","label":"groupe 3 — -it","dot":"#6D28D9","verbs":[
+    {"inf":"écrire","pp":"écrit","ipa":"/ekʁi/","en":"to write","aux":"avoir"},
+    {"inf":"dire","pp":"dit","ipa":"/di/","en":"to say","aux":"avoir"},
+    {"inf":"conduire","pp":"conduit","ipa":"/kɔ̃dɥi/","en":"to drive","aux":"avoir"}
+  ]},
+  {"id":"is","label":"groupe 4 — -is","dot":"#BE123C","verbs":[
+    {"inf":"mettre","pp":"mis","ipa":"/mi/","en":"to put","aux":"avoir"},
+    {"inf":"admettre","pp":"admis","ipa":"/admi/","en":"to admit","aux":"avoir"},
+    {"inf":"prendre","pp":"pris","ipa":"/pʁi/","en":"to take","aux":"avoir"},
+    {"inf":"apprendre","pp":"appris","ipa":"/apʁi/","en":"to learn","aux":"avoir"},
+    {"inf":"comprendre","pp":"compris","ipa":"/kɔ̃pʁi/","en":"to understand","aux":"avoir"}
+  ]},
+  {"id":"ert","label":"groupe 5 — -ert","dot":"#0D9488","verbs":[
+    {"inf":"ouvrir","pp":"ouvert","ipa":"/uvɛʁ/","en":"to open","aux":"avoir"},
+    {"inf":"couvrir","pp":"couvert","ipa":"/kuvɛʁ/","en":"to cover","aux":"avoir"},
+    {"inf":"découvrir","pp":"découvert","ipa":"/dekuvɛʁ/","en":"to discover","aux":"avoir"},
+    {"inf":"offrir","pp":"offert","ipa":"/ɔfɛʁ/","en":"to offer","aux":"avoir"}
+  ]},
+  {"id":"u","label":"groupe 6 — -u","dot":"#15803D","verbs":[
+    {"inf":"attendre","pp":"attendu","ipa":"/atɑ̃dy/","en":"to wait","aux":"avoir"},
+    {"inf":"entendre","pp":"entendu","ipa":"/ɑ̃tɑ̃dy/","en":"to hear","aux":"avoir"},
+    {"inf":"perdre","pp":"perdu","ipa":"/pɛʁdy/","en":"to lose","aux":"avoir"},
+    {"inf":"répondre","pp":"répondu","ipa":"/ʁepɔ̃dy/","en":"to answer","aux":"avoir"},
+    {"inf":"connaître","pp":"connu","ipa":"/kɔny/","en":"to know (people)","aux":"avoir"},
+    {"inf":"venir","pp":"venu","ipa":"/vəny/","en":"to come","aux":"être"},
+    {"inf":"devenir","pp":"devenu","ipa":"/dəvny/","en":"to become","aux":"être"},
+    {"inf":"tenir","pp":"tenu","ipa":"/təny/","en":"to hold","aux":"avoir"},
+    {"inf":"obtenir","pp":"obtenu","ipa":"/ɔbtəny/","en":"to obtain","aux":"avoir"},
+    {"inf":"courir","pp":"couru","ipa":"/kuʁy/","en":"to run","aux":"avoir"},
+    {"inf":"lire","pp":"lu","ipa":"/ly/","en":"to read","aux":"avoir"},
+    {"inf":"vivre","pp":"vécu","ipa":"/veky/","en":"to live","aux":"avoir"},
+    {"inf":"vouloir","pp":"voulu","ipa":"/vuly/","en":"to want","aux":"avoir"},
+    {"inf":"falloir","pp":"fallu","ipa":"/faly/","en":"must (impersonal)","aux":"avoir","note":"il faut — impersonnel"},
+    {"inf":"recevoir","pp":"reçu","ipa":"/ʁəsy/","en":"to receive","aux":"avoir"},
+    {"inf":"décevoir","pp":"déçu","ipa":"/desy/","en":"to disappoint","aux":"avoir"},
+    {"inf":"voir","pp":"vu","ipa":"/vy/","en":"to see","aux":"avoir"},
+    {"inf":"boire","pp":"bu","ipa":"/by/","en":"to drink","aux":"avoir"},
+    {"inf":"savoir","pp":"su","ipa":"/sy/","en":"to know (facts)","aux":"avoir"},
+    {"inf":"pouvoir","pp":"pu","ipa":"/py/","en":"to be able to","aux":"avoir"},
+    {"inf":"devoir","pp":"dû","ipa":"/dy/","en":"to have to","aux":"avoir","note":"accent masc. sg. seulement"},
+    {"inf":"pleuvoir","pp":"plu","ipa":"/ply/","en":"to rain","aux":"avoir","note":"impersonnel"},
+    {"inf":"plaire","pp":"plu","ipa":"/ply/","en":"to please","aux":"avoir"}
+  ]},
+  {"id":"eint","label":"groupe 7 — -eint / -aint","dot":"#9D174D","verbs":[
+    {"inf":"peindre","pp":"peint","ipa":"/pɛ̃/","en":"to paint","aux":"avoir"},
+    {"inf":"plaindre","pp":"plaint","ipa":"/plɛ̃/","en":"to pity/complain","aux":"avoir"}
+  ]},
+  {"id":"irr","label":"groupe 8 — irréguliers","dot":"#7E22CE","verbs":[
+    {"inf":"être","pp":"été","ipa":"/ete/","en":"to be","aux":"avoir"},
+    {"inf":"avoir","pp":"eu","ipa":"/y/","en":"to have","aux":"avoir"},
+    {"inf":"faire","pp":"fait","ipa":"/fɛ/","en":"to do/make","aux":"avoir"},
+    {"inf":"naître","pp":"né","ipa":"/ne/","en":"to be born","aux":"être"},
+    {"inf":"mourir","pp":"mort","ipa":"/mɔʁ/","en":"to die","aux":"être"}
+  ]}
+]
