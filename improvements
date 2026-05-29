@@ -2,4 +2,4 @@
 * Put verbs on .jason files for a better update
 * Include the back to menu
 * Introduce estadistics: correct answers, average time to answer
-* 
+* Make it smarter: when you make tests made them as rounds of 20 questions and keep tracking of which ones have a shorter time to response and if they are correct or not to make the app ask you more those ones that you falied or you are more slow to answer.
