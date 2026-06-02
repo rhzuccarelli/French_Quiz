@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Quiz FR">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>conjugaison — aide-mémoire</title>
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f5f5f0;
+  --surface: #ffffff;
+  --rule:    #000000;
+  --rule-lt: #d0d0c8;
+  --text:    #000000;
+  --muted:   #666666;
+  --faint:   #aaaaaa;
+  --mono:    'Courier New', 'Lucida Console', monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg:      #1a1a18;
+  --surface: #242420;
+  --rule:    #d0d0c8;
+  --rule-lt: #3a3a36;
+  --text:    #e0e0d8;
+  --muted:   #888880;
+  --faint:   #555550;
+}
+
+html, body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px;
+}
+
+/* ── HEADER ── */
+.te-header {
+  width: 100%;
+  max-width: 900px;
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.te-title {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+
+.te-subtitle {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+}
+
+.te-back {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.te-back:hover { color: var(--text); }
+
+.te-tag {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  padding: 3px 8px;
+  border: 1px solid var(--rule-lt);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.1s;
+  white-space: nowrap;
+}
+.te-tag:hover { border-color: var(--rule); color: var(--text); }
+
+/* ── GRID ── */
+.te-grid {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 680px) {
+  .te-grid { grid-template-columns: repeat(2, 1fr); }
+  .te-header, .te-intro { max-width: 100%; }
+}
+
+@media (max-width: 440px) {
+  .te-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CHEAT CARD ── */
+.cs-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.cs-card-head {
+  border-bottom: 1px solid var(--rule-lt);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cs-dot {
+  width: 6px; height: 6px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.cs-family {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--muted);
+}
+
+.cs-model {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--faint);
+  font-style: italic;
+}
+
+.cs-card-body {
+  padding: 12px 14px;
+}
+
+.cs-row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  align-items: baseline;
+  padding: 3px 0;
+  border-bottom: 1px solid var(--rule-lt);
+  gap: 8px;
+}
+.cs-row:last-child { border-bottom: none; }
+
+.cs-pro {
+  font-size: 10px;
+  color: var(--muted);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+.cs-form {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* stem shown in muted, ending in text color */
+.cs-stem { color: var(--faint); font-weight: 400; }
+.cs-end  { color: var(--text);  font-weight: 700; }
+
+/* when there's no stem, just show the full form */
+.cs-full { color: var(--text); font-weight: 700; }
+
+.cs-card-foot {
+  border-top: 1px solid var(--rule-lt);
+  padding: 6px 14px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--faint);
+  letter-spacing: 0.08em;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.cs-ending-tag {
+  padding: 1px 5px;
+  border: 1px solid var(--rule-lt);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+}
+</style>
+</head>
+<body>
+
+<header class="te-header">
+  <a class="te-back" href="index.html">← menu</a>
+  <span class="te-title">conjugaison &mdash; aide-mémoire</span>
+  <span class="te-subtitle">présent de l'indicatif</span>
+  <button class="te-tag" id="theme-btn" onclick="toggleTheme()">dark</button>
+</header>
+
+<div class="te-grid" id="grid"></div>
+
+<script>
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('theme-btn').textContent = dark ? 'dark' : 'light';
+}
+(function(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.getElementById('theme-btn').textContent = dark ? 'light' : 'dark';
+})();
+
+function commonPrefix(forms) {
+  let stem = forms[0];
+  for (let i = 1; i < forms.length; i++) {
+    while (!forms[i].startsWith(stem)) stem = stem.slice(0, -1);
+    if (!stem) return '';
+  }
+  return stem;
+}
+
+fetch('verbs.json')
+  .then(r => r.json())
+  .then(families => {
+    const grid = document.getElementById('grid');
+
+    families.forEach(f => {
+      const model = f.verbs[0];
+      const forms = model.conj.map(c => c[1]);
+      const pros  = model.conj.map(c => c[0]);
+      const stem  = commonPrefix(forms);
+      const endings = forms.map(form => form.slice(stem.length));
+
+      const card = document.createElement('div');
+      card.className = 'cs-card';
+
+      // head
+      const dotStyle = `background:${f.dot};border-radius:${f.dot ? '0' : '50%'};`;
+      card.innerHTML = `
+        <div class="cs-card-head">
+          <span class="cs-dot" style="${dotStyle}"></span>
+          <span class="cs-family">${f.label}</span>
+          <span class="cs-model">${model.inf}</span>
+        </div>
+        <div class="cs-card-body" id="body-${f.id}"></div>
+        <div class="cs-card-foot" id="foot-${f.id}"></div>
+      `;
+      grid.appendChild(card);
+
+      // rows
+      const body = card.querySelector(`#body-${f.id}`);
+      pros.forEach((pro, i) => {
+        const row = document.createElement('div');
+        row.className = 'cs-row';
+        const formHtml = stem
+          ? `<span class="cs-stem">${stem}</span><span class="cs-end">${endings[i] || '—'}</span>`
+          : `<span class="cs-full">${forms[i]}</span>`;
+        row.innerHTML = `<span class="cs-pro">${pro}</span><span class="cs-form">${formHtml}</span>`;
+        body.appendChild(row);
+      });
+
+      // footer: ending tags for regular groups (when stem is non-trivial)
+      const foot = card.querySelector(`#foot-${f.id}`);
+      if (stem.length >= 2) {
+        endings.forEach(e => {
+          const tag = document.createElement('span');
+          tag.className = 'cs-ending-tag';
+          tag.textContent = '-' + (e || '∅');
+          foot.appendChild(tag);
+        });
+      } else {
+        foot.textContent = model.inf + ' — ' + model.en;
+      }
+    });
+  });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', {updateViaCache: 'none'});
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+}
+</script>
+</body>
+</html>
