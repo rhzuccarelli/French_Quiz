@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Quiz FR">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>conjugaison — apprentissage</title>
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f5f5f0;
+  --surface: #ffffff;
+  --rule:    #000000;
+  --rule-lt: #d0d0c8;
+  --text:    #000000;
+  --muted:   #666666;
+  --faint:   #aaaaaa;
+  --ok-bg:   #e8f5e8;
+  --err-bg:  #fce8e8;
+  --mono:    'Courier New', 'Lucida Console', monospace;
+}
+
+:root[data-theme="dark"] {
+  --bg:      #1a1a18;
+  --surface: #242420;
+  --rule:    #d0d0c8;
+  --rule-lt: #3a3a36;
+  --text:    #e0e0d8;
+  --muted:   #888880;
+  --faint:   #555550;
+  --ok-bg:   #1a2e1a;
+  --err-bg:  #2e1a1a;
+}
+
+html, body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 80px;
+}
+
+/* ── HEADER ── */
+.te-header {
+  width: 100%;
+  max-width: 640px;
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.te-title {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+
+.te-subtitle {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+}
+
+.te-back {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  font-family: var(--mono);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.te-back:hover { color: var(--text); }
+
+/* ── FILTER ROW ── */
+.te-filters {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.te-tag {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  padding: 3px 8px;
+  border: 1px solid var(--rule-lt);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.1s;
+  white-space: nowrap;
+}
+.te-tag:hover  { border-color: var(--rule); color: var(--text); }
+.te-tag.active { border-color: var(--rule); background: var(--rule); color: var(--bg); }
+
+/* ── PROGRESS BAR ── */
+.te-scorebar {
+  width: 100%;
+  max-width: 640px;
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.te-score-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.te-score-num--right {
+  text-align: right;
+}
+
+.te-bar-track {
+  height: 1px;
+  background: var(--rule-lt);
+  position: relative;
+}
+
+.te-bar-fill {
+  position: absolute;
+  left: 0; top: 0; height: 1px;
+  background: var(--rule);
+  transition: width 0.35s ease;
+  width: 0%;
+}
+
+/* ── CARD ── */
+.te-card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+}
+
+.te-card-head {
+  border-bottom: 1px solid var(--rule-lt);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.te-group-tag {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--muted);
+}
+
+.te-group-dot {
+  width: 6px; height: 6px;
+  background: var(--dot-color, var(--rule-lt));
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.te-mastered-badge {
+  display: none;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  font-family: var(--mono);
+  color: var(--faint);
+}
+.te-mastered-badge.visible { display: inline; }
+
+.te-card-body {
+  padding: 28px 20px 20px;
+}
+
+.te-prompt-verb {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.te-prompt-meta {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.te-prompt-pronoun {
+  font-size: 15px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.te-prompt-en {
+  font-size: 11px;
+  color: var(--faint);
+  font-family: var(--mono);
+  margin-left: auto;
+}
+
+/* ── ANSWER PANEL ── */
+.te-answer-panel {
+  display: none;
+  padding: 16px 0 8px;
+  border-top: 1px solid var(--rule-lt);
+  margin-bottom: 20px;
+  animation: fadeIn 0.15s ease;
+}
+.te-answer-panel.visible { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.te-answer-form {
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.te-answer-ipa {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ── BUTTONS ── */
+.te-reveal-row, .te-judgment-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.te-reveal-btn {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  padding: 8px 20px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+  color: var(--bg);
+  cursor: pointer;
+  transition: opacity 0.1s;
+}
+.te-reveal-btn:hover { opacity: 0.8; }
+
+.te-got-btn, .te-missed-btn {
+  flex: 1;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  padding: 10px;
+  border: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+.te-got-btn    { background: var(--ok-bg);  color: var(--text); }
+.te-missed-btn { background: var(--err-bg); color: var(--text); }
+.te-got-btn:hover    { background: var(--rule); color: var(--bg); }
+.te-missed-btn:hover { background: var(--rule); color: var(--bg); }
+
+/* ── CARD FOOT ── */
+.te-card-foot {
+  border-top: 1px solid var(--rule-lt);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.te-pass-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.te-cleared-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+/* ── RESULTS ── */
+.te-results {
+  display: none;
+  width: 100%;
+  max-width: 640px;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  flex-direction: column;
+}
+
+.te-results-head {
+  border-bottom: 1px solid var(--rule);
+  padding: 10px 20px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--muted);
+}
+
+.te-results-body {
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.te-big-score {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.te-grade {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+  font-family: var(--mono);
+}
+
+.te-stats-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--rule-lt);
+  margin: 8px 0 4px;
+}
+
+.te-restart-btn {
+  margin-top: 20px;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  padding: 7px 18px;
+  border: 1px solid var(--rule);
+  background: var(--rule);
+  color: var(--bg);
+  cursor: pointer;
+  transition: opacity 0.1s;
+}
+.te-restart-btn:hover { opacity: 0.75; }
+
+.te-restart-btn--outline {
+  background: transparent;
+  color: var(--text);
+  margin-left: 8px;
+}
+.te-restart-btn--outline:hover { background: var(--rule); color: var(--bg); opacity: 1; }
+</style>
+</head>
+<body>
+
+<header class="te-header">
+  <a class="te-back" href="index.html">← menu</a>
+  <span class="te-title">conjugaison &mdash; apprentissage</span>
+  <span class="te-subtitle">présent de l'indicatif</span>
+  <button class="te-tag" id="theme-btn" onclick="toggleTheme()">dark</button>
+</header>
+
+<div class="te-filters" id="filters">
+  <button class="te-tag active" id="filter-all" onclick="setFilter('all')">tous</button>
+</div>
+
+<div class="te-scorebar">
+  <span class="te-score-num" id="prog-mastered">0 maîtrisés</span>
+  <div class="te-bar-track"><div class="te-bar-fill" id="score-fill"></div></div>
+  <span class="te-score-num te-score-num--right" id="prog-remaining">0 restants</span>
+</div>
+
+<div id="learn-area">
+  <div class="te-card">
+    <div class="te-card-head">
+      <span><span class="te-group-dot" id="card-dot"></span><span class="te-group-tag" id="card-group"></span></span>
+      <span class="te-mastered-badge" id="mastered-badge">déjà maîtrisé</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-prompt-verb" id="lrn-inf"></div>
+      <div class="te-prompt-meta">
+        <span class="te-prompt-pronoun" id="lrn-pro"></span>
+        <span class="te-prompt-en" id="lrn-en"></span>
+      </div>
+      <div class="te-answer-panel" id="answer-panel">
+        <div class="te-answer-form" id="lrn-form"></div>
+        <div class="te-answer-ipa"  id="lrn-ipa"></div>
+      </div>
+      <div class="te-reveal-row" id="reveal-row">
+        <button class="te-reveal-btn" onclick="reveal()">révéler →</button>
+      </div>
+      <div class="te-judgment-row" id="judgment-row" style="display:none">
+        <button class="te-got-btn"    onclick="judge(true)">✓ compris</button>
+        <button class="te-missed-btn" onclick="judge(false)">✗ à revoir</button>
+      </div>
+    </div>
+    <div class="te-card-foot">
+      <span class="te-pass-label"    id="pass-label"></span>
+      <span class="te-cleared-label" id="cleared-label"></span>
+    </div>
+  </div>
+</div>
+
+<div class="te-results" id="session-end">
+  <div class="te-results-head">session terminée</div>
+  <div class="te-results-body">
+    <div class="te-big-score" id="end-cleared"></div>
+    <div class="te-grade" id="end-mastered-total"></div>
+    <div class="te-stats-divider"></div>
+    <div class="te-grade" id="end-session-info"></div>
+    <div>
+      <button class="te-restart-btn" onclick="restart()">recommencer</button>
+      <button class="te-restart-btn te-restart-btn--outline" onclick="restart(true)">réinitialiser maîtrisés</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── state ─────────────────────────────────────────────────────
+let families = [], pool = [], queue = [], missed = [], current = null;
+let revealed = false, clearedThisSession = 0, totalCards = 0, passNum = 1;
+let activeFilter = 'all';
+
+// ── persistence ───────────────────────────────────────────────
+const LS_LEARNED = 'vq_learned';
+let learnedSet;
+try { learnedSet = new Set(JSON.parse(localStorage.getItem(LS_LEARNED) || '[]')); }
+catch(e) { learnedSet = new Set(); }
+
+function saveLearned() {
+  try { localStorage.setItem(LS_LEARNED, JSON.stringify([...learnedSet])); } catch(e) {}
+}
+
+// ── helpers ───────────────────────────────────────────────────
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = 0 | Math.random() * (i + 1);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function cardId(item) { return item.verb.inf + '|' + item.pro; }
+
+// ── pool ──────────────────────────────────────────────────────
+function buildPool(fid) {
+  pool = [];
+  families.forEach(f => {
+    if (fid !== 'all' && f.id !== fid) return;
+    f.verbs.forEach(v => v.conj.forEach(([pro, form, ipa]) =>
+      pool.push({ family: f, verb: v, pro, form, ipa })
+    ));
+  });
+  totalCards = pool.length;
+}
+
+// ── session ───────────────────────────────────────────────────
+function startSession() {
+  buildPool(activeFilter);
+  const unmastered = pool.filter(c => !learnedSet.has(cardId(c)));
+  queue = shuffle([...unmastered]);
+  missed = [];
+  clearedThisSession = 0;
+  passNum = 1;
+  revealed = false;
+  document.getElementById('learn-area').style.display  = 'block';
+  document.getElementById('session-end').style.display = 'none';
+  showCard();
+}
+
+function showCard() {
+  if (!queue.length) { nextPass(); return; }
+  current = queue.pop();
+  revealed = false;
+
+  document.getElementById('lrn-inf').textContent    = current.verb.inf;
+  document.getElementById('lrn-pro').textContent    = current.pro;
+  document.getElementById('lrn-en').textContent     = current.verb.en;
+  document.getElementById('card-group').textContent = current.family.label;
+  document.getElementById('card-dot').style.background = current.family.dot;
+
+  document.getElementById('answer-panel').classList.remove('visible');
+  document.getElementById('reveal-row').style.display    = 'flex';
+  document.getElementById('judgment-row').style.display  = 'none';
+
+  const badge = document.getElementById('mastered-badge');
+  badge.classList.toggle('visible', learnedSet.has(cardId(current)));
+
+  updateProgress();
+}
+
+function reveal() {
+  if (revealed) return;
+  revealed = true;
+  document.getElementById('lrn-form').textContent = current.form;
+  document.getElementById('lrn-ipa').textContent  = current.ipa;
+  document.getElementById('answer-panel').classList.add('visible');
+  document.getElementById('reveal-row').style.display   = 'none';
+  document.getElementById('judgment-row').style.display = 'flex';
+}
+
+function judge(gotIt) {
+  if (!revealed || !current) return;
+  if (gotIt) {
+    learnedSet.add(cardId(current));
+    saveLearned();
+    clearedThisSession++;
+  } else {
+    missed.push(current);
+  }
+  showCard();
+}
+
+function nextPass() {
+  if (!missed.length) { showEnd(); return; }
+  passNum++;
+  queue = shuffle([...missed]);
+  missed = [];
+  updateProgress();
+  showCard();
+}
+
+function restart(resetMastered) {
+  if (resetMastered) {
+    learnedSet = new Set();
+    saveLearned();
+  }
+  startSession();
+}
+
+// ── progress ──────────────────────────────────────────────────
+function updateProgress() {
+  const masteredInPool = pool.filter(c => learnedSet.has(cardId(c))).length;
+  const remaining = queue.length + missed.length;
+  const pct = totalCards > 0 ? (masteredInPool / totalCards) * 100 : 0;
+
+  document.getElementById('prog-mastered').textContent  = masteredInPool + ' maîtrisés';
+  document.getElementById('prog-remaining').textContent = remaining + ' restants';
+  document.getElementById('score-fill').style.width     = pct + '%';
+  document.getElementById('pass-label').textContent     = 'passe ' + passNum;
+  document.getElementById('cleared-label').textContent  = clearedThisSession + ' cette session';
+}
+
+// ── end screen ────────────────────────────────────────────────
+function showEnd() {
+  document.getElementById('learn-area').style.display  = 'none';
+  document.getElementById('session-end').style.display = 'flex';
+  const masteredInPool = pool.filter(c => learnedSet.has(cardId(c))).length;
+  document.getElementById('end-cleared').textContent       = clearedThisSession + ' appris';
+  document.getElementById('end-mastered-total').textContent = masteredInPool + ' / ' + totalCards + ' maîtrisés au total';
+  document.getElementById('end-session-info').textContent   = 'passe ' + passNum + ' · filtre: ' + activeFilter;
+}
+
+// ── filter ────────────────────────────────────────────────────
+function setFilter(id) {
+  activeFilter = id;
+  document.querySelectorAll('.te-tag').forEach(b => b.classList.remove('active'));
+  document.getElementById('filter-' + id).classList.add('active');
+  startSession();
+}
+
+// ── theme ─────────────────────────────────────────────────────
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('theme-btn').textContent = dark ? 'dark' : 'light';
+}
+
+// ── keyboard ──────────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!revealed) reveal(); }
+  if ((e.key === 'ArrowRight' || e.key === '1') && revealed) judge(true);
+  if ((e.key === 'ArrowLeft'  || e.key === '0') && revealed) judge(false);
+});
+
+// ── init ──────────────────────────────────────────────────────
+fetch('verbs.json')
+  .then(r => r.json())
+  .then(data => {
+    families = data;
+    const fe = document.getElementById('filters');
+    families.forEach(f => {
+      const b = document.createElement('button');
+      b.className = 'te-tag'; b.id = 'filter-' + f.id; b.textContent = f.label;
+      b.onclick = () => setFilter(f.id);
+      fe.appendChild(b);
+    });
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.getElementById('theme-btn').textContent = dark ? 'light' : 'dark';
+    startSession();
+  })
+  .catch(() => {
+    document.getElementById('lrn-inf').textContent = 'erreur de chargement';
+  });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', {updateViaCache: 'none'});
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+}
+</script>
+</body>
+</html>
