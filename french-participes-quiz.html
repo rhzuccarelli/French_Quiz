@@ -532,9 +532,8 @@ function buildRound() {
   buildPool(activeFilter);
   if (!pool.length) { queue = []; roundSize = 0; return; }
   if (activeFilter === 'all') {
-    queue = [];
-    for (let i = 0; i < ROUND_N; i++)
-      queue.push(pool[Math.floor(Math.random() * pool.length)]);
+    const shuffled = shuffle([...pool]);
+    queue = shuffled.length > ROUND_N ? shuffled.slice(0, ROUND_N) : shuffled;
   } else {
     queue = shuffle([...pool]);
   }

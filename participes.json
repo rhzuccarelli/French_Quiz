@@ -9,7 +9,14 @@
     {"inf":"travailler","pp":"travaillé","ipa":"/tʁavaje/","en":"to work","aux":"avoir"},
     {"inf":"préférer","pp":"préféré","ipa":"/pʁefeʁe/","en":"to prefer","aux":"avoir"},
     {"inf":"chanter","pp":"chanté","ipa":"/ʃɑ̃te/","en":"to sing","aux":"avoir"},
-    {"inf":"aimer","pp":"aimé","ipa":"/eme/","en":"to like / love","aux":"avoir"}
+    {"inf":"aimer","pp":"aimé","ipa":"/eme/","en":"to like / love","aux":"avoir"},
+    {"inf":"arriver","pp":"arrivé","ipa":"/aʁive/","en":"to arrive","aux":"être"},
+    {"inf":"entrer","pp":"entré","ipa":"/ɑ̃tʁe/","en":"to enter","aux":"être"},
+    {"inf":"rentrer","pp":"rentré","ipa":"/ʁɑ̃tʁe/","en":"to come back home","aux":"être"},
+    {"inf":"monter","pp":"monté","ipa":"/mɔ̃te/","en":"to go up","aux":"être"},
+    {"inf":"rester","pp":"resté","ipa":"/ʁɛste/","en":"to stay","aux":"être"},
+    {"inf":"passer","pp":"passé","ipa":"/pase/","en":"to pass / go by","aux":"être"},
+    {"inf":"tomber","pp":"tombé","ipa":"/tɔ̃be/","en":"to fall","aux":"être"}
   ]},
   {"id":"ir_i","label":"groupe 2 — -ir → -i","dot":"#B45309","verbs":[
     {"inf":"finir","pp":"fini","ipa":"/fini/","en":"to finish","aux":"avoir"},
@@ -60,7 +67,8 @@
     {"inf":"pouvoir","pp":"pu","ipa":"/py/","en":"to be able to","aux":"avoir"},
     {"inf":"devoir","pp":"dû","ipa":"/dy/","en":"to have to","aux":"avoir","note":"accent masc. sg. seulement"},
     {"inf":"pleuvoir","pp":"plu","ipa":"/ply/","en":"to rain","aux":"avoir","note":"impersonnel"},
-    {"inf":"plaire","pp":"plu","ipa":"/ply/","en":"to please","aux":"avoir"}
+    {"inf":"plaire","pp":"plu","ipa":"/ply/","en":"to please","aux":"avoir"},
+    {"inf":"descendre","pp":"descendu","ipa":"/desɑ̃dy/","en":"to go down","aux":"être"}
   ]},
   {"id":"eint","label":"groupe 7 — -eint / -aint","dot":"#9D174D","verbs":[
     {"inf":"peindre","pp":"peint","ipa":"/pɛ̃/","en":"to paint","aux":"avoir"},
@@ -72,5 +80,10 @@
     {"inf":"faire","pp":"fait","ipa":"/fɛ/","en":"to do/make","aux":"avoir"},
     {"inf":"naître","pp":"né","ipa":"/ne/","en":"to be born","aux":"être"},
     {"inf":"mourir","pp":"mort","ipa":"/mɔʁ/","en":"to die","aux":"être"}
+  ]},
+  {"id":"pron","label":"groupe 9 — verbes pronominaux (-é)","dot":"#C2410C","verbs":[
+    {"inf":"se laver","pp":"lavé","ipa":"/lave/","en":"to wash oneself","aux":"être"},
+    {"inf":"se coucher","pp":"couché","ipa":"/kuʃe/","en":"to go to bed","aux":"être"},
+    {"inf":"se promener","pp":"promené","ipa":"/pʁɔmne/","en":"to go for a walk","aux":"être"}
   ]}
 ]
