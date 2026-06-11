@@ -10,6 +10,12 @@
     {"inf":"préférer","pp":"préféré","ipa":"/pʁefeʁe/","en":"to prefer","aux":"avoir"},
     {"inf":"chanter","pp":"chanté","ipa":"/ʃɑ̃te/","en":"to sing","aux":"avoir"},
     {"inf":"aimer","pp":"aimé","ipa":"/eme/","en":"to like / love","aux":"avoir"},
+    {"inf":"déjeuner","pp":"déjeuné","ipa":"/deʒœne/","en":"to have lunch","aux":"avoir"},
+    {"inf":"commander","pp":"commandé","ipa":"/kɔmɑ̃de/","en":"to order","aux":"avoir"},
+    {"inf":"réserver","pp":"réservé","ipa":"/ʁezɛʁve/","en":"to book / reserve","aux":"avoir"},
+    {"inf":"dîner","pp":"dîné","ipa":"/dine/","en":"to have dinner","aux":"avoir"},
+    {"inf":"payer","pp":"payé","ipa":"/peje/","en":"to pay","aux":"avoir"},
+    {"inf":"demander","pp":"demandé","ipa":"/dəmɑ̃de/","en":"to ask","aux":"avoir"},
     {"inf":"arriver","pp":"arrivé","ipa":"/aʁive/","en":"to arrive","aux":"être"},
     {"inf":"entrer","pp":"entré","ipa":"/ɑ̃tʁe/","en":"to enter","aux":"être"},
     {"inf":"rentrer","pp":"rentré","ipa":"/ʁɑ̃tʁe/","en":"to come back home","aux":"être"},
@@ -24,7 +30,8 @@
     {"inf":"dormir","pp":"dormi","ipa":"/dɔʁmi/","en":"to sleep","aux":"avoir"},
     {"inf":"partir","pp":"parti","ipa":"/paʁti/","en":"to leave","aux":"être"},
     {"inf":"sortir","pp":"sorti","ipa":"/sɔʁti/","en":"to go out","aux":"être"},
-    {"inf":"suivre","pp":"suivi","ipa":"/sɥivi/","en":"to follow","aux":"avoir"}
+    {"inf":"suivre","pp":"suivi","ipa":"/sɥivi/","en":"to follow","aux":"avoir"},
+    {"inf":"saisir","pp":"saisi","ipa":"/seziʁ/","en":"to grab / seize","aux":"avoir"}
   ]},
   {"id":"it","label":"groupe 3 — -it","dot":"#6D28D9","verbs":[
     {"inf":"écrire","pp":"écrit","ipa":"/ekʁi/","en":"to write","aux":"avoir"},
