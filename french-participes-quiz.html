@@ -628,7 +628,7 @@ function checkPP() {
   if (!inp.value.trim()) { inp.focus(); return; }
   const elapsed = Date.now() - questionStart;
   ppDone = true; total++;
-  const ok = norm(inp.value) === norm(current.verb.pp);
+  const ok = inp.value.trim().toLowerCase() === current.verb.pp.toLowerCase();
   inp.disabled = true;
   document.getElementById('submit-btn').disabled = true;
 

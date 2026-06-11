@@ -91,6 +91,13 @@
   {"id":"pron","label":"groupe 9 — verbes pronominaux (-é)","dot":"#C2410C","verbs":[
     {"inf":"se laver","pp":"lavé","ipa":"/lave/","en":"to wash oneself","aux":"être"},
     {"inf":"se coucher","pp":"couché","ipa":"/kuʃe/","en":"to go to bed","aux":"être"},
-    {"inf":"se promener","pp":"promené","ipa":"/pʁɔmne/","en":"to go for a walk","aux":"être"}
+    {"inf":"se promener","pp":"promené","ipa":"/pʁɔmne/","en":"to go for a walk","aux":"être"},
+    {"inf":"se lever","pp":"levé","ipa":"/ləve/","en":"to get up","aux":"être"},
+    {"inf":"se réveiller","pp":"réveillé","ipa":"/ʁeveje/","en":"to wake up","aux":"être"},
+    {"inf":"s'habiller","pp":"habillé","ipa":"/abije/","en":"to get dressed","aux":"être"},
+    {"inf":"se dépêcher","pp":"dépêché","ipa":"/depeʃe/","en":"to hurry","aux":"être"},
+    {"inf":"se reposer","pp":"reposé","ipa":"/ʁəpoze/","en":"to rest","aux":"être"},
+    {"inf":"s'amuser","pp":"amusé","ipa":"/amyze/","en":"to have fun","aux":"être"},
+    {"inf":"se préparer","pp":"préparé","ipa":"/pʁepaʁe/","en":"to get ready","aux":"être"}
   ]}
 ]
