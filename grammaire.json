@@ -1,0 +1,1020 @@
+[
+ {
+  "id": "presentatifs",
+  "unit": "Unité 4",
+  "lecon": "Leçon 12",
+  "dot": "#2563EB",
+  "title": "C'est / Il y a — présenter un lieu",
+  "intro": "Pour présenter ou montrer un lieu.",
+  "points": [
+   "c'est + nom au singulier",
+   "il y a + un / une / des + nom"
+  ],
+  "examples": [
+   "C'est l'appartement.",
+   "Il y a le Vieux-Port.",
+   "Dans ma ville, il y a un parc."
+  ],
+  "tip": "« il y a » ne change jamais (singulier ou pluriel) : il y a un musée / il y a des musées."
+ },
+ {
+  "id": "situer",
+  "unit": "Unité 4",
+  "lecon": "Leçon 12",
+  "dot": "#2563EB",
+  "title": "Situer : ici / là · à côté de / loin de",
+  "intro": "Pour situer un lieu dans l'espace.",
+  "points": [
+   "ici = près de moi · là = plus loin",
+   "à côté de = next to · loin de = far from",
+   "de + le → du · de + les → des"
+  ],
+  "examples": [
+   "Ici, c'est l'appartement ! Là, c'est le quartier du Panier.",
+   "À côté de la cathédrale, il y a le musée.",
+   "à côté du port · loin du port"
+  ]
+ },
+ {
+  "id": "pays",
+  "unit": "Unité 4",
+  "lecon": "Leçon 12",
+  "dot": "#2563EB",
+  "title": "en / à / au / aux — le pays où on habite",
+  "intro": "La préposition dépend du genre du pays.",
+  "table": {
+   "head": [
+    "pays",
+    "préposition",
+    "exemple"
+   ],
+   "rows": [
+    [
+     "masculin (le Mexique)",
+     "au",
+     "J'habite au Mexique."
+    ],
+    [
+     "féminin (la France)",
+     "en",
+     "Tu habites en France."
+    ],
+    [
+     "voyelle (l'Espagne)",
+     "en",
+     "Nous habitons en Espagne."
+    ],
+    [
+     "pluriel (les États-Unis)",
+     "aux",
+     "Elle habite aux États-Unis."
+    ],
+    [
+     "villes / petites îles",
+     "à",
+     "à Cuba, à Malte, à Singapour"
+    ]
+   ]
+  },
+  "tip": "Astuce : masculin → au, féminin/voyelle → en, pluriel → aux, ville → à.",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "aller",
+  "unit": "Unité 4",
+  "lecon": "Leçon 13",
+  "dot": "#2563EB",
+  "title": "Le verbe ALLER au présent (+ au / à la / à l' / aux)",
+  "intro": "Verbe irrégulier, très fréquent. à + le → au, à + les → aux.",
+  "table": {
+   "head": [
+    "",
+    "aller"
+   ],
+   "rows": [
+    [
+     "je",
+     "vais"
+    ],
+    [
+     "tu",
+     "vas"
+    ],
+    [
+     "il/elle/on",
+     "va"
+    ],
+    [
+     "nous",
+     "allons"
+    ],
+    [
+     "vous",
+     "allez"
+    ],
+    [
+     "ils/elles",
+     "vont"
+    ]
+   ]
+  },
+  "examples": [
+   "Je vais au musée.",
+   "Tu vas à la pharmacie.",
+   "Il va à l'hôtel.",
+   "Elles vont aux toilettes."
+  ],
+  "points": []
+ },
+ {
+  "id": "imperatif",
+  "unit": "Unité 4",
+  "lecon": "Leçon 13",
+  "dot": "#2563EB",
+  "title": "L'impératif — donner une direction",
+  "intro": "Pour donner un ordre ou une instruction. On enlève le sujet (tu / nous / vous).",
+  "points": [
+   "Verbes en -er : pas de -s au « tu » → Tourne ! / Continue !",
+   "nous → Continuons ! · vous → Continuez !"
+  ],
+  "table": {
+   "head": [
+    "",
+    "tourner",
+    "continuer",
+    "aller"
+   ],
+   "rows": [
+    [
+     "(tu)",
+     "tourne",
+     "continue",
+     "va"
+    ],
+    [
+     "(nous)",
+     "tournons",
+     "continuons",
+     "allons"
+    ],
+    [
+     "(vous)",
+     "tournez",
+     "continuez",
+     "allez"
+    ]
+   ]
+  },
+  "examples": [
+   "Tournez à gauche !",
+   "Continuez tout droit.",
+   "Allez jusqu'au bout de la rue."
+  ]
+ },
+ {
+  "id": "toniques",
+  "unit": "Unité 4",
+  "lecon": "Leçon 14",
+  "dot": "#2563EB",
+  "title": "Les pronoms toniques (moi, toi, lui…)",
+  "intro": "Pour insister ou après une préposition (avec moi, chez toi…).",
+  "table": {
+   "head": [
+    "sujet",
+    "tonique",
+    "sujet",
+    "tonique"
+   ],
+   "rows": [
+    [
+     "je",
+     "moi",
+     "nous",
+     "nous"
+    ],
+    [
+     "tu",
+     "toi",
+     "vous",
+     "vous"
+    ],
+    [
+     "il",
+     "lui",
+     "ils",
+     "eux"
+    ],
+    [
+     "elle",
+     "elle",
+     "elles",
+     "elles"
+    ]
+   ]
+  },
+  "examples": [
+   "Moi, je fais mon jogging le matin.",
+   "Tu viens avec nous ?",
+   "Et toi ?"
+  ],
+  "points": []
+ },
+ {
+  "id": "pvfv",
+  "unit": "Unité 4",
+  "lecon": "Leçon 14",
+  "dot": "#2563EB",
+  "title": "POUVOIR · VOULOIR · FAIRE · VENIR au présent",
+  "intro": "Quatre verbes irréguliers essentiels.",
+  "table": {
+   "head": [
+    "",
+    "pouvoir",
+    "vouloir",
+    "faire",
+    "venir"
+   ],
+   "rows": [
+    [
+     "je",
+     "peux",
+     "veux",
+     "fais",
+     "viens"
+    ],
+    [
+     "tu",
+     "peux",
+     "veux",
+     "fais",
+     "viens"
+    ],
+    [
+     "il/elle",
+     "peut",
+     "veut",
+     "fait",
+     "vient"
+    ],
+    [
+     "nous",
+     "pouvons",
+     "voulons",
+     "faisons",
+     "venons"
+    ],
+    [
+     "vous",
+     "pouvez",
+     "voulez",
+     "faites",
+     "venez"
+    ],
+    [
+     "ils/elles",
+     "peuvent",
+     "veulent",
+     "font",
+     "viennent"
+    ]
+   ]
+  },
+  "tip": "vous faites et vous dites sont irréguliers (pas « faisez »).",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "heure",
+  "unit": "Unité 4",
+  "lecon": "Leçon 14",
+  "dot": "#2563EB",
+  "title": "Dire l'heure (formelle / informelle)",
+  "intro": "En France, on utilise l'heure de 0 à 23.",
+  "table": {
+   "head": [
+    "heure",
+    "formelle",
+    "informelle"
+   ],
+   "rows": [
+    [
+     "12 h 15",
+     "douze heures quinze",
+     "midi et quart"
+    ],
+    [
+     "12 h 30",
+     "douze heures trente",
+     "midi et demie"
+    ],
+    [
+     "12 h 45",
+     "douze heures quarante-cinq",
+     "une heure moins le quart"
+    ],
+    [
+     "13 h 00",
+     "treize heures",
+     "une heure"
+    ]
+   ]
+  },
+  "tip": "0 h = minuit · 12 h = midi · Quand ? → à 13 heures.",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "temps2",
+  "unit": "Unité 5",
+  "lecon": "Leçon 16",
+  "dot": "#D97706",
+  "title": "Situer dans le temps : de… à, jusqu'à, quand",
+  "intro": "Pour indiquer un début, une fin, une durée.",
+  "points": [
+   "de … à … = from … to …",
+   "jusqu'à = until",
+   "quand = when"
+  ],
+  "examples": [
+   "Je travaille de 7 heures à 19 heures.",
+   "Je travaille jusqu'à 7 heures.",
+   "Quand nous nous couchons, elle commence son travail."
+  ]
+ },
+ {
+  "id": "frequence",
+  "unit": "Unité 5",
+  "lecon": "Leçon 16",
+  "dot": "#D97706",
+  "title": "La fréquence : ne… jamais, parfois, souvent, toujours",
+  "intro": "Du moins fréquent au plus fréquent.",
+  "table": {
+   "head": [
+    "fréquence",
+    "mot"
+   ],
+   "rows": [
+    [
+     "0 %",
+     "ne … jamais"
+    ],
+    [
+     "+",
+     "parfois"
+    ],
+    [
+     "+ +",
+     "souvent"
+    ],
+    [
+     "+ + +",
+     "toujours"
+    ]
+   ]
+  },
+  "examples": [
+   "Je ne sors jamais le samedi.",
+   "Je vais parfois chez des amis.",
+   "Je fais souvent une sieste.",
+   "Je me lève toujours à 7 heures."
+  ],
+  "points": []
+ },
+ {
+  "id": "faire_du",
+  "unit": "Unité 5",
+  "lecon": "Leçon 16",
+  "dot": "#D97706",
+  "title": "Faire du / de la / des — une activité",
+  "intro": "« faire » + article partitif pour parler d'une activité.",
+  "table": {
+   "head": [
+    "genre",
+    "forme",
+    "exemple"
+   ],
+   "rows": [
+    [
+     "masculin",
+     "du",
+     "Je fais du sport."
+    ],
+    [
+     "féminin",
+     "de la",
+     "Je fais de la danse."
+    ],
+    [
+     "pluriel",
+     "des",
+     "Je fais des abdos."
+    ]
+   ]
+  },
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "chrono",
+  "unit": "Unité 5",
+  "lecon": "Leçon 16",
+  "dot": "#D97706",
+  "title": "La chronologie : d'abord, et, après",
+  "intro": "Pour mettre des actions dans l'ordre.",
+  "examples": [
+   "D'abord, je me repose.",
+   "Je me lave et je m'habille.",
+   "Après, je rentre chez moi."
+  ],
+  "points": []
+ },
+ {
+  "id": "pronominaux",
+  "unit": "Unité 5",
+  "lecon": "Leçon 16",
+  "dot": "#D97706",
+  "title": "Les verbes pronominaux au présent",
+  "intro": "Un pronom (me, te, se…) avant le verbe. Ex : se coucher.",
+  "table": {
+   "head": [
+    "",
+    "se coucher"
+   ],
+   "rows": [
+    [
+     "je",
+     "me couche"
+    ],
+    [
+     "tu",
+     "te couches"
+    ],
+    [
+     "il/elle",
+     "se couche"
+    ],
+    [
+     "nous",
+     "nous couchons"
+    ],
+    [
+     "vous",
+     "vous couchez"
+    ],
+    [
+     "ils/elles",
+     "se couchent"
+    ]
+   ]
+  },
+  "tip": "me / te / se → m' / t' / s' devant une voyelle : je m'habille, je me lève.",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "dormir_finir",
+  "unit": "Unité 5",
+  "lecon": "Leçon 16",
+  "dot": "#D97706",
+  "title": "DORMIR & FINIR au présent",
+  "intro": "Deux types de verbes en -ir différents.",
+  "table": {
+   "head": [
+    "",
+    "dormir",
+    "finir"
+   ],
+   "rows": [
+    [
+     "je",
+     "dors",
+     "finis"
+    ],
+    [
+     "tu",
+     "dors",
+     "finis"
+    ],
+    [
+     "il/elle",
+     "dort",
+     "finit"
+    ],
+    [
+     "nous",
+     "dormons",
+     "finissons"
+    ],
+    [
+     "vous",
+     "dormez",
+     "finissez"
+    ],
+    [
+     "ils/elles",
+     "dorment",
+     "finissent"
+    ]
+   ]
+  },
+  "tip": "finir prend -iss- au pluriel (nous finissons) ; dormir non (nous dormons).",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "quantite1",
+  "unit": "Unité 5",
+  "lecon": "Leçon 17",
+  "dot": "#D97706",
+  "title": "La quantité déterminée (les nombres)",
+  "intro": "Pour une quantité précise : un nombre + nom.",
+  "examples": [
+   "2 melons",
+   "500 grammes (500 g)",
+   "1 kilo (1 kg)"
+  ],
+  "points": []
+ },
+ {
+  "id": "partitifs",
+  "unit": "Unité 5",
+  "lecon": "Leçon 17",
+  "dot": "#D97706",
+  "title": "Les articles partitifs : du / de la / de l' / des",
+  "intro": "Pour une quantité indéterminée (une partie de quelque chose).",
+  "table": {
+   "head": [
+    "genre",
+    "forme",
+    "exemple"
+   ],
+   "rows": [
+    [
+     "masculin",
+     "du",
+     "du melon"
+    ],
+    [
+     "féminin",
+     "de la",
+     "de la salade"
+    ],
+    [
+     "voyelle / h",
+     "de l'",
+     "de l'ail"
+    ],
+    [
+     "pluriel",
+     "des",
+     "des pâtes"
+    ]
+   ]
+  },
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "combien",
+  "unit": "Unité 5",
+  "lecon": "Leçon 17",
+  "dot": "#D97706",
+  "title": "L'interrogation avec COMBIEN",
+  "intro": "Pour demander une quantité ou un prix.",
+  "points": [
+   "Combien + verbe + … ?"
+  ],
+  "examples": [
+   "Combien coûte un melon ?",
+   "Ça fait combien ?",
+   "Elles sont à combien ?"
+  ]
+ },
+ {
+  "id": "futur_proche",
+  "unit": "Unité 5",
+  "lecon": "Leçon 17",
+  "dot": "#D97706",
+  "title": "Le futur proche : aller + infinitif",
+  "intro": "Pour une action future (bientôt).",
+  "points": [
+   "Affirmatif : aller (présent) + infinitif",
+   "Négatif : ne + aller + pas + infinitif"
+  ],
+  "examples": [
+   "Je vais commander.",
+   "Nous allons manger au restaurant.",
+   "Je ne vais pas cuisiner."
+  ]
+ },
+ {
+  "id": "prendre",
+  "unit": "Unité 5",
+  "lecon": "Leçon 17",
+  "dot": "#D97706",
+  "title": "Le verbe PRENDRE au présent",
+  "intro": "Irrégulier au pluriel (double n).",
+  "table": {
+   "head": [
+    "",
+    "prendre"
+   ],
+   "rows": [
+    [
+     "je",
+     "prends"
+    ],
+    [
+     "tu",
+     "prends"
+    ],
+    [
+     "il/elle",
+     "prend"
+    ],
+    [
+     "nous",
+     "prenons"
+    ],
+    [
+     "vous",
+     "prenez"
+    ],
+    [
+     "ils/elles",
+     "prennent"
+    ]
+   ]
+  },
+  "tip": "Comme prendre : apprendre, comprendre.",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "demonstratifs",
+  "unit": "Unité 5",
+  "lecon": "Leçon 18",
+  "dot": "#D97706",
+  "title": "Les adjectifs démonstratifs : ce, cet, cette, ces",
+  "intro": "Pour désigner / montrer un objet (this / these).",
+  "table": {
+   "head": [
+    "genre",
+    "forme",
+    "exemple"
+   ],
+   "rows": [
+    [
+     "masculin",
+     "ce",
+     "ce top"
+    ],
+    [
+     "masculin + voyelle",
+     "cet",
+     "cet imperméable"
+    ],
+    [
+     "féminin",
+     "cette",
+     "cette jupe"
+    ],
+    [
+     "pluriel",
+     "ces",
+     "ces sandales"
+    ]
+   ]
+  },
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "prep_lieu",
+  "unit": "Unité 5",
+  "lecon": "Leçon 18",
+  "dot": "#D97706",
+  "title": "Prépositions de lieu : devant, derrière, sur, sous, entre",
+  "intro": "Pour situer un objet dans l'espace.",
+  "points": [
+   "sur = on · sous = under",
+   "devant = in front of · derrière = behind",
+   "entre = between"
+  ],
+  "examples": [
+   "Les bottes sont sous les vêtements.",
+   "Devant, il y a les pantalons.",
+   "Derrière la caisse, il y a les tops."
+  ]
+ },
+ {
+  "id": "place_adj",
+  "unit": "Unité 5",
+  "lecon": "Leçon 18",
+  "dot": "#D97706",
+  "title": "La place des adjectifs",
+  "intro": "En général l'adjectif se place APRÈS le nom.",
+  "points": [
+   "après le nom : une robe magnifique, un pantalon noir",
+   "AVANT le nom : beau/belle, grand/grande, petit/petite, joli(e)"
+  ],
+  "examples": [
+   "une robe magnifique",
+   "une belle robe",
+   "un petit top"
+  ]
+ },
+ {
+  "id": "essayer",
+  "unit": "Unité 5",
+  "lecon": "Leçon 18",
+  "dot": "#D97706",
+  "title": "Le verbe ESSAYER au présent (-ayer)",
+  "intro": "Le y peut devenir i (deux formes possibles).",
+  "table": {
+   "head": [
+    "",
+    "essayer"
+   ],
+   "rows": [
+    [
+     "j'",
+     "essaie / essaye"
+    ],
+    [
+     "tu",
+     "essaies / essayes"
+    ],
+    [
+     "il/elle",
+     "essaie / essaye"
+    ],
+    [
+     "nous",
+     "essayons"
+    ],
+    [
+     "vous",
+     "essayez"
+    ],
+    [
+     "ils/elles",
+     "essaient / essayent"
+    ]
+   ]
+  },
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "quantite2",
+  "unit": "Unité 6",
+  "lecon": "Leçon 20",
+  "dot": "#059669",
+  "title": "La quantité : pas de / un peu de / beaucoup de",
+  "intro": "Pour doser une quantité indéterminée. Toujours « de » (pas du/de la) !",
+  "table": {
+   "head": [
+    "quantité",
+    "forme"
+   ],
+   "rows": [
+    [
+     "0",
+     "pas de sel"
+    ],
+    [
+     "un peu",
+     "un peu de sel"
+    ],
+    [
+     "beaucoup",
+     "beaucoup de sel"
+    ],
+    [
+     "précis",
+     "1 kilo de sel"
+    ]
+   ]
+  },
+  "tip": "Après une quantité, on dit toujours DE : beaucoup de, un kilo de, un peu d'.",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "infinitif_recette",
+  "unit": "Unité 6",
+  "lecon": "Leçon 20",
+  "dot": "#059669",
+  "title": "L'infinitif pour écrire une recette",
+  "intro": "Dans les recettes, on utilise le verbe à l'infinitif.",
+  "points": [
+   "Affirmatif : Couper les tomates.",
+   "Négatif : ne pas + infinitif → Ne pas saisir."
+  ],
+  "examples": [
+   "Éplucher les courgettes.",
+   "Ajouter le sel.",
+   "Ne pas couper les oignons."
+  ]
+ },
+ {
+  "id": "manger",
+  "unit": "Unité 6",
+  "lecon": "Leçon 20",
+  "dot": "#059669",
+  "title": "Le verbe MANGER au présent (-ger)",
+  "intro": "Verbe en -ger : on garde le e à « nous » (mangeons).",
+  "table": {
+   "head": [
+    "",
+    "manger"
+   ],
+   "rows": [
+    [
+     "je",
+     "mange"
+    ],
+    [
+     "tu",
+     "manges"
+    ],
+    [
+     "il/elle",
+     "mange"
+    ],
+    [
+     "nous",
+     "mangeons"
+    ],
+    [
+     "vous",
+     "mangez"
+    ],
+    [
+     "ils/elles",
+     "mangent"
+    ]
+   ]
+  },
+  "tip": "Pareil pour ranger, voyager, partager : nous voyageons.",
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "pc_avoir",
+  "unit": "Unité 6",
+  "lecon": "Leçon 21",
+  "dot": "#059669",
+  "title": "Le passé composé (1) avec AVOIR",
+  "intro": "Pour raconter un événement passé. avoir (présent) + participe passé.",
+  "table": {
+   "head": [
+    "",
+    "réserver",
+    "finir"
+   ],
+   "rows": [
+    [
+     "j'",
+     "ai réservé",
+     "ai fini"
+    ],
+    [
+     "tu",
+     "as réservé",
+     "as fini"
+    ],
+    [
+     "il/elle/on",
+     "a réservé",
+     "a fini"
+    ],
+    [
+     "nous",
+     "avons réservé",
+     "avons fini"
+    ],
+    [
+     "vous",
+     "avez réservé",
+     "avez fini"
+    ],
+    [
+     "ils/elles",
+     "ont réservé",
+     "ont fini"
+    ]
+   ]
+  },
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "participes",
+  "unit": "Unité 6",
+  "lecon": "Leçon 21",
+  "dot": "#059669",
+  "title": "Les participes passés (-é, -i, irréguliers)",
+  "intro": "Comment former le participe passé.",
+  "table": {
+   "head": [
+    "infinitif",
+    "participe passé"
+   ],
+   "rows": [
+    [
+     "verbes en -er",
+     "-é : réserver → réservé"
+    ],
+    [
+     "verbes en -ir",
+     "-i : finir → fini ; applaudir → applaudi"
+    ],
+    [
+     "faire",
+     "fait"
+    ],
+    [
+     "prendre",
+     "pris"
+    ],
+    [
+     "être",
+     "été"
+    ],
+    [
+     "avoir",
+     "eu"
+    ]
+   ]
+  },
+  "points": [],
+  "examples": []
+ },
+ {
+  "id": "on",
+  "unit": "Unité 6",
+  "lecon": "Leçon 21",
+  "dot": "#059669",
+  "title": "Le pronom sujet ON",
+  "intro": "« on » = nous (langage courant).",
+  "points": [
+   "on se conjugue comme il / elle (3e personne du singulier)"
+  ],
+  "examples": [
+   "On pourrait avoir la carte ?",
+   "On va au restaurant.",
+   "On est allé au cinéma."
+  ]
+ },
+ {
+  "id": "pc_etre",
+  "unit": "Unité 6",
+  "lecon": "Leçon 22",
+  "dot": "#059669",
+  "title": "Le passé composé (2) avec ÊTRE",
+  "intro": "Certains verbes utilisent ÊTRE. Le participe s'accorde avec le sujet.",
+  "points": [
+   "~14 verbes de mouvement : aller, venir, arriver, partir, entrer, sortir, monter, descendre, passer, retourner, tomber, rester, naître, mourir…",
+   "accord : Julie est arrivée · les spectateurs sont arrivés"
+  ],
+  "examples": [
+   "Antoine est entré dans la salle.",
+   "Julie est arrivée à 18 h.",
+   "Ils sont partis tôt."
+  ],
+  "tip": "Astuce : la « maison d'être » (verbes de mouvement) + les verbes pronominaux."
+ },
+ {
+  "id": "pc_negatif",
+  "unit": "Unité 6",
+  "lecon": "Leçon 22",
+  "dot": "#059669",
+  "title": "Le passé composé négatif",
+  "intro": "ne / n' + avoir/être + pas + participe passé.",
+  "examples": [
+   "Le cinéma n'a pas montré le film.",
+   "Je n'ai pas compris.",
+   "Elle n'est pas venue."
+  ],
+  "points": []
+ },
+ {
+  "id": "chrono2",
+  "unit": "Unité 6",
+  "lecon": "Leçon 22",
+  "dot": "#059669",
+  "title": "Chronologie : d'abord, puis, ensuite, enfin · il y a",
+  "intro": "Pour raconter une histoire dans l'ordre. « il y a » = ago.",
+  "points": [
+   "d'abord → puis → ensuite → enfin",
+   "il y a 5 mois = 5 months ago"
+  ],
+  "examples": [
+   "D'abord, le cinéma a montré une bande-annonce. Puis, … Ensuite, … Enfin, …",
+   "Il y a 5 mois, Antoine a demandé Julie en mariage."
+  ]
+ }
+]

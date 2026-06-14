@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Quiz FR">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>expressions utiles</title>
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg:#f5f5f0; --surface:#fff; --rule:#000; --rule-lt:#d0d0c8; --text:#000; --muted:#666; --faint:#aaa; --mono:'Courier New','Lucida Console',monospace; }
+:root[data-theme="dark"] { --bg:#1a1a18; --surface:#242420; --rule:#d0d0c8; --rule-lt:#3a3a36; --text:#e0e0d8; --muted:#888880; --faint:#555550; }
+html, body { font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px; background:var(--bg); color:var(--text); min-height:100vh; -webkit-font-smoothing:antialiased; }
+body { display:flex; flex-direction:column; align-items:center; padding:40px 20px 80px; }
+
+.te-header { width:100%; max-width:960px; border-top:2px solid var(--rule); border-bottom:1px solid var(--rule); padding:10px 0; display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:24px; }
+.te-title { font-size:11px; letter-spacing:0.12em; text-transform:lowercase; }
+.te-subtitle { font-size:10px; color:var(--muted); letter-spacing:0.08em; font-family:var(--mono); }
+.te-back { font-size:10px; color:var(--muted); letter-spacing:0.08em; font-family:var(--mono); text-decoration:none; white-space:nowrap; }
+.te-back:hover { color:var(--text); }
+
+.te-filters { width:100%; max-width:960px; display:flex; flex-wrap:wrap; gap:4px; margin-bottom:24px; }
+.te-tag { font-size:9px; letter-spacing:0.12em; text-transform:lowercase; padding:3px 8px; border:1px solid var(--rule-lt); background:var(--surface); color:var(--muted); cursor:pointer; transition:all 0.1s; white-space:nowrap; }
+.te-tag:hover { border-color:var(--rule); color:var(--text); }
+.te-tag.active { border-color:var(--rule); background:var(--rule); color:var(--bg); }
+
+.te-grid { width:100%; max-width:960px; display:grid; grid-template-columns:repeat(2,1fr); gap:12px; align-items:start; }
+@media (max-width:720px) { .te-grid { grid-template-columns:1fr; } }
+
+.x-card { background:var(--surface); border:1px solid var(--rule); }
+.x-head { border-bottom:1px solid var(--rule-lt); padding:9px 16px; display:flex; align-items:center; gap:8px; }
+.x-dot { width:7px; height:7px; flex-shrink:0; }
+.x-fn { font-size:10px; letter-spacing:0.12em; text-transform:lowercase; color:var(--muted); }
+.x-body { padding:6px 16px 12px; }
+.x-row { font-size:13.5px; line-height:1.5; padding:7px 0; border-bottom:1px solid var(--rule-lt); }
+.x-row:last-child { border-bottom:none; }
+</style>
+</head>
+<body>
+
+<header class="te-header">
+  <a class="te-back" href="index.html">← menu</a>
+  <span class="te-title">expressions utiles</span>
+  <span class="te-subtitle">communication · a1</span>
+  <button class="te-tag" id="theme-btn" onclick="toggleTheme()">dark</button>
+</header>
+
+<div class="te-filters" id="filters">
+  <button class="te-tag active" data-u="all" onclick="setUnit('all', this)">toutes</button>
+  <button class="te-tag" data-u="#2563EB" onclick="setUnit('#2563EB', this)">unité 4</button>
+  <button class="te-tag" data-u="#D97706" onclick="setUnit('#D97706', this)">unité 5</button>
+  <button class="te-tag" data-u="#059669" onclick="setUnit('#059669', this)">unité 6</button>
+</div>
+
+<div class="te-grid" id="grid"></div>
+
+<script>
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('theme-btn').textContent = dark ? 'dark' : 'light';
+}
+(function(){ const dark = document.documentElement.getAttribute('data-theme') === 'dark'; document.getElementById('theme-btn').textContent = dark ? 'light' : 'dark'; })();
+
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function setUnit(u, btn) {
+  document.querySelectorAll('#filters .te-tag').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.x-card').forEach(c => {
+    c.style.display = (u === 'all' || c.dataset.dot === u) ? 'block' : 'none';
+  });
+}
+
+fetch('expressions.json')
+  .then(r => r.json())
+  .then(data => {
+    const grid = document.getElementById('grid');
+    data.forEach(g => {
+      const el = document.createElement('div');
+      el.className = 'x-card'; el.dataset.dot = g.dot;
+      el.innerHTML =
+        '<div class="x-head"><span class="x-dot" style="background:'+g.dot+'"></span><span class="x-fn">'+esc(g.label)+'</span></div>' +
+        '<div class="x-body">' + g.phrases.map(p => '<div class="x-row">'+esc(p)+'</div>').join('') + '</div>';
+      grid.appendChild(el);
+    });
+  })
+  .catch(() => { document.getElementById('grid').innerHTML = '<div class="x-card"><div class="x-body">erreur de chargement</div></div>'; });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', {updateViaCache: 'none'});
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+}
+</script>
+</body>
+</html>

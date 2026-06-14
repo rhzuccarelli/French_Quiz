@@ -1,0 +1,174 @@
+[
+ {
+  "id": "informer",
+  "label": "s'informer sur un lieu",
+  "dot": "#2563EB",
+  "phrases": [
+   "Qu'est-ce qu'il y a à visiter à côté de l'appartement ?",
+   "C'est où ?",
+   "Il y a un métro ? Un bus ?"
+  ]
+ },
+ {
+  "id": "decrire_lieu",
+  "label": "décrire un lieu",
+  "dot": "#2563EB",
+  "phrases": [
+   "Dans ma ville, il y a un parc.",
+   "À côté de l'école, il y a un musée.",
+   "Ici, c'est l'appartement.",
+   "Là, au sud, il y a le Vieux-Port.",
+   "Et à côté, le MuCEM."
+  ]
+ },
+ {
+  "id": "demander_chemin",
+  "label": "demander un chemin",
+  "dot": "#2563EB",
+  "phrases": [
+   "Où est la rue Manuel, s'il vous plaît ?",
+   "Je cherche la rue Manuel. Elle est où ?",
+   "C'est loin ?"
+  ]
+ },
+ {
+  "id": "indiquer_chemin",
+  "label": "indiquer un chemin",
+  "dot": "#2563EB",
+  "phrases": [
+   "Tournez à gauche, là, rue Donnadieu.",
+   "Continuez tout droit !",
+   "C'est à 200 mètres.",
+   "C'est la deuxième rue, à droite.",
+   "Allez tout droit ! C'est à côté."
+  ]
+ },
+ {
+  "id": "proposer",
+  "label": "proposer une sortie",
+  "dot": "#2563EB",
+  "phrases": [
+   "Tu viens avec nous au cinéma ?",
+   "Vous êtes libres dimanche ?",
+   "Si tu veux, on fait un brunch et, après, on va au cinéma."
+  ]
+ },
+ {
+  "id": "accepter_refuser",
+  "label": "accepter / refuser une invitation",
+  "dot": "#2563EB",
+  "phrases": [
+   "D'accord !",
+   "OK, je viens à 13 heures.",
+   "Demain soir, je ne peux pas.",
+   "Je termine le travail à 20 heures."
+  ]
+ },
+ {
+  "id": "rdv",
+  "label": "fixer un rendez-vous",
+  "dot": "#2563EB",
+  "phrases": [
+   "Je viens à 13 heures.",
+   "Une heure, c'est bien.",
+   "Quand ? — Samedi soir."
+  ]
+ },
+ {
+  "id": "quotidien",
+  "label": "décrire son quotidien",
+  "dot": "#D97706",
+  "phrases": [
+   "Je travaille la journée, du lundi au vendredi.",
+   "Le matin, je me lève toujours à 7 heures.",
+   "Je me lave et je m'habille.",
+   "Je travaille de 7 heures à 19 heures.",
+   "À midi, je déjeune.",
+   "L'après-midi, je fais les courses.",
+   "Je ne sors jamais la semaine.",
+   "Je fais le ménage et la vaisselle."
+  ]
+ },
+ {
+  "id": "courses",
+  "label": "faire les courses",
+  "dot": "#D97706",
+  "phrases": [
+   "Je voudrais des tomates.",
+   "Je commande.",
+   "Prends deux melons !"
+  ]
+ },
+ {
+  "id": "prix",
+  "label": "demander / donner le prix",
+  "dot": "#D97706",
+  "phrases": [
+   "Combien coûte un melon ?",
+   "Elles sont à combien ?",
+   "9 € le kilo · 2,50 € la barquette.",
+   "Il y a une promotion : c'est 6 € les trois !",
+   "C'est cher !"
+  ]
+ },
+ {
+  "id": "vetements",
+  "label": "acheter des vêtements",
+  "dot": "#D97706",
+  "phrases": [
+   "Bonjour, je peux vous renseigner ?",
+   "Excusez-moi, je peux essayer cette jupe ?",
+   "Quelle est votre taille ? — 38.",
+   "Quelle est votre pointure ? — 39.",
+   "Vous avez des chapeaux ? — Suivez-moi !"
+  ]
+ },
+ {
+  "id": "espace",
+  "label": "situer des objets dans l'espace",
+  "dot": "#D97706",
+  "phrases": [
+   "Où sont les bottes ?",
+   "Elles sont sous les vêtements.",
+   "Devant, il y a les pantalons.",
+   "Derrière la caisse, il y a les tops et les chemises."
+  ]
+ },
+ {
+  "id": "restaurant",
+  "label": "commander au restaurant",
+  "dot": "#059669",
+  "phrases": [
+   "Une table pour deux personnes, s'il vous plaît.",
+   "On pourrait avoir la carte, s'il vous plaît ?",
+   "Je voudrais une salade caprese.",
+   "Qu'est-ce que vous avez comme boisson ?",
+   "L'addition, s'il vous plaît !",
+   "Vous avez choisi ? — Oui, …"
+  ]
+ },
+ {
+  "id": "postale",
+  "label": "écrire une carte postale",
+  "dot": "#059669",
+  "phrases": [
+   "Chère Denise, / Cher Marc,",
+   "Un petit coucou de Strasbourg !",
+   "Comment vas-tu ? Moi, je vais très bien.",
+   "Ce week-end, je visite la ville et je fais du shopping.",
+   "Et toi, tout va bien ?",
+   "Je t'embrasse, / Bises,"
+  ]
+ },
+ {
+  "id": "evenement",
+  "label": "raconter un événement",
+  "dot": "#059669",
+  "phrases": [
+   "Il y a cinq mois, Antoine a demandé Julie en mariage.",
+   "D'abord, … Puis, … Ensuite, … Enfin, …",
+   "Surprise ! Julie a pleuré et les amis ont applaudi.",
+   "C'était magnifique !"
+  ]
+ }
+]

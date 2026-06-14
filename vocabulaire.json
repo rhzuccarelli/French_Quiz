@@ -1,0 +1,1221 @@
+[
+ {
+  "id": "lieux",
+  "label": "les lieux de la ville",
+  "dot": "#2563EB",
+  "items": [
+   {
+    "fr": "un magasin",
+    "en": "a shop"
+   },
+   {
+    "fr": "un marché",
+    "en": "a market"
+   },
+   {
+    "fr": "un supermarché",
+    "en": "a supermarket"
+   },
+   {
+    "fr": "un centre commercial",
+    "en": "a shopping centre"
+   },
+   {
+    "fr": "le consulat",
+    "en": "the consulate"
+   },
+   {
+    "fr": "la mairie",
+    "en": "the town hall",
+    "note": "= l'hôtel de ville"
+   },
+   {
+    "fr": "un café",
+    "en": "a café"
+   },
+   {
+    "fr": "un hôtel",
+    "en": "a hotel"
+   },
+   {
+    "fr": "un jardin",
+    "en": "a garden"
+   },
+   {
+    "fr": "un parc",
+    "en": "a park"
+   },
+   {
+    "fr": "un restaurant",
+    "en": "a restaurant"
+   },
+   {
+    "fr": "un stade",
+    "en": "a stadium"
+   },
+   {
+    "fr": "une cathédrale",
+    "en": "a cathedral"
+   },
+   {
+    "fr": "une église",
+    "en": "a church"
+   },
+   {
+    "fr": "un musée",
+    "en": "a museum"
+   },
+   {
+    "fr": "une pharmacie",
+    "en": "a pharmacy"
+   },
+   {
+    "fr": "un hôpital",
+    "en": "a hospital"
+   },
+   {
+    "fr": "une banque",
+    "en": "a bank"
+   },
+   {
+    "fr": "une école",
+    "en": "a school"
+   },
+   {
+    "fr": "un collège",
+    "en": "a middle school"
+   },
+   {
+    "fr": "un lycée",
+    "en": "a high school"
+   },
+   {
+    "fr": "la poste",
+    "en": "the post office"
+   },
+   {
+    "fr": "la police",
+    "en": "the police (station)"
+   }
+  ]
+ },
+ {
+  "id": "transports",
+  "label": "transports & orientation",
+  "dot": "#2563EB",
+  "items": [
+   {
+    "fr": "la gare",
+    "en": "the train station"
+   },
+   {
+    "fr": "l'arrêt de bus",
+    "en": "the bus stop"
+   },
+   {
+    "fr": "le port",
+    "en": "the port"
+   },
+   {
+    "fr": "un parking",
+    "en": "a car park"
+   },
+   {
+    "fr": "une station de métro",
+    "en": "a metro station"
+   },
+   {
+    "fr": "une station de tramway",
+    "en": "a tram station"
+   },
+   {
+    "fr": "une station-service",
+    "en": "a petrol station"
+   },
+   {
+    "fr": "une avenue",
+    "en": "an avenue"
+   },
+   {
+    "fr": "un boulevard",
+    "en": "a boulevard"
+   },
+   {
+    "fr": "une rue",
+    "en": "a street"
+   },
+   {
+    "fr": "un chemin",
+    "en": "a path / way"
+   },
+   {
+    "fr": "un distributeur de billets",
+    "en": "a cash machine (ATM)"
+   },
+   {
+    "fr": "le nord",
+    "en": "the north",
+    "note": "au nord = in the north"
+   },
+   {
+    "fr": "le sud",
+    "en": "the south"
+   },
+   {
+    "fr": "l'est",
+    "en": "the east"
+   },
+   {
+    "fr": "l'ouest",
+    "en": "the west"
+   },
+   {
+    "fr": "à pied",
+    "en": "on foot"
+   },
+   {
+    "fr": "à vélo",
+    "en": "by bike"
+   },
+   {
+    "fr": "en bus",
+    "en": "by bus"
+   },
+   {
+    "fr": "en métro",
+    "en": "by metro"
+   },
+   {
+    "fr": "en train",
+    "en": "by train"
+   },
+   {
+    "fr": "en tramway",
+    "en": "by tram"
+   },
+   {
+    "fr": "en voiture",
+    "en": "by car"
+   },
+   {
+    "fr": "en bateau",
+    "en": "by boat"
+   }
+  ]
+ },
+ {
+  "id": "direction",
+  "label": "demander le chemin",
+  "dot": "#2563EB",
+  "items": [
+   {
+    "fr": "tout droit",
+    "en": "straight ahead"
+   },
+   {
+    "fr": "à droite",
+    "en": "(to the) right"
+   },
+   {
+    "fr": "à gauche",
+    "en": "(to the) left"
+   },
+   {
+    "fr": "au bout de",
+    "en": "at the end of"
+   },
+   {
+    "fr": "à côté de",
+    "en": "next to"
+   },
+   {
+    "fr": "loin de",
+    "en": "far from"
+   },
+   {
+    "fr": "près de",
+    "en": "near"
+   },
+   {
+    "fr": "ici",
+    "en": "here"
+   },
+   {
+    "fr": "là",
+    "en": "there"
+   },
+   {
+    "fr": "la première rue",
+    "en": "the first street"
+   },
+   {
+    "fr": "la deuxième rue",
+    "en": "the second street"
+   },
+   {
+    "fr": "tourner",
+    "en": "to turn"
+   },
+   {
+    "fr": "continuer",
+    "en": "to continue"
+   },
+   {
+    "fr": "traverser",
+    "en": "to cross"
+   },
+   {
+    "fr": "en face de",
+    "en": "opposite / facing"
+   }
+  ]
+ },
+ {
+  "id": "sortie",
+  "label": "sortir & les loisirs",
+  "dot": "#2563EB",
+  "items": [
+   {
+    "fr": "sortir",
+    "en": "to go out"
+   },
+   {
+    "fr": "une sortie",
+    "en": "an outing"
+   },
+   {
+    "fr": "une sortie gratuite",
+    "en": "a free outing"
+   },
+   {
+    "fr": "boire un verre",
+    "en": "to have a drink"
+   },
+   {
+    "fr": "un brunch",
+    "en": "a brunch"
+   },
+   {
+    "fr": "dîner",
+    "en": "to have dinner"
+   },
+   {
+    "fr": "une terrasse",
+    "en": "a terrace"
+   },
+   {
+    "fr": "un bar",
+    "en": "a bar"
+   },
+   {
+    "fr": "faire une balade",
+    "en": "to go for a stroll"
+   },
+   {
+    "fr": "une promenade",
+    "en": "a walk"
+   },
+   {
+    "fr": "la danse",
+    "en": "dance"
+   },
+   {
+    "fr": "la peinture",
+    "en": "painting"
+   },
+   {
+    "fr": "la photo",
+    "en": "photography"
+   },
+   {
+    "fr": "la sculpture",
+    "en": "sculpture"
+   },
+   {
+    "fr": "un atelier",
+    "en": "a workshop"
+   },
+   {
+    "fr": "une exposition",
+    "en": "an exhibition"
+   },
+   {
+    "fr": "une animation",
+    "en": "an entertainment / activity"
+   },
+   {
+    "fr": "un film",
+    "en": "a film"
+   },
+   {
+    "fr": "la réalité virtuelle",
+    "en": "virtual reality"
+   },
+   {
+    "fr": "un spectacle",
+    "en": "a show"
+   }
+  ]
+ },
+ {
+  "id": "heure",
+  "label": "l'heure & le rendez-vous",
+  "dot": "#2563EB",
+  "items": [
+   {
+    "fr": "l'heure",
+    "en": "the time / hour"
+   },
+   {
+    "fr": "midi",
+    "en": "noon"
+   },
+   {
+    "fr": "minuit",
+    "en": "midnight"
+   },
+   {
+    "fr": "et quart",
+    "en": "quarter past"
+   },
+   {
+    "fr": "et demie",
+    "en": "half past"
+   },
+   {
+    "fr": "moins le quart",
+    "en": "quarter to"
+   },
+   {
+    "fr": "le matin",
+    "en": "the morning"
+   },
+   {
+    "fr": "l'après-midi",
+    "en": "the afternoon"
+   },
+   {
+    "fr": "le soir",
+    "en": "the evening"
+   },
+   {
+    "fr": "quand",
+    "en": "when"
+   },
+   {
+    "fr": "libre",
+    "en": "free / available"
+   },
+   {
+    "fr": "entre … et …",
+    "en": "between … and …"
+   },
+   {
+    "fr": "un rendez-vous",
+    "en": "an appointment / date"
+   },
+   {
+    "fr": "une invitation",
+    "en": "an invitation"
+   },
+   {
+    "fr": "proposer",
+    "en": "to suggest"
+   },
+   {
+    "fr": "accepter",
+    "en": "to accept"
+   },
+   {
+    "fr": "refuser",
+    "en": "to refuse"
+   },
+   {
+    "fr": "d'accord",
+    "en": "okay / agreed"
+   }
+  ]
+ },
+ {
+  "id": "quotidien",
+  "label": "le quotidien (activités)",
+  "dot": "#D97706",
+  "items": [
+   {
+    "fr": "se lever",
+    "en": "to get up"
+   },
+   {
+    "fr": "se laver",
+    "en": "to wash (oneself)"
+   },
+   {
+    "fr": "se doucher",
+    "en": "to shower"
+   },
+   {
+    "fr": "s'habiller",
+    "en": "to get dressed"
+   },
+   {
+    "fr": "se reposer",
+    "en": "to rest"
+   },
+   {
+    "fr": "se coucher",
+    "en": "to go to bed"
+   },
+   {
+    "fr": "dormir",
+    "en": "to sleep"
+   },
+   {
+    "fr": "travailler",
+    "en": "to work"
+   },
+   {
+    "fr": "rentrer chez soi",
+    "en": "to go home"
+   },
+   {
+    "fr": "faire la sieste",
+    "en": "to take a nap"
+   },
+   {
+    "fr": "faire les courses",
+    "en": "to do the shopping"
+   },
+   {
+    "fr": "faire la lessive",
+    "en": "to do the laundry"
+   },
+   {
+    "fr": "faire le ménage",
+    "en": "to do the housework"
+   },
+   {
+    "fr": "faire la vaisselle",
+    "en": "to do the dishes"
+   },
+   {
+    "fr": "faire du sport",
+    "en": "to do sport"
+   },
+   {
+    "fr": "déjeuner",
+    "en": "to have lunch"
+   }
+  ]
+ },
+ {
+  "id": "temps",
+  "label": "moments, jours & repas",
+  "dot": "#D97706",
+  "items": [
+   {
+    "fr": "la journée",
+    "en": "the day(time)"
+   },
+   {
+    "fr": "la nuit",
+    "en": "the night"
+   },
+   {
+    "fr": "la semaine",
+    "en": "the week"
+   },
+   {
+    "fr": "le week-end",
+    "en": "the weekend"
+   },
+   {
+    "fr": "le petit déjeuner",
+    "en": "breakfast"
+   },
+   {
+    "fr": "le déjeuner",
+    "en": "lunch"
+   },
+   {
+    "fr": "le dîner",
+    "en": "dinner"
+   },
+   {
+    "fr": "lundi",
+    "en": "Monday"
+   },
+   {
+    "fr": "mardi",
+    "en": "Tuesday"
+   },
+   {
+    "fr": "mercredi",
+    "en": "Wednesday"
+   },
+   {
+    "fr": "jeudi",
+    "en": "Thursday"
+   },
+   {
+    "fr": "vendredi",
+    "en": "Friday"
+   },
+   {
+    "fr": "samedi",
+    "en": "Saturday"
+   },
+   {
+    "fr": "dimanche",
+    "en": "Sunday"
+   }
+  ]
+ },
+ {
+  "id": "fruits_legumes",
+  "label": "fruits & légumes",
+  "dot": "#D97706",
+  "items": [
+   {
+    "fr": "une banane",
+    "en": "a banana"
+   },
+   {
+    "fr": "une cerise",
+    "en": "a cherry"
+   },
+   {
+    "fr": "une fraise",
+    "en": "a strawberry"
+   },
+   {
+    "fr": "un melon",
+    "en": "a melon"
+   },
+   {
+    "fr": "une poire",
+    "en": "a pear"
+   },
+   {
+    "fr": "une pomme",
+    "en": "an apple"
+   },
+   {
+    "fr": "une carotte",
+    "en": "a carrot"
+   },
+   {
+    "fr": "une courgette",
+    "en": "a courgette / zucchini"
+   },
+   {
+    "fr": "une pomme de terre",
+    "en": "a potato"
+   },
+   {
+    "fr": "une salade",
+    "en": "lettuce / salad"
+   },
+   {
+    "fr": "une tomate",
+    "en": "a tomato"
+   },
+   {
+    "fr": "un oignon",
+    "en": "an onion"
+   },
+   {
+    "fr": "l'ail",
+    "en": "garlic"
+   },
+   {
+    "fr": "une aubergine",
+    "en": "an aubergine / eggplant"
+   },
+   {
+    "fr": "un poivron rouge",
+    "en": "a red pepper"
+   },
+   {
+    "fr": "un poivron vert",
+    "en": "a green pepper"
+   }
+  ]
+ },
+ {
+  "id": "aliments",
+  "label": "autres aliments",
+  "dot": "#D97706",
+  "items": [
+   {
+    "fr": "le beurre",
+    "en": "butter"
+   },
+   {
+    "fr": "le lait",
+    "en": "milk"
+   },
+   {
+    "fr": "la crème",
+    "en": "cream"
+   },
+   {
+    "fr": "un œuf",
+    "en": "an egg"
+   },
+   {
+    "fr": "le fromage",
+    "en": "cheese"
+   },
+   {
+    "fr": "un yaourt",
+    "en": "a yogurt"
+   },
+   {
+    "fr": "un steak",
+    "en": "a steak"
+   },
+   {
+    "fr": "le bœuf",
+    "en": "beef"
+   },
+   {
+    "fr": "l'agneau",
+    "en": "lamb"
+   },
+   {
+    "fr": "le poulet",
+    "en": "chicken"
+   },
+   {
+    "fr": "le thon",
+    "en": "tuna"
+   },
+   {
+    "fr": "le saumon",
+    "en": "salmon"
+   },
+   {
+    "fr": "le poisson",
+    "en": "fish"
+   },
+   {
+    "fr": "le sel",
+    "en": "salt"
+   },
+   {
+    "fr": "le poivre",
+    "en": "pepper"
+   },
+   {
+    "fr": "la moutarde",
+    "en": "mustard"
+   },
+   {
+    "fr": "l'huile d'olive",
+    "en": "olive oil"
+   },
+   {
+    "fr": "le thym",
+    "en": "thyme"
+   },
+   {
+    "fr": "le laurier",
+    "en": "bay leaf"
+   },
+   {
+    "fr": "le sucre",
+    "en": "sugar"
+   },
+   {
+    "fr": "la confiture",
+    "en": "jam"
+   },
+   {
+    "fr": "le pain",
+    "en": "bread"
+   },
+   {
+    "fr": "un gâteau",
+    "en": "a cake"
+   }
+  ]
+ },
+ {
+  "id": "commerces",
+  "label": "commerces, quantités & prix",
+  "dot": "#D97706",
+  "items": [
+   {
+    "fr": "le primeur",
+    "en": "the greengrocer"
+   },
+   {
+    "fr": "la fromagerie",
+    "en": "the cheese shop"
+   },
+   {
+    "fr": "la boulangerie-pâtisserie",
+    "en": "the bakery"
+   },
+   {
+    "fr": "la boucherie-charcuterie",
+    "en": "the butcher's / deli"
+   },
+   {
+    "fr": "la poissonnerie",
+    "en": "the fishmonger's"
+   },
+   {
+    "fr": "une baguette",
+    "en": "a baguette"
+   },
+   {
+    "fr": "une boîte",
+    "en": "a box / tin"
+   },
+   {
+    "fr": "une bouteille",
+    "en": "a bottle"
+   },
+   {
+    "fr": "un paquet",
+    "en": "a packet"
+   },
+   {
+    "fr": "un pot",
+    "en": "a jar / pot"
+   },
+   {
+    "fr": "un kilo",
+    "en": "a kilo"
+   },
+   {
+    "fr": "un gramme",
+    "en": "a gram"
+   },
+   {
+    "fr": "le prix",
+    "en": "the price"
+   },
+   {
+    "fr": "cher / chère",
+    "en": "expensive"
+   },
+   {
+    "fr": "une promotion",
+    "en": "a special offer"
+   },
+   {
+    "fr": "commander",
+    "en": "to order"
+   },
+   {
+    "fr": "coûter",
+    "en": "to cost"
+   }
+  ]
+ },
+ {
+  "id": "vetements",
+  "label": "les vêtements & accessoires",
+  "dot": "#D97706",
+  "items": [
+   {
+    "fr": "un top",
+    "en": "a top"
+   },
+   {
+    "fr": "une jupe",
+    "en": "a skirt"
+   },
+   {
+    "fr": "un short",
+    "en": "shorts"
+   },
+   {
+    "fr": "un jean",
+    "en": "jeans"
+   },
+   {
+    "fr": "un manteau",
+    "en": "a coat"
+   },
+   {
+    "fr": "un blouson",
+    "en": "a jacket"
+   },
+   {
+    "fr": "un pantalon",
+    "en": "trousers"
+   },
+   {
+    "fr": "une robe",
+    "en": "a dress"
+   },
+   {
+    "fr": "une chemise",
+    "en": "a shirt"
+   },
+   {
+    "fr": "un imperméable",
+    "en": "a raincoat"
+   },
+   {
+    "fr": "un foulard",
+    "en": "a scarf"
+   },
+   {
+    "fr": "une ceinture",
+    "en": "a belt"
+   },
+   {
+    "fr": "un chapeau",
+    "en": "a hat"
+   },
+   {
+    "fr": "des baskets",
+    "en": "trainers / sneakers"
+   },
+   {
+    "fr": "des chaussures",
+    "en": "shoes"
+   },
+   {
+    "fr": "des chaussures à talons",
+    "en": "high-heeled shoes"
+   },
+   {
+    "fr": "des sandales",
+    "en": "sandals"
+   },
+   {
+    "fr": "des bottes",
+    "en": "boots"
+   },
+   {
+    "fr": "la taille",
+    "en": "the size (clothes)"
+   },
+   {
+    "fr": "la pointure",
+    "en": "the size (shoes)"
+   },
+   {
+    "fr": "un client / une cliente",
+    "en": "a customer"
+   },
+   {
+    "fr": "un vendeur / une vendeuse",
+    "en": "a salesperson"
+   },
+   {
+    "fr": "une boutique",
+    "en": "a shop"
+   },
+   {
+    "fr": "un grand magasin",
+    "en": "a department store"
+   },
+   {
+    "fr": "magnifique",
+    "en": "magnificent"
+   },
+   {
+    "fr": "décontracté(e)",
+    "en": "casual"
+   },
+   {
+    "fr": "confortable",
+    "en": "comfortable"
+   },
+   {
+    "fr": "parfait(e)",
+    "en": "perfect"
+   }
+  ]
+ },
+ {
+  "id": "couleurs",
+  "label": "les couleurs",
+  "dot": "#D97706",
+  "items": [
+   {
+    "fr": "bleu(e)",
+    "en": "blue"
+   },
+   {
+    "fr": "vert(e)",
+    "en": "green"
+   },
+   {
+    "fr": "orange",
+    "en": "orange"
+   },
+   {
+    "fr": "jaune",
+    "en": "yellow"
+   },
+   {
+    "fr": "beige",
+    "en": "beige"
+   },
+   {
+    "fr": "rose",
+    "en": "pink"
+   },
+   {
+    "fr": "rouge",
+    "en": "red"
+   },
+   {
+    "fr": "gris(e)",
+    "en": "grey"
+   },
+   {
+    "fr": "blanc / blanche",
+    "en": "white"
+   },
+   {
+    "fr": "noir(e)",
+    "en": "black"
+   }
+  ]
+ },
+ {
+  "id": "cuisine",
+  "label": "cuisiner : ustensiles & étapes",
+  "dot": "#059669",
+  "items": [
+   {
+    "fr": "une cuillère",
+    "en": "a spoon"
+   },
+   {
+    "fr": "une fourchette",
+    "en": "a fork"
+   },
+   {
+    "fr": "un couteau",
+    "en": "a knife"
+   },
+   {
+    "fr": "une poêle",
+    "en": "a frying pan"
+   },
+   {
+    "fr": "une casserole",
+    "en": "a saucepan"
+   },
+   {
+    "fr": "une cocotte",
+    "en": "a casserole dish"
+   },
+   {
+    "fr": "un moule",
+    "en": "a baking tin"
+   },
+   {
+    "fr": "un saladier",
+    "en": "a mixing bowl"
+   },
+   {
+    "fr": "une passoire",
+    "en": "a colander"
+   },
+   {
+    "fr": "un four",
+    "en": "an oven"
+   },
+   {
+    "fr": "une cuisinière",
+    "en": "a cooker / stove"
+   },
+   {
+    "fr": "éplucher",
+    "en": "to peel"
+   },
+   {
+    "fr": "couper",
+    "en": "to cut"
+   },
+   {
+    "fr": "ajouter",
+    "en": "to add"
+   },
+   {
+    "fr": "mélanger",
+    "en": "to mix"
+   },
+   {
+    "fr": "chauffer",
+    "en": "to heat"
+   },
+   {
+    "fr": "faire cuire",
+    "en": "to cook"
+   },
+   {
+    "fr": "faire revenir",
+    "en": "to brown / sauté"
+   },
+   {
+    "fr": "saisir",
+    "en": "to sear"
+   },
+   {
+    "fr": "une recette",
+    "en": "a recipe"
+   },
+   {
+    "fr": "un ingrédient",
+    "en": "an ingredient"
+   },
+   {
+    "fr": "une spécialité",
+    "en": "a speciality"
+   }
+  ]
+ },
+ {
+  "id": "restaurant",
+  "label": "au restaurant",
+  "dot": "#059669",
+  "items": [
+   {
+    "fr": "une table",
+    "en": "a table"
+   },
+   {
+    "fr": "le menu",
+    "en": "the set menu"
+   },
+   {
+    "fr": "la carte",
+    "en": "the menu (à la carte)"
+   },
+   {
+    "fr": "l'ardoise",
+    "en": "the chalkboard menu"
+   },
+   {
+    "fr": "la formule",
+    "en": "the set deal"
+   },
+   {
+    "fr": "l'addition",
+    "en": "the bill"
+   },
+   {
+    "fr": "l'entrée",
+    "en": "the starter"
+   },
+   {
+    "fr": "le plat",
+    "en": "the main course"
+   },
+   {
+    "fr": "le dessert",
+    "en": "the dessert"
+   },
+   {
+    "fr": "la carafe d'eau",
+    "en": "the jug of water"
+   },
+   {
+    "fr": "le pichet de vin",
+    "en": "the carafe of wine"
+   },
+   {
+    "fr": "l'apéritif",
+    "en": "the aperitif"
+   },
+   {
+    "fr": "réserver",
+    "en": "to book"
+   },
+   {
+    "fr": "un serveur / une serveuse",
+    "en": "a waiter / waitress"
+   },
+   {
+    "fr": "une boisson",
+    "en": "a drink"
+   },
+   {
+    "fr": "le vin",
+    "en": "wine"
+   }
+  ]
+ },
+ {
+  "id": "evenement",
+  "label": "événements : mariage & cinéma",
+  "dot": "#059669",
+  "items": [
+   {
+    "fr": "une demande en mariage",
+    "en": "a marriage proposal"
+   },
+   {
+    "fr": "se marier",
+    "en": "to get married"
+   },
+   {
+    "fr": "un fiancé / une fiancée",
+    "en": "a fiancé(e)"
+   },
+   {
+    "fr": "un couple",
+    "en": "a couple"
+   },
+   {
+    "fr": "une bague",
+    "en": "a ring"
+   },
+   {
+    "fr": "le mariage",
+    "en": "the wedding"
+   },
+   {
+    "fr": "hier",
+    "en": "yesterday"
+   },
+   {
+    "fr": "aujourd'hui",
+    "en": "today"
+   },
+   {
+    "fr": "demain",
+    "en": "tomorrow"
+   },
+   {
+    "fr": "une bande-annonce",
+    "en": "a trailer"
+   },
+   {
+    "fr": "la salle de cinéma",
+    "en": "the cinema (auditorium)"
+   },
+   {
+    "fr": "le scénario",
+    "en": "the script"
+   },
+   {
+    "fr": "un spectateur / une spectatrice",
+    "en": "a spectator"
+   },
+   {
+    "fr": "applaudir",
+    "en": "to applaud"
+   },
+   {
+    "fr": "pleurer",
+    "en": "to cry"
+   },
+   {
+    "fr": "une surprise",
+    "en": "a surprise"
+   }
+  ]
+ }
+]

@@ -114,6 +114,33 @@ body {
   line-height: 1.1;
 }
 
+/* ── SECTION LABEL ── */
+.te-section {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 40px 0 14px;
+}
+.te-section:first-of-type { margin-top: 0; }
+.te-section-name {
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  text-transform: lowercase;
+  color: var(--muted);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+.te-section-rule { flex: 1; height: 1px; background: var(--rule-lt); }
+.te-section-count {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  font-family: var(--mono);
+  white-space: nowrap;
+}
+
 /* ── GRID ── */
 .te-grid {
   width: 100%;
@@ -239,13 +266,19 @@ body {
 
 <header class="te-header">
   <span class="te-title">français — quiz</span>
-  <span class="te-subtitle">conjugaison</span>
+  <span class="te-subtitle">a1 · révisions</span>
   <button class="te-theme-btn" id="theme-btn" onclick="toggleTheme()">dark</button>
 </header>
 
 <div class="te-intro">
   <div class="te-intro-label">choisir un exercice</div>
   <div class="te-intro-heading">de quoi<br>s'agit-il ?</div>
+</div>
+
+<div class="te-section">
+  <span class="te-section-name">conjugaison</span>
+  <span class="te-section-rule"></span>
+  <span class="te-section-count">présent · participes</span>
 </div>
 
 <div class="te-grid">
@@ -327,7 +360,92 @@ body {
 
 </div>
 
-<footer class="te-footer">français · quiz de conjugaison</footer>
+<div class="te-section">
+  <span class="te-section-name">unités 4 · 5 · 6</span>
+  <span class="te-section-rule"></span>
+  <span class="te-section-count">vocabulaire · grammaire</span>
+</div>
+
+<div class="te-grid">
+
+  <a class="te-card" href="french-vocab-learn.html">
+    <div class="te-card-head">
+      <span class="te-card-dot" style="background:#D97706;"></span>
+      <span class="te-card-tag">vocabulaire · apprentissage</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-card-name">vocabulaire<br>flashcards</div>
+      <div class="te-card-desc">Mémorisez le vocabulaire des unités 4 à 6, par thème. Sens fr↔en, progression persistante.</div>
+      <div class="te-card-footer">
+        <span class="te-card-count">278 mots · 15 thèmes</span>
+        <span class="te-card-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="te-card" href="french-vocab-quiz.html">
+    <div class="te-card-head">
+      <span class="te-card-dot" style="background:#D97706;border-radius:0;"></span>
+      <span class="te-card-tag">vocabulaire · choix multiple</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-card-name">vocabulaire<br>quiz</div>
+      <div class="te-card-desc">Quiz à choix multiple (qcm) dans les deux sens. Score, séries et statistiques.</div>
+      <div class="te-card-footer">
+        <span class="te-card-count">278 mots · qcm</span>
+        <span class="te-card-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="te-card" href="french-grammaire.html">
+    <div class="te-card-head">
+      <span class="te-card-dot" style="background:#2563EB;border-radius:0;"></span>
+      <span class="te-card-tag">grammaire · référence</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-card-name">grammaire<br>aide-mémoire</div>
+      <div class="te-card-desc">Fiches de règles : prépositions, temps, articles, passé composé… Filtrables par unité.</div>
+      <div class="te-card-footer">
+        <span class="te-card-count">32 fiches</span>
+        <span class="te-card-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="te-card" href="french-grammaire-quiz.html">
+    <div class="te-card-head">
+      <span class="te-card-dot" style="background:#2563EB;"></span>
+      <span class="te-card-tag">grammaire · quiz</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-card-name">grammaire<br>quiz</div>
+      <div class="te-card-desc">Questions type examen avec correction expliquée à chaque réponse.</div>
+      <div class="te-card-footer">
+        <span class="te-card-count">55 questions</span>
+        <span class="te-card-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+  <a class="te-card" href="french-expressions.html">
+    <div class="te-card-head">
+      <span class="te-card-dot" style="background:#059669;"></span>
+      <span class="te-card-tag">communication · référence</span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-card-name">expressions<br>utiles</div>
+      <div class="te-card-desc">Le « kit de phrases » pour l'oral et l'écrit : demander, proposer, commander, raconter…</div>
+      <div class="te-card-footer">
+        <span class="te-card-count">67 phrases · 15 situations</span>
+        <span class="te-card-arrow">→</span>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<footer class="te-footer">français · a1 · conjugaison · vocabulaire · grammaire</footer>
 
 <script>
 function toggleTheme() {
