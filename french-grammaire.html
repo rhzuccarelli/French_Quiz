@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Quiz FR">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>grammaire — aide-mémoire</title>
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f5f5f0; --surface: #ffffff; --rule: #000000; --rule-lt: #d0d0c8;
+  --text: #000000; --muted: #666666; --faint: #aaaaaa;
+  --hl-bg: #f3f1e8; --mono: 'Courier New', 'Lucida Console', monospace;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a18; --surface: #242420; --rule: #d0d0c8; --rule-lt: #3a3a36;
+  --text: #e0e0d8; --muted: #888880; --faint: #555550; --hl-bg: #2c2c26;
+}
+html, body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+body { display: flex; flex-direction: column; align-items: center; padding: 40px 20px 80px; }
+
+.te-header { width: 100%; max-width: 960px; border-top: 2px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 10px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+.te-title { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: lowercase; }
+.te-subtitle { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; font-family: var(--mono); }
+.te-back { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; font-family: var(--mono); text-decoration: none; white-space: nowrap; }
+.te-back:hover { color: var(--text); }
+
+.te-filters { width: 100%; max-width: 960px; display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 24px; }
+.te-tag { font-size: 9px; letter-spacing: 0.12em; text-transform: lowercase; padding: 3px 8px; border: 1px solid var(--rule-lt); background: var(--surface); color: var(--muted); cursor: pointer; transition: all 0.1s; white-space: nowrap; }
+.te-tag:hover  { border-color: var(--rule); color: var(--text); }
+.te-tag.active { border-color: var(--rule); background: var(--rule); color: var(--bg); }
+
+.te-grid { width: 100%; max-width: 960px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-items: start; }
+@media (max-width: 720px) { .te-grid { grid-template-columns: 1fr; } }
+
+.g-card { background: var(--surface); border: 1px solid var(--rule); display: flex; flex-direction: column; }
+.g-head { border-bottom: 1px solid var(--rule-lt); padding: 9px 16px; display: flex; align-items: center; gap: 8px; }
+.g-dot { width: 7px; height: 7px; flex-shrink: 0; }
+.g-lecon { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; color: var(--faint); margin-left: auto; white-space: nowrap; }
+.g-body { padding: 16px; }
+.g-title { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 8px; }
+.g-intro { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 12px; }
+
+.g-points { list-style: none; margin: 0 0 12px; padding: 0; }
+.g-points li { font-size: 12.5px; line-height: 1.5; padding: 3px 0 3px 14px; position: relative; }
+.g-points li::before { content: "›"; position: absolute; left: 0; color: var(--faint); }
+
+.g-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 12.5px; }
+.g-table th { text-align: left; font-weight: 400; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); padding: 4px 8px 4px 0; border-bottom: 1px solid var(--rule-lt); }
+.g-table td { padding: 4px 8px 4px 0; border-bottom: 1px solid var(--rule-lt); vertical-align: baseline; }
+.g-table td:first-child { color: var(--muted); font-style: italic; white-space: nowrap; }
+.g-table tr:last-child td { border-bottom: none; }
+.g-table b { font-weight: 700; }
+
+.g-ex { background: var(--hl-bg); border-left: 2px solid var(--rule-lt); padding: 8px 12px; margin-bottom: 10px; }
+.g-ex div { font-size: 12.5px; line-height: 1.6; }
+.g-ex div::before { content: "“"; color: var(--faint); }
+.g-ex div::after { content: "”"; color: var(--faint); }
+
+.g-tip { font-size: 11.5px; color: var(--muted); line-height: 1.5; padding-top: 8px; border-top: 1px dotted var(--rule-lt); }
+.g-tip b { color: var(--text); }
+.g-tip-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--faint); margin-right: 6px; }
+</style>
+</head>
+<body>
+
+<header class="te-header">
+  <a class="te-back" href="index.html">← menu</a>
+  <span class="te-title">grammaire &mdash; aide-mémoire</span>
+  <span class="te-subtitle">unités 4 · 5 · 6</span>
+  <button class="te-tag" id="theme-btn" onclick="toggleTheme()">dark</button>
+</header>
+
+<div class="te-filters" id="filters">
+  <button class="te-tag active" data-unit="all" onclick="setUnit('all', this)">toutes</button>
+  <button class="te-tag" data-unit="Unité 4" onclick="setUnit('Unité 4', this)">unité 4</button>
+  <button class="te-tag" data-unit="Unité 5" onclick="setUnit('Unité 5', this)">unité 5</button>
+  <button class="te-tag" data-unit="Unité 6" onclick="setUnit('Unité 6', this)">unité 6</button>
+</div>
+
+<div class="te-grid" id="grid"></div>
+
+<script>
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('theme-btn').textContent = dark ? 'dark' : 'light';
+}
+(function(){ const dark = document.documentElement.getAttribute('data-theme') === 'dark'; document.getElementById('theme-btn').textContent = dark ? 'light' : 'dark'; })();
+
+let cards = [];
+function setUnit(unit, btn) {
+  document.querySelectorAll('#filters .te-tag').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.g-card').forEach(c => {
+    c.style.display = (unit === 'all' || c.dataset.unit === unit) ? 'flex' : 'none';
+  });
+}
+
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function render(c) {
+  let h = '';
+  if (c.intro) h += '<div class="g-intro">' + esc(c.intro) + '</div>';
+  if (c.points && c.points.length) {
+    h += '<ul class="g-points">' + c.points.map(p => '<li>' + esc(p) + '</li>').join('') + '</ul>';
+  }
+  if (c.table) {
+    h += '<table class="g-table"><thead><tr>' +
+      c.table.head.map(x => '<th>' + esc(x) + '</th>').join('') + '</tr></thead><tbody>' +
+      c.table.rows.map(r => '<tr>' + r.map((cell,i) =>
+        '<td>' + (i === 0 ? esc(cell) : '<b>' + esc(cell) + '</b>') + '</td>').join('') + '</tr>').join('') +
+      '</tbody></table>';
+  }
+  if (c.examples && c.examples.length) {
+    h += '<div class="g-ex">' + c.examples.map(e => '<div>' + esc(e) + '</div>').join('') + '</div>';
+  }
+  if (c.tip) h += '<div class="g-tip"><span class="g-tip-label">astuce</span>' + esc(c.tip) + '</div>';
+  return h;
+}
+
+fetch('grammaire.json')
+  .then(r => r.json())
+  .then(data => {
+    cards = data;
+    const grid = document.getElementById('grid');
+    cards.forEach(c => {
+      const el = document.createElement('div');
+      el.className = 'g-card';
+      el.dataset.unit = c.unit;
+      el.innerHTML =
+        '<div class="g-head"><span class="g-dot" style="background:' + c.dot + '"></span>' +
+        '<span class="g-title" style="font-size:13px;margin:0">' + esc(c.title) + '</span>' +
+        '<span class="g-lecon">' + esc(c.lecon) + '</span></div>' +
+        '<div class="g-body">' + render(c) + '</div>';
+      grid.appendChild(el);
+    });
+  })
+  .catch(() => { document.getElementById('grid').innerHTML = '<div class="g-card"><div class="g-body">erreur de chargement</div></div>'; });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', {updateViaCache: 'none'});
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+}
+</script>
+</body>
+</html>

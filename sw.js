@@ -1,4 +1,4 @@
-const CACHE = 'fr-quiz-v7';
+const CACHE = 'fr-quiz-v8';
 const BASE = new URL('.', self.location).href;
 const ASSETS = [
   BASE,
@@ -8,8 +8,17 @@ const ASSETS = [
   BASE + 'french-verbs-cheatsheet.html',
   BASE + 'french-verbs-learn.html',
   BASE + 'french-participes-learn.html',
+  BASE + 'french-vocab-learn.html',
+  BASE + 'french-vocab-quiz.html',
+  BASE + 'french-grammaire.html',
+  BASE + 'french-grammaire-quiz.html',
+  BASE + 'french-expressions.html',
   BASE + 'verbs.json',
   BASE + 'participes.json',
+  BASE + 'vocabulaire.json',
+  BASE + 'grammaire.json',
+  BASE + 'grammaire-quiz.json',
+  BASE + 'expressions.json',
   BASE + 'manifest.json',
   BASE + 'icons/icon-192.png',
   BASE + 'icons/icon-512.png',

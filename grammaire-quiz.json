@@ -1,0 +1,717 @@
+[
+ {
+  "grp": "Unité 4 · pays",
+  "dot": "#2563EB",
+  "q": "J'habite ___ Mexique.",
+  "opts": [
+   "au",
+   "en",
+   "à",
+   "aux"
+  ],
+  "a": 0,
+  "why": "Pays masculin → au."
+ },
+ {
+  "grp": "Unité 4 · pays",
+  "dot": "#2563EB",
+  "q": "Tu habites ___ France.",
+  "opts": [
+   "au",
+   "en",
+   "aux",
+   "à"
+  ],
+  "a": 1,
+  "why": "Pays féminin → en."
+ },
+ {
+  "grp": "Unité 4 · pays",
+  "dot": "#2563EB",
+  "q": "Elle habite ___ États-Unis.",
+  "opts": [
+   "en",
+   "au",
+   "aux",
+   "à"
+  ],
+  "a": 2,
+  "why": "Pays pluriel → aux."
+ },
+ {
+  "grp": "Unité 4 · pays",
+  "dot": "#2563EB",
+  "q": "Nous habitons ___ Espagne.",
+  "opts": [
+   "au",
+   "à",
+   "en",
+   "aux"
+  ],
+  "a": 2,
+  "why": "Pays avec voyelle → en."
+ },
+ {
+  "grp": "Unité 4 · pays",
+  "dot": "#2563EB",
+  "q": "Ils habitent ___ Lisbonne.",
+  "opts": [
+   "au",
+   "à",
+   "en",
+   "aux"
+  ],
+  "a": 1,
+  "why": "Ville → à."
+ },
+ {
+  "grp": "Unité 4 · situer",
+  "dot": "#2563EB",
+  "q": "Le musée est à côté ___ port.",
+  "opts": [
+   "de",
+   "du",
+   "de la",
+   "des"
+  ],
+  "a": 1,
+  "why": "de + le → du."
+ },
+ {
+  "grp": "Unité 4 · présentatif",
+  "dot": "#2563EB",
+  "q": "___ un parc dans ma ville.",
+  "opts": [
+   "C'est",
+   "Il y a",
+   "Il est",
+   "Voilà le"
+  ],
+  "a": 1,
+  "why": "il y a + un/une/des."
+ },
+ {
+  "grp": "Unité 4 · aller",
+  "dot": "#2563EB",
+  "q": "Je ___ à la pharmacie.",
+  "opts": [
+   "va",
+   "vais",
+   "vas",
+   "allons"
+  ],
+  "a": 1,
+  "why": "aller : je vais."
+ },
+ {
+  "grp": "Unité 4 · aller",
+  "dot": "#2563EB",
+  "q": "Nous ___ au musée.",
+  "opts": [
+   "allons",
+   "allez",
+   "vont",
+   "va"
+  ],
+  "a": 0,
+  "why": "aller : nous allons."
+ },
+ {
+  "grp": "Unité 4 · aller+art",
+  "dot": "#2563EB",
+  "q": "Tu vas ___ hôtel.",
+  "opts": [
+   "au",
+   "à la",
+   "à l'",
+   "aux"
+  ],
+  "a": 2,
+  "why": "à + l' devant voyelle."
+ },
+ {
+  "grp": "Unité 4 · aller+art",
+  "dot": "#2563EB",
+  "q": "Elles vont ___ toilettes.",
+  "opts": [
+   "au",
+   "à la",
+   "à l'",
+   "aux"
+  ],
+  "a": 3,
+  "why": "à + les → aux."
+ },
+ {
+  "grp": "Unité 4 · impératif",
+  "dot": "#2563EB",
+  "q": "(à un ami) ___ à gauche !",
+  "opts": [
+   "Tourne",
+   "Tournes",
+   "Tourner",
+   "Tu tournes"
+  ],
+  "a": 0,
+  "why": "Impératif tu, verbe -er : pas de -s."
+ },
+ {
+  "grp": "Unité 4 · impératif",
+  "dot": "#2563EB",
+  "q": "(vous) ___ tout droit !",
+  "opts": [
+   "Continue",
+   "Continuez",
+   "Continuons",
+   "Continuer"
+  ],
+  "a": 1,
+  "why": "Impératif vous → -ez."
+ },
+ {
+  "grp": "Unité 4 · toniques",
+  "dot": "#2563EB",
+  "q": "___, je fais du sport le matin.",
+  "opts": [
+   "Je",
+   "Me",
+   "Moi",
+   "Mon"
+  ],
+  "a": 2,
+  "why": "Pronom tonique : Moi."
+ },
+ {
+  "grp": "Unité 4 · toniques",
+  "dot": "#2563EB",
+  "q": "Tu viens avec ___ ? (= avec elles)",
+  "opts": [
+   "eux",
+   "elles",
+   "leur",
+   "les"
+  ],
+  "a": 1,
+  "why": "3e pers. fém. pluriel → elles."
+ },
+ {
+  "grp": "Unité 4 · pouvoir",
+  "dot": "#2563EB",
+  "q": "Je ne ___ pas, je travaille.",
+  "opts": [
+   "peut",
+   "peux",
+   "pouvez",
+   "peux pas"
+  ],
+  "a": 1,
+  "why": "pouvoir : je peux."
+ },
+ {
+  "grp": "Unité 4 · vouloir",
+  "dot": "#2563EB",
+  "q": "Vous ___ un café ?",
+  "opts": [
+   "voulez",
+   "voulons",
+   "veux",
+   "veulent"
+  ],
+  "a": 0,
+  "why": "vouloir : vous voulez."
+ },
+ {
+  "grp": "Unité 4 · faire",
+  "dot": "#2563EB",
+  "q": "Vous ___ du sport ?",
+  "opts": [
+   "faisez",
+   "faites",
+   "faisons",
+   "font"
+  ],
+  "a": 1,
+  "why": "faire : vous faites (irrégulier)."
+ },
+ {
+  "grp": "Unité 4 · venir",
+  "dot": "#2563EB",
+  "q": "Ils ___ avec nous.",
+  "opts": [
+   "viens",
+   "vient",
+   "venez",
+   "viennent"
+  ],
+  "a": 3,
+  "why": "venir : ils viennent."
+ },
+ {
+  "grp": "Unité 4 · heure",
+  "dot": "#2563EB",
+  "q": "12 h 30 (informel) = midi ___.",
+  "opts": [
+   "et quart",
+   "et demie",
+   "moins le quart",
+   "et trente"
+  ],
+  "a": 1,
+  "why": "12 h 30 = midi et demie."
+ },
+ {
+  "grp": "Unité 5 · temps",
+  "dot": "#D97706",
+  "q": "Je travaille ___ 7 heures (until).",
+  "opts": [
+   "de",
+   "à",
+   "jusqu'à",
+   "entre"
+  ],
+  "a": 2,
+  "why": "jusqu'à = until."
+ },
+ {
+  "grp": "Unité 5 · faire du",
+  "dot": "#D97706",
+  "q": "Je fais ___ danse.",
+  "opts": [
+   "du",
+   "de la",
+   "des",
+   "de l'"
+  ],
+  "a": 1,
+  "why": "danse = féminin → de la."
+ },
+ {
+  "grp": "Unité 5 · faire du",
+  "dot": "#D97706",
+  "q": "Je fais ___ sport.",
+  "opts": [
+   "du",
+   "de la",
+   "des",
+   "de l'"
+  ],
+  "a": 0,
+  "why": "sport = masculin → du."
+ },
+ {
+  "grp": "Unité 5 · pronominaux",
+  "dot": "#D97706",
+  "q": "Le matin, je ___ à 7 heures.",
+  "opts": [
+   "lève",
+   "me lève",
+   "me lever",
+   "se lève"
+  ],
+  "a": 1,
+  "why": "se lever : je me lève."
+ },
+ {
+  "grp": "Unité 5 · pronominaux",
+  "dot": "#D97706",
+  "q": "Nous ___ tard le week-end.",
+  "opts": [
+   "se couchons",
+   "nous couchons",
+   "me couchons",
+   "couchons"
+  ],
+  "a": 1,
+  "why": "nous nous couchons."
+ },
+ {
+  "grp": "Unité 5 · pronominaux",
+  "dot": "#D97706",
+  "q": "Le soir, je ___.",
+  "opts": [
+   "m'habille",
+   "me habille",
+   "s'habille",
+   "habille"
+  ],
+  "a": 0,
+  "why": "me + voyelle → m'habille."
+ },
+ {
+  "grp": "Unité 5 · dormir/finir",
+  "dot": "#D97706",
+  "q": "Nous ___ à minuit.",
+  "opts": [
+   "dormons",
+   "dormissons",
+   "dorment",
+   "dors"
+  ],
+  "a": 0,
+  "why": "dormir : nous dormons (pas de -iss-)."
+ },
+ {
+  "grp": "Unité 5 · dormir/finir",
+  "dot": "#D97706",
+  "q": "Le film ___ à 22 h.",
+  "opts": [
+   "finit",
+   "fini",
+   "finis",
+   "finissent"
+  ],
+  "a": 0,
+  "why": "finir : il finit."
+ },
+ {
+  "grp": "Unité 5 · partitifs",
+  "dot": "#D97706",
+  "q": "Je voudrais ___ salade.",
+  "opts": [
+   "du",
+   "de la",
+   "de l'",
+   "des"
+  ],
+  "a": 1,
+  "why": "salade fém. → de la."
+ },
+ {
+  "grp": "Unité 5 · partitifs",
+  "dot": "#D97706",
+  "q": "Vous prenez ___ ail ?",
+  "opts": [
+   "du",
+   "de la",
+   "de l'",
+   "des"
+  ],
+  "a": 2,
+  "why": "ail = voyelle → de l'."
+ },
+ {
+  "grp": "Unité 5 · partitifs",
+  "dot": "#D97706",
+  "q": "Elles prennent ___ pâtes.",
+  "opts": [
+   "du",
+   "de la",
+   "de l'",
+   "des"
+  ],
+  "a": 3,
+  "why": "pluriel → des."
+ },
+ {
+  "grp": "Unité 5 · combien",
+  "dot": "#D97706",
+  "q": "___ coûte un melon ?",
+  "opts": [
+   "Quand",
+   "Où",
+   "Combien",
+   "Comment"
+  ],
+  "a": 2,
+  "why": "Prix → Combien."
+ },
+ {
+  "grp": "Unité 5 · futur proche",
+  "dot": "#D97706",
+  "q": "Demain, je ___ cuisiner.",
+  "opts": [
+   "vais",
+   "va",
+   "vas",
+   "allons"
+  ],
+  "a": 0,
+  "why": "futur proche : je vais + infinitif."
+ },
+ {
+  "grp": "Unité 5 · futur proche",
+  "dot": "#D97706",
+  "q": "Forme négative : Je ___ cuisiner.",
+  "opts": [
+   "vais pas",
+   "ne vais pas",
+   "ne pas vais",
+   "vais ne pas"
+  ],
+  "a": 1,
+  "why": "ne + aller + pas + infinitif."
+ },
+ {
+  "grp": "Unité 5 · prendre",
+  "dot": "#D97706",
+  "q": "Ils ___ le métro.",
+  "opts": [
+   "prend",
+   "prends",
+   "prennent",
+   "prenent"
+  ],
+  "a": 2,
+  "why": "prendre : ils prennent (double n)."
+ },
+ {
+  "grp": "Unité 5 · démonstratifs",
+  "dot": "#D97706",
+  "q": "J'aime ___ jupe.",
+  "opts": [
+   "ce",
+   "cet",
+   "cette",
+   "ces"
+  ],
+  "a": 2,
+  "why": "jupe fém. → cette."
+ },
+ {
+  "grp": "Unité 5 · démonstratifs",
+  "dot": "#D97706",
+  "q": "___ imperméable est beau.",
+  "opts": [
+   "Ce",
+   "Cet",
+   "Cette",
+   "Ces"
+  ],
+  "a": 1,
+  "why": "masc. + voyelle → cet."
+ },
+ {
+  "grp": "Unité 5 · démonstratifs",
+  "dot": "#D97706",
+  "q": "J'achète ___ sandales.",
+  "opts": [
+   "ce",
+   "cet",
+   "cette",
+   "ces"
+  ],
+  "a": 3,
+  "why": "pluriel → ces."
+ },
+ {
+  "grp": "Unité 5 · place adj",
+  "dot": "#D97706",
+  "q": "Choisis la phrase correcte :",
+  "opts": [
+   "une robe magnifique",
+   "une magnifique robe",
+   "un robe magnifique",
+   "une robe magnifiques"
+  ],
+  "a": 0,
+  "why": "adjectif normal → après le nom."
+ },
+ {
+  "grp": "Unité 5 · place adj",
+  "dot": "#D97706",
+  "q": "Choisis la phrase correcte :",
+  "opts": [
+   "une robe belle",
+   "une belle robe",
+   "un belle robe",
+   "une belles robe"
+  ],
+  "a": 1,
+  "why": "beau/belle → avant le nom."
+ },
+ {
+  "grp": "Unité 5 · essayer",
+  "dot": "#D97706",
+  "q": "Je ___ cette veste.",
+  "opts": [
+   "essaie",
+   "essaye",
+   "essaie / essaye",
+   "essayes"
+  ],
+  "a": 2,
+  "why": "-ayer : essaie OU essaye."
+ },
+ {
+  "grp": "Unité 5 · prép lieu",
+  "dot": "#D97706",
+  "q": "Les bottes sont ___ les vêtements (under).",
+  "opts": [
+   "sur",
+   "sous",
+   "devant",
+   "entre"
+  ],
+  "a": 1,
+  "why": "sous = under."
+ },
+ {
+  "grp": "Unité 6 · quantité",
+  "dot": "#059669",
+  "q": "Il n'y a ___ sel.",
+  "opts": [
+   "du",
+   "pas de",
+   "un peu du",
+   "beaucoup du"
+  ],
+  "a": 1,
+  "why": "négation → pas de."
+ },
+ {
+  "grp": "Unité 6 · quantité",
+  "dot": "#059669",
+  "q": "Il y a ___ sel (a little).",
+  "opts": [
+   "un peu de",
+   "un peu du",
+   "peu",
+   "un peu des"
+  ],
+  "a": 0,
+  "why": "un peu de + nom."
+ },
+ {
+  "grp": "Unité 6 · recette",
+  "dot": "#059669",
+  "q": "Recette : ___ les tomates.",
+  "opts": [
+   "Coupez vous",
+   "Couper",
+   "Tu coupes",
+   "Je coupe"
+  ],
+  "a": 1,
+  "why": "recette → infinitif : Couper."
+ },
+ {
+  "grp": "Unité 6 · manger",
+  "dot": "#059669",
+  "q": "Nous ___ une spécialité.",
+  "opts": [
+   "mangons",
+   "mangeons",
+   "manjons",
+   "mangent"
+  ],
+  "a": 1,
+  "why": "-ger → nous mangeons (garde le e)."
+ },
+ {
+  "grp": "Unité 6 · passé composé",
+  "dot": "#059669",
+  "q": "Hier, j'___ une table.",
+  "opts": [
+   "ai réservé",
+   "ai réserver",
+   "suis réservé",
+   "a réservé"
+  ],
+  "a": 0,
+  "why": "avoir + participe : ai réservé."
+ },
+ {
+  "grp": "Unité 6 · participe",
+  "dot": "#059669",
+  "q": "finir → participe passé :",
+  "opts": [
+   "finé",
+   "fini",
+   "finit",
+   "finir"
+  ],
+  "a": 1,
+  "why": "verbe -ir → -i : fini."
+ },
+ {
+  "grp": "Unité 6 · participe",
+  "dot": "#059669",
+  "q": "faire → participe passé :",
+  "opts": [
+   "fait",
+   "faisé",
+   "fé",
+   "fais"
+  ],
+  "a": 0,
+  "why": "faire → fait (irrégulier)."
+ },
+ {
+  "grp": "Unité 6 · être",
+  "dot": "#059669",
+  "q": "Antoine ___ entré dans la salle.",
+  "opts": [
+   "a",
+   "est",
+   "ont",
+   "sont"
+  ],
+  "a": 1,
+  "why": "entrer → passé composé avec être."
+ },
+ {
+  "grp": "Unité 6 · accord",
+  "dot": "#059669",
+  "q": "Julie est ___ à 18 h.",
+  "opts": [
+   "arrivé",
+   "arrivée",
+   "arrivés",
+   "arriver"
+  ],
+  "a": 1,
+  "why": "être : accord avec sujet fém. → arrivée."
+ },
+ {
+  "grp": "Unité 6 · accord",
+  "dot": "#059669",
+  "q": "Les spectateurs sont ___.",
+  "opts": [
+   "arrivé",
+   "arrivée",
+   "arrivés",
+   "arrive"
+  ],
+  "a": 2,
+  "why": "sujet masc. pluriel → arrivés."
+ },
+ {
+  "grp": "Unité 6 · négatif",
+  "dot": "#059669",
+  "q": "Le cinéma ___ montré le film.",
+  "opts": [
+   "n'a pas",
+   "a pas",
+   "ne pas a",
+   "n'est pas"
+  ],
+  "a": 0,
+  "why": "n' + a + pas + participe."
+ },
+ {
+  "grp": "Unité 6 · on",
+  "dot": "#059669",
+  "q": "On ___ au restaurant. (= nous)",
+  "opts": [
+   "allons",
+   "va",
+   "vont",
+   "vas"
+  ],
+  "a": 1,
+  "why": "on se conjugue comme il/elle → va."
+ },
+ {
+  "grp": "Unité 6 · il y a",
+  "dot": "#059669",
+  "q": "___ 5 mois, il a demandé Julie en mariage.",
+  "opts": [
+   "Dans",
+   "Il y a",
+   "Depuis",
+   "Pour"
+  ],
+  "a": 1,
+  "why": "il y a + durée = ago."
+ }
+]

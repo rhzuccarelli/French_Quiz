@@ -1,7 +1,7 @@
 {
   "name": "Français — Quiz",
   "short_name": "Quiz FR",
-  "description": "Quiz de conjugaison française — présent de l'indicatif et participes passés",
+  "description": "Français A1 — conjugaison, vocabulaire, grammaire et expressions (unités 4 à 6)",
   "start_url": "/French_Quiz/",
   "scope": "/French_Quiz/",
   "display": "standalone",

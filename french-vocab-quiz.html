@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Quiz FR">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>vocabulaire — quiz</title>
+<script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f5f5f0;
+  --surface: #ffffff;
+  --rule:    #000000;
+  --rule-lt: #d0d0c8;
+  --text:    #000000;
+  --muted:   #666666;
+  --faint:   #aaaaaa;
+  --ok-bg:   #e8f5e8;
+  --err-bg:  #fce8e8;
+  --mono:    'Courier New', 'Lucida Console', monospace;
+}
+:root[data-theme="dark"] {
+  --bg: #1a1a18; --surface: #242420; --rule: #d0d0c8; --rule-lt: #3a3a36;
+  --text: #e0e0d8; --muted: #888880; --faint: #555550; --ok-bg: #1a2e1a; --err-bg: #2e1a1a;
+}
+html, body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+body { display: flex; flex-direction: column; align-items: center; padding: 40px 20px 80px; }
+
+.te-header { width: 100%; max-width: 640px; border-top: 2px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 10px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 32px; }
+.te-title { font-size: 11px; font-weight: 400; letter-spacing: 0.12em; text-transform: lowercase; }
+.te-subtitle { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; font-family: var(--mono); }
+.te-back { font-size: 10px; color: var(--muted); letter-spacing: 0.08em; font-family: var(--mono); text-decoration: none; white-space: nowrap; }
+.te-back:hover { color: var(--text); }
+
+.te-filters { width: 100%; max-width: 640px; display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 24px; }
+.te-tag { font-size: 9px; font-weight: 400; letter-spacing: 0.12em; text-transform: lowercase; padding: 3px 8px; border: 1px solid var(--rule-lt); background: var(--surface); color: var(--muted); cursor: pointer; transition: all 0.1s; white-space: nowrap; }
+.te-tag:hover  { border-color: var(--rule); color: var(--text); }
+.te-tag.active { border-color: var(--rule); background: var(--rule); color: var(--bg); }
+
+.te-scorebar { width: 100%; max-width: 640px; display: grid; grid-template-columns: 56px 1fr auto auto; align-items: center; gap: 12px; margin-bottom: 28px; }
+.te-score-num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; white-space: nowrap; }
+.te-bar-track { height: 1px; background: var(--rule-lt); position: relative; }
+.te-bar-fill { position: absolute; left: 0; top: 0; height: 1px; background: var(--rule); transition: width 0.35s ease; width: 0%; }
+.te-q-num { font-family: var(--mono); font-size: 10px; color: var(--muted); text-align: right; white-space: nowrap; }
+.te-streak { font-family: var(--mono); font-size: 10px; color: var(--faint); text-align: right; white-space: nowrap; transition: color 0.2s, font-weight 0.2s; min-width: 28px; }
+.te-streak.s5  { color: var(--muted); }
+.te-streak.s10 { color: var(--text); font-weight: 700; }
+.te-streak.s20 { color: var(--text); font-weight: 700; letter-spacing: 0.06em; }
+
+.te-card { width: 100%; max-width: 640px; background: var(--surface); border: 1px solid var(--rule); }
+.te-card-head { border-bottom: 1px solid var(--rule-lt); padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; }
+.te-group-tag { font-size: 9px; letter-spacing: 0.14em; text-transform: lowercase; color: var(--muted); }
+.te-group-dot { width: 6px; height: 6px; display: inline-block; margin-right: 6px; vertical-align: middle; }
+.te-dir-tag { font-size: 9px; letter-spacing: 0.1em; font-family: var(--mono); color: var(--faint); }
+
+.te-card-body { padding: 28px 20px 20px; }
+.te-prompt-verb { font-size: 36px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.05; margin-bottom: 24px; }
+
+.te-options { display: flex; flex-direction: column; gap: 8px; }
+.te-opt {
+  text-align: left; font-size: 16px; font-weight: 400; padding: 13px 16px;
+  border: 1px solid var(--rule-lt); background: var(--bg); color: var(--text);
+  cursor: pointer; transition: all 0.1s; display: flex; gap: 10px; align-items: baseline;
+}
+.te-opt:hover:not(:disabled) { border-color: var(--rule); }
+.te-opt:disabled { cursor: default; }
+.te-opt .te-opt-key { font-family: var(--mono); font-size: 10px; color: var(--faint); width: 12px; flex-shrink: 0; }
+.te-opt.ok  { background: var(--ok-bg);  border-color: var(--rule); }
+.te-opt.err { background: var(--err-bg); border-color: var(--rule); }
+
+.te-card-foot { border-top: 1px solid var(--rule-lt); padding: 8px 20px; display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+.te-next-btn { font-size: 9px; letter-spacing: 0.14em; text-transform: lowercase; padding: 5px 14px; border: 1px solid var(--rule); background: transparent; color: var(--text); cursor: pointer; display: none; transition: background 0.1s; }
+.te-next-btn:hover { background: var(--rule); color: var(--bg); }
+.te-remaining { font-family: var(--mono); font-size: 10px; color: var(--faint); }
+
+.te-results { display: none; width: 100%; max-width: 640px; background: var(--surface); border: 1px solid var(--rule); flex-direction: column; }
+.te-results-head { border-bottom: 1px solid var(--rule); padding: 10px 20px; font-size: 9px; letter-spacing: 0.14em; text-transform: lowercase; color: var(--muted); }
+.te-results-body { padding: 32px 20px; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.te-big-score { font-size: 64px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.te-grade { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; margin-top: 4px; font-family: var(--mono); }
+.te-stats-divider { width: 100%; height: 1px; background: var(--rule-lt); margin: 8px 0 4px; }
+.te-restart-btn { margin-top: 20px; font-size: 9px; letter-spacing: 0.14em; text-transform: lowercase; padding: 7px 18px; border: 1px solid var(--rule); background: var(--rule); color: var(--bg); cursor: pointer; transition: opacity 0.1s; }
+.te-restart-btn:hover { opacity: 0.75; }
+.te-missed { width: 100%; border-top: 1px solid var(--rule-lt); margin-top: 24px; padding-top: 16px; }
+.te-missed-header { font-size: 9px; letter-spacing: 0.14em; text-transform: lowercase; color: var(--muted); margin-bottom: 10px; }
+.te-missed-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--rule-lt); font-size: 13px; }
+.mi-fr { font-weight: 700; }
+.mi-en { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header class="te-header">
+  <a class="te-back" href="index.html">← menu</a>
+  <span class="te-title">vocabulaire &mdash; quiz</span>
+  <span class="te-subtitle">choix multiple</span>
+  <button class="te-tag" id="theme-btn" onclick="toggleTheme()">dark</button>
+</header>
+
+<div class="te-filters" id="filters">
+  <button class="te-tag active" id="filter-all" onclick="setFilter('all')">tous</button>
+</div>
+
+<div class="te-scorebar">
+  <span class="te-score-num" id="score-label">0 / 0</span>
+  <div class="te-bar-track"><div class="te-bar-fill" id="score-fill"></div></div>
+  <span class="te-q-num" id="q-counter"></span>
+  <span class="te-streak" id="streak-label">×0</span>
+</div>
+
+<div id="quiz-area">
+  <div class="te-card" id="main-card">
+    <div class="te-card-head">
+      <span><span class="te-group-dot" id="card-dot"></span><span class="te-group-tag" id="card-group"></span></span>
+      <span class="te-dir-tag" id="dir-tag"></span>
+    </div>
+    <div class="te-card-body">
+      <div class="te-prompt-verb" id="prompt-word"></div>
+      <div class="te-options" id="options"></div>
+    </div>
+    <div class="te-card-foot">
+      <button class="te-next-btn" id="next-btn" onclick="nextQuestion()">suivant →</button>
+      <span class="te-remaining" id="remaining"></span>
+    </div>
+  </div>
+</div>
+
+<div class="te-results" id="results-screen">
+  <div class="te-results-head">résultats</div>
+  <div class="te-results-body">
+    <div class="te-big-score" id="final-pct"></div>
+    <div class="te-grade" id="final-tally"></div>
+    <div class="te-grade" id="final-grade"></div>
+    <div class="te-stats-divider"></div>
+    <div class="te-grade" id="stats-session"></div>
+    <div class="te-grade" id="stats-cumulative"></div>
+    <button class="te-restart-btn" onclick="restart()">recommencer</button>
+    <div class="te-missed" id="missed-list"></div>
+  </div>
+</div>
+
+<script>
+const ROUND_N = 20;
+const LS_CUM  = 'voc_cum';
+const KEYS = ['a','b','c','d'];
+
+let groups = [], pool = [], queue = [], current = null;
+let score = 0, total = 0, missed = [];
+let answered = false, activeFilter = 'all';
+let streak = 0, roundNum = 0, questionStart = 0, roundSize = 0;
+let sessionTimes = [];
+
+let cumStats = JSON.parse(localStorage.getItem(LS_CUM) || '{"total":0,"correct":0,"timeSum":0}');
+function saveCum() { localStorage.setItem(LS_CUM, JSON.stringify(cumStats)); }
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = 0 | Math.random() * (i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+function buildPool(fid) {
+  pool = [];
+  groups.forEach(g => {
+    if (fid !== 'all' && g.id !== fid) return;
+    g.items.forEach(it => pool.push({ group: g, fr: it.fr, en: it.en }));
+  });
+}
+
+function buildRound() {
+  buildPool(activeFilter);
+  if (!pool.length) { queue = []; roundSize = 0; return; }
+  if (activeFilter === 'all') {
+    const bag = shuffle([...pool]);
+    queue = bag.slice(0, Math.min(ROUND_N, bag.length));
+  } else {
+    queue = shuffle([...pool]);
+  }
+  roundSize = queue.length;
+}
+
+// build a question with 3 distractors, prefer same group
+function makeQuestion(item) {
+  const d = Math.random() < 0.5 ? 'fr' : 'en';           // prompt language
+  const promptKey = d, answerKey = d === 'fr' ? 'en' : 'fr';
+  const correct = item[answerKey];
+  const sameGroup = item.group.items.map(x => x[answerKey]).filter(v => v !== correct);
+  const others    = pool.map(x => x[answerKey]).filter(v => v !== correct);
+  const distractors = [];
+  const tryPick = src => { shuffle(src); for (const v of src) { if (distractors.length < 3 && !distractors.includes(v) && v !== correct) distractors.push(v); } };
+  tryPick([...new Set(sameGroup)]);
+  tryPick([...new Set(others)]);
+  const opts = shuffle([correct, ...distractors]);
+  return { item, dir: d, prompt: item[promptKey], correct, opts };
+}
+
+function setFilter(id) {
+  activeFilter = id;
+  document.querySelectorAll('#filters .te-tag').forEach(b => b.classList.remove('active'));
+  document.getElementById('filter-' + id).classList.add('active');
+  restart();
+}
+
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const next = dark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  document.getElementById('theme-btn').textContent = dark ? 'dark' : 'light';
+}
+
+function updateScore() {
+  const pct = total > 0 ? (score / total) * 100 : 0;
+  document.getElementById('score-label').textContent = score + ' / ' + total;
+  document.getElementById('score-fill').style.width  = pct + '%';
+}
+function updateStreak() {
+  const el = document.getElementById('streak-label');
+  el.textContent = '×' + streak;
+  el.className = 'te-streak' + (streak >= 20 ? ' s20' : streak >= 10 ? ' s10' : streak >= 5 ? ' s5' : '');
+}
+function updateRound() {
+  const pos = roundSize - queue.length;
+  document.getElementById('q-counter').textContent = 'round ' + roundNum + ' — ' + pos + '/' + roundSize;
+  document.getElementById('remaining').textContent = queue.length + ' left';
+}
+
+function restart() {
+  roundNum++;
+  score = 0; total = 0; missed = []; sessionTimes = []; streak = 0;
+  buildRound();
+  document.getElementById('quiz-area').style.display      = 'block';
+  document.getElementById('results-screen').style.display = 'none';
+  updateScore(); updateStreak();
+  nextQuestion();
+}
+
+function nextQuestion() {
+  if (!queue.length) { showResults(); return; }
+  current = makeQuestion(queue.pop());
+  answered = false;
+  questionStart = Date.now();
+  document.getElementById('prompt-word').textContent = current.prompt;
+  document.getElementById('card-group').textContent  = current.item.group.label;
+  document.getElementById('card-dot').style.background = current.item.group.dot;
+  document.getElementById('dir-tag').textContent = current.dir === 'fr' ? 'fr → en' : 'en → fr';
+  const box = document.getElementById('options');
+  box.innerHTML = '';
+  current.opts.forEach((opt, i) => {
+    const b = document.createElement('button');
+    b.className = 'te-opt';
+    b.innerHTML = '<span class="te-opt-key">' + KEYS[i] + '</span><span>' + opt + '</span>';
+    b.onclick = () => choose(opt, b);
+    box.appendChild(b);
+  });
+  document.getElementById('next-btn').style.display = 'none';
+  updateRound();
+}
+
+function choose(opt, btn) {
+  if (answered || !current) return;
+  answered = true; total++;
+  const elapsed = Date.now() - questionStart;
+  sessionTimes.push(elapsed);
+  const ok = opt === current.correct;
+  cumStats.total++; cumStats.timeSum += elapsed;
+  if (ok) cumStats.correct++;
+  saveCum();
+
+  const btns = document.querySelectorAll('.te-opt');
+  btns.forEach(b => {
+    b.disabled = true;
+    const txt = b.querySelector('span:last-child').textContent;
+    if (txt === current.correct) b.classList.add('ok');
+  });
+  if (ok) { score++; streak++; }
+  else { streak = 0; btn.classList.add('err'); missed.push(current); }
+
+  updateScore(); updateStreak();
+  document.getElementById('next-btn').style.display = 'block';
+}
+
+function showResults() {
+  document.getElementById('quiz-area').style.display      = 'none';
+  document.getElementById('results-screen').style.display = 'flex';
+  const pct = total > 0 ? Math.round(score / total * 100) : 0;
+  document.getElementById('final-pct').textContent   = pct + '%';
+  document.getElementById('final-tally').textContent = score + ' / ' + total + ' correct';
+  const grades = [[90,'excellent'],[75,'très bien'],[60,'bien'],[40,'passable'],[0,'à revoir']];
+  document.getElementById('final-grade').textContent = grades.find(([t]) => pct >= t)[1];
+
+  const avgMs  = sessionTimes.length ? sessionTimes.reduce((a,b)=>a+b,0)/sessionTimes.length : 0;
+  const cumPct = cumStats.total > 0 ? Math.round(cumStats.correct/cumStats.total*100) : 0;
+  const cumAvg = cumStats.total > 0 ? (cumStats.timeSum/cumStats.total/1000).toFixed(1) : '—';
+  document.getElementById('stats-session').textContent    = 'session · ' + pct + '% · avg ' + (avgMs/1000).toFixed(1) + 's';
+  document.getElementById('stats-cumulative').textContent = 'all time · ' + cumPct + '% · avg ' + cumAvg + 's · ' + cumStats.total + ' questions';
+
+  const ml = document.getElementById('missed-list');
+  ml.innerHTML = '';
+  if (missed.length) {
+    const h = document.createElement('div'); h.className = 'te-missed-header';
+    h.textContent = 'à revoir — ' + missed.length; ml.appendChild(h);
+    missed.forEach(m => {
+      const r = document.createElement('div'); r.className = 'te-missed-row';
+      r.innerHTML = '<span class="mi-fr">' + m.item.fr + '</span><span class="mi-en">' + m.item.en + '</span>';
+      ml.appendChild(r);
+    });
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (!answered && current) {
+    const i = KEYS.indexOf(e.key.toLowerCase());
+    if (i >= 0 && i < current.opts.length) {
+      const btns = document.querySelectorAll('.te-opt');
+      choose(current.opts[i], btns[i]);
+    }
+    const n = parseInt(e.key, 10);
+    if (n >= 1 && n <= current.opts.length) {
+      const btns = document.querySelectorAll('.te-opt');
+      choose(current.opts[n-1], btns[n-1]);
+    }
+  } else if (answered && e.key === 'Enter') { nextQuestion(); }
+});
+
+fetch('vocabulaire.json')
+  .then(r => r.json())
+  .then(data => {
+    groups = data;
+    const fe = document.getElementById('filters');
+    groups.forEach(g => {
+      const b = document.createElement('button');
+      b.className = 'te-tag'; b.id = 'filter-' + g.id; b.textContent = g.label;
+      b.onclick = () => setFilter(g.id);
+      fe.appendChild(b);
+    });
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.getElementById('theme-btn').textContent = dark ? 'light' : 'dark';
+    restart();
+  })
+  .catch(() => { document.getElementById('prompt-word').textContent = 'erreur de chargement'; });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js', {updateViaCache: 'none'});
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+}
+</script>
+</body>
+</html>
